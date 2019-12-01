@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'expDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'app'),
+        'NAME': 'app',
         'USER': os.environ.get('DB_USER','gustavo'),
         'PASSWORD': os.environ.get('DB_PASS','gustavo'),
         'HOST': 'localhost',
