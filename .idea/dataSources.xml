@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="db" uuid="5b6402a3-9760-45ce-afde-099532903e6b">
+    <data-source source="LOCAL" name="db" uuid="e19aadce-203a-4d5c-a0ca-794723833dc1">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\gusta\OneDrive\Ambiente de Trabalho\expDjango\db.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\gusta\OneDrive\Ambiente de Trabalho\Projeto_Mestrado\db.postgres</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>
