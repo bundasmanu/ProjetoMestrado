@@ -3,4 +3,5 @@ from .views import DatasetCRUD
 
 urlpatterns = [
     path('', DatasetCRUD.listAllDatasets , name = 'index'),
+    path('dset/<int:idDataset>', DatasetCRUD.listDataset , name = 'index'),
 ]

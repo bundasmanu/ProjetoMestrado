@@ -5,7 +5,7 @@ def showAccResponse(request):
     try:
 
         #PARA JA APENAS UM RESPONSE
-        return HttpResponse("asasd")
+        return HttpResponse()
 
     except:
         raise
