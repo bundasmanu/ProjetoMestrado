@@ -1,7 +1,7 @@
 from . import Train, Preview
 import expDjango.TreinoPrevisao.Forms.trainPredForm as tpForm
 import expDjango.utils as ut
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,render
 
 def uploadTrainPredict(request):
 
@@ -23,12 +23,12 @@ def uploadTrainPredict(request):
                 accuracyResult = Preview.preview(gammaValue=gammaValue, dropdownValue=dropdDownSelectedValue)
 
                 #RENDER TO RESPONSE--> SEND DATA TO NEW TEMPLATE
-                return render_to_response(request, '##URL###', {'accValue' : accuracyResult})
+                return render(request, 'showAccuracy.html', {'accValue' : accuracyResult})
 
         else:
             #REDIRECT TO SAME PAGE WITH UPGRADED FORM
             form = tpForm.TrainPredForm()
-            return render_to_response('###URL###', {'form' : form}) #ALTERAR DPS O NOME DA FORM
+            return render(request,'trainPreview.html', {'form' : form}) #ALTERAR DPS O NOME DA FORM
     except:
-        raise("Something wrong as appened")
+        raise
 

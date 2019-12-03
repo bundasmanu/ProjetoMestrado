@@ -55,7 +55,7 @@ ROOT_URLCONF = 'expDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'expDjango/Dataset/templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'expDjango/Dataset/templates'), os.path.join(BASE_DIR, 'expDjango/TreinoPrevisao/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {

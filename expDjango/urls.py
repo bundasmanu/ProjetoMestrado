@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dataset/', include('expDjango.Dataset.urls'))
+    path('dataset/', include('expDjango.Dataset.urls')),
+    path('preview/', include('expDjango.TreinoPrevisao.urls'))
 ]

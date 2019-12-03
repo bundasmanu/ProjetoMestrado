@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>Preview Dataset</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/indexPage.css' %}">
+    </head>
+    <body>
+        {% block content %}
+            <h1>fdfdf</h1>
+            {% for dataset in  shelf %}
+                <div>
+                    <p>ID: {{ dataset.id }}</p>
+                    </br>
+                    <p>Name: {{ dataset.name }}</p>
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </body>
+</html>
