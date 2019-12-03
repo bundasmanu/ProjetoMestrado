@@ -1,4 +1,8 @@
+import re
+import traceback
 
-def getVarName(var):
-     varName = [ k for k,v in locals().iteritems() if v == var][0] # https://www.tutorialspoint.com/How-to-get-a-variable-name-as-a-string-in-Python
-     return varName
+def func(var):
+    stack = traceback.extract_stack()
+    filename, lineno, function_name, code = stack[-2]
+    vars_name = re.compile(r'\((.*?)\).*$').search(code).groups()[0]
+    return vars_name
