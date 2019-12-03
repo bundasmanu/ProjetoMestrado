@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from expDjango.Dataset.Models import Dataset
-#from expDjango.Dataset.Forms import DatasetForm
+from expDjango.Dataset.Forms.DatasetForm import DatasetTemp
 
 def listAllDatasets(request):
     shelf = Dataset.Dataset.objects.all()
@@ -20,7 +20,7 @@ def listDataset(request, idDataset):
         except Dataset.Dataset.DoesNotExist:
             return redirect('index.html') #RETORNA À PÁGINA DE LISTAGEM DOS DATASETS
 
-        #dsetForm = DatasetForm(dset) #OBJETO DATASET COM TODOS OS CAMPOS
+        #dsetForm = DatasetTemp(instance=dset) #OBJETO DATASET COM TODOS OS CAMPOS
 
         return render(request, 'listDataset.html', {'dset': dset})
 

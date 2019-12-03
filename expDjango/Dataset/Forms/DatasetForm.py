@@ -4,5 +4,5 @@ from expDjango.Dataset.Models import Dataset
 
 class DatasetTemp(forms.ModelForm):
     class Meta:
-        model = Dataset
+        model = Dataset.Dataset
         fields = '__all__'
