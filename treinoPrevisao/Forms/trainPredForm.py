@@ -1,7 +1,7 @@
 from django import forms
-from expDjango.Dataset.Models import Dataset
+from Dataset.models import Dataset
 
-allDataset = [(int(i.id), int(i.id)) for i in Dataset.Dataset.objects.all()]
+allDataset = [(int(i.id), int(i.id)) for i in Dataset.objects.all()]
 dropdownDatasets = None #PARA NAO ACEDER, EM HARD CODE ÀS SUAS LABELS
 gammaValue = None #PARA NAO ACEDER, EM HARD CODE ÀS SUAS LABELS
 

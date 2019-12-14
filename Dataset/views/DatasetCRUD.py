@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from expDjango.Dataset.Models import Dataset
-from expDjango.Dataset.Forms.DatasetForm import DatasetTemp
+from Dataset.models import Dataset
+from Dataset.Forms.DatasetForm import DatasetTemp
 
 def listAllDatasets(request):
-    shelf = Dataset.Dataset.objects.all()
+    shelf = Dataset.objects.all()
     return render(request, 'index.html', {'shelf' : shelf}) #ATRIBUTO SHELF NO TEMPLATE PREVIEW, VAI RECEBER TODOS OS OBJETOS QUE ESTAO NA TABELA DATASET
 
 def listDataset(request, idDataset):
@@ -16,8 +16,8 @@ def listDataset(request, idDataset):
         #GET DATASET--> FROM MY DB
         dset = None
         try:
-            dset = Dataset.Dataset.objects.get(id=idDset)
-        except Dataset.Dataset.DoesNotExist:
+            dset = Dataset.objects.get(id=idDset)
+        except Dataset.DoesNotExist:
             return redirect('index.html') #RETORNA À PÁGINA DE LISTAGEM DOS DATASETS
 
         #dsetForm = DatasetTemp(instance=dset) #OBJETO DATASET COM TODOS OS CAMPOS

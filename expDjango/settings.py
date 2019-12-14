@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'expDjango',
-    #'expDjango.Dataset',
-    #'expDjango.TreinoPrevisao',
+    #'expDjango',
+    'treinoPrevisao',
+    'Dataset',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'expDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'expDjango/Dataset/templates'), os.path.join(BASE_DIR, 'expDjango/TreinoPrevisao/templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'treinoPrevisao/templates'), os.path.join(BASE_DIR, 'Dataset/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {

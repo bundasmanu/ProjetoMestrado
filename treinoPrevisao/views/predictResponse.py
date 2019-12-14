@@ -1,4 +1,4 @@
-import expDjango.TreinoPrevisao.Forms.trainPredForm as tpForm
+import treinoPrevisao.Forms.trainPredForm as tpForm
 import expDjango.utils as ut
 from django.shortcuts import render_to_response,render, HttpResponseRedirect
 from sklearn import datasets, svm

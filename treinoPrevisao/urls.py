@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import predictResponse, accuracyResponse
+from treinoPrevisao.views import predictResponse, accuracyResponse
 
 urlpatterns = [
     path('trainPreview', predictResponse.uploadTrainPredict, name = 'trPrev'),
