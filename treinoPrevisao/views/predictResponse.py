@@ -24,11 +24,11 @@ def uploadTrainPredict(request):
                 accuracyResult = preview(gammaValue=gammaValue, dropdownValue=dropdDownSelectedValue)
 
                 #RENDER TO RESPONSE--> SEND DATA TO NEW TEMPLATE
-                return render(request, 'showAccuracy.html', {'accValue' : accuracyResult})
+                return render(request, 'treinoPrevisao/showAccuracy.html', {'accValue' : accuracyResult})
         else:
             #REDIRECT TO SAME PAGE WITH UPGRADED FORM
             form = tpForm.TrainPredForm()
-            return render(request,'trainPreview.html', {'form' : form}) #ALTERAR DPS O NOME DA FORM
+            return render(request,'treinoPrevisao/trainPreview.html', {'form' : form}) #ALTERAR DPS O NOME DA FORM
     except:
         raise
 

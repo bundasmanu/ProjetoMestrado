@@ -4,7 +4,7 @@ from Dataset.Forms.DatasetForm import DatasetTemp
 
 def listAllDatasets(request):
     shelf = Dataset.objects.all()
-    return render(request, 'index.html', {'shelf' : shelf}) #ATRIBUTO SHELF NO TEMPLATE PREVIEW, VAI RECEBER TODOS OS OBJETOS QUE ESTAO NA TABELA DATASET
+    return render(request, 'dataset/index.html', {'shelf' : shelf}) #ATRIBUTO SHELF NO TEMPLATE PREVIEW, VAI RECEBER TODOS OS OBJETOS QUE ESTAO NA TABELA DATASET
 
 def listDataset(request, idDataset):
 
@@ -22,7 +22,7 @@ def listDataset(request, idDataset):
 
         #dsetForm = DatasetTemp(instance=dset) #OBJETO DATASET COM TODOS OS CAMPOS
 
-        return render(request, 'listDataset.html', {'dset': dset})
+        return render(request, 'dataset/listDataset.html', {'dset': dset})
 
     except:
         raise
