@@ -125,11 +125,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-
 STATIC_URL = '/static/' #DEFINICAO DO NOME DA VARIAVEL A SER CHAMADA--> POR EXEMPLO NO LOAD STATIC, NUM FICHEIRO HTML
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado\static_cdn") #content delivery network
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cdn") #content delivery network

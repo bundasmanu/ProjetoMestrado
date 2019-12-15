@@ -13,16 +13,32 @@ def listDataset(request, idDataset):
         #CONVERT ID DATASET TO INT --> URL PARAMETER IS A STRING
         idDset = int(idDataset)
 
-        #GET DATASET--> FROM MY DB
-        dset = None
-        try:
-            dset = Dataset.objects.get(id=idDset)
-        except Dataset.DoesNotExist:
-            return redirect('index.html') #RETORNA À PÁGINA DE LISTAGEM DOS DATASETS
+        dset = getDataset(idDataset)
 
         #dsetForm = DatasetTemp(instance=dset) #OBJETO DATASET COM TODOS OS CAMPOS
 
         return render(request, 'dataset/listDataset.html', {'dset': dset})
+
+    except:
+        raise
+
+
+def getDataset(idDataset):
+
+    '''
+
+    :param idDataset: int id  --> dataset
+    :return: dataset object
+    '''
+
+    try:
+
+        datasetObject = Dataset.objects.get(id=idDataset)
+
+        if datasetObject == None:
+            raise Dataset.DoesNotExist
+
+        return datasetObject
 
     except:
         raise
