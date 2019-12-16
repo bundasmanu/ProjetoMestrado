@@ -6,6 +6,9 @@ from sklearn.model_selection import train_test_split
 from Dataset.models import Dataset
 from Dataset.views import DatasetCRUD
 import os
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+import numpy as np
 
 def uploadTrainPredict(request):
 
@@ -43,13 +46,10 @@ def preview(gammaValue, dropdownValue):
         uploadDataset = DatasetCRUD.getDataset(dropdownValue)
 
         #GET DATA AND TARGET FROM DATASET
-        uploadFile(uploadDataset)
-
-        # LOAD IRIS DATASET
-        iris = datasets.load_iris()
+        data, target = uploadFile(uploadDataset)
 
         # SPLIT DATA 75% FOR TRAIN AND 25% FOR PREVISIONS
-        xTrain, xTest, yTrain, yTest = train_test_split(iris.data, iris.target, test_size=0.25, random_state=42)
+        xTrain, xTest, yTrain, yTest = train_test_split(data, target, test_size=0.25, random_state=42)
 
         # GET MY TRAINED MODEL
         svm = train(gammaValue, dropdownValue, xTrain, yTrain)
@@ -57,8 +57,11 @@ def preview(gammaValue, dropdownValue):
         # APPLY PREDICT
         previsions = svm.predict(xTest)
 
+        #RESHAPE PREVISIONS OUTPUT TO FORMAT (1, NUMBER OF SAMPLES)
+        previsionsX = previsions.reshape(-1,1)
+
         # GET ACCURACY OF MY MODEL
-        acc = (previsions == yTest).mean()
+        acc = (previsionsX == yTest).mean()
 
         # CONVERT FLOAT TO STRING
         accString = repr(acc)  # RETURN CANONICAL STRING OF OBJECT PASSED IN ARGUMENT
@@ -75,7 +78,7 @@ def train(gammaValue, dropdownValue, xTrain, yTrain):
         svmModel = svm.SVC(gamma=gammaValue)
 
         #TRAIN MODEL
-        svmModel.fit(xTrain, yTrain)
+        svmModel.fit(xTrain, np.ravel(yTrain)) #RAVEL USE TO DISABLE WARNING
 
         return svmModel
     except:
@@ -94,9 +97,10 @@ def uploadFile(datasetObject):
         #ACCESS OBJECT BY ATTRIBUTE PATH AND USING OS
         absolutePath = os.path.abspath(datasetObject.path) #GET ABSOLUTE PATH
 
+        #EXTRACT FILE
+        data, target = extractFile(absolutePath)
 
-
-        return None
+        return data, target
     except:
         raise
 
@@ -109,8 +113,53 @@ def extractFile(file):
     '''
 
     try:
-        
 
-        return None
+        #GET DATA FRAMES OBJECT, AFTER READ CSV FILE
+        dataset = pd.read_csv(file)
+
+        #CREATE DATAFRAME OBJECT
+        df = pd.DataFrame(dataset)
+
+        #RENAME TARGET COLUMN NAME TO CLASS
+        df.rename(columns={df.columns[df.shape[1]-1]: 'Class'},inplace=True)
+
+        #GET DATA--> ALL COLUMNS EXCEPT FIRST LINE (ID) AND LAST ONE (TARGET)
+        dataDFrame = df[df.columns[1:df.shape[1]-1]]
+
+        #GET TARGET--> LAST COLUMN
+        targetDFrame = df[df.columns[df.shape[1]-1]]
+
+        #CONVERT CATEGORICAL COLUMNS OF TARGET TO NUMERIC
+        targetDFrameConverted = transformCategoricalTargetIntoInteger(targetDFrame)
+
+        #CONVERT DATAFRAME'S TO NUMPY ARRAY --> SCIKIT LEARN WANTS NUMPY ARRAY
+        data = dataDFrame.to_numpy()
+        target = targetDFrameConverted.to_numpy()
+
+        return data, target
+    except:
+        raise
+
+def transformCategoricalTargetIntoInteger(dataframe):
+
+    '''
+
+    :param data: dataframe, columns  to convert
+    :return: categorical data converted from categorical to integer
+    '''
+
+    try:
+
+        print(dataframe.dtypes)
+
+        #CONVERT SERIES OBJECT TO DATA FRAMES --> TO MAKE ALL ALTERATIONS
+        dataframe = dataframe.to_frame()
+
+        #CONVERT TO CATEGORY AND THEN APPLY NUMERIC CONVERSION --> ONLY HAVE ONE COLUMN ON TARGET
+        dataframe['Class'] = dataframe['Class'].astype('category')
+        cat_columns = dataframe.select_dtypes(['category']).columns
+        dataframe[cat_columns] = dataframe[cat_columns].apply(lambda x: x.cat.codes)
+
+        return dataframe
     except:
         raise
