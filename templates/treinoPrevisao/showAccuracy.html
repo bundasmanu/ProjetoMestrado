@@ -1,10 +1,24 @@
 {% extends 'dataset/index.html' %}
 {% block content %}
-    <p>Accuracy: {{ confusionMatrix.accuracy }}</p>
+    <h1>Confusion Matrix</h1>
+    <label class="predLabel">Predictions</label>
     </br>
-    <p>Precision: {{ confusionMatrix.precision }}</p>
+    <div id="confusionMat">
+        <div id="realConfMatLabel">
+            <label class="realLabel">Real</label>
+        </div>
+        <div id="displayConfMat">
+            {% for i in  confusionMatrix.getConfusionMatrix %}
+                {{ i }}
+                </br>
+            {% endfor %}
+        </div>
+    </div>
+    <p>Accuracy: {{ confusionMatrix.getAccuracy }}</p>
     </br>
-    <p>Recall: {{ confusionMatrix.recall }}</p>
+    <p>Precision: {{ confusionMatrix.getPrecision }}</p>
     </br>
-    <p>F1-Score: {{ confusionMatrix.f1Score }}</p>
+    <p>Recall: {{ confusionMatrix.getRecall }}</p>
+    </br>
+    <p>F1-Score: {{ confusionMatrix.getF1Score }}</p>
 {% endblock %}

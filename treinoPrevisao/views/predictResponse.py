@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from sklearn import svm, metrics
+from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from Dataset.views import DatasetCRUD
 import os
@@ -59,11 +60,7 @@ def preview(gammaValue, dropdownValue):
         previsionsX = previsions.reshape(-1,1)
 
         # GET ACCURACY, PRECISION, RECALL AND F1_SCORE --> STORE DATA INTO FORM, TO DISPLAY AFTER ON A NEW TEMPLATE
-        confusionMat = ConfusionMatrix.ConfusionMatrix()
-        confusionMat.accuracy = metrics.accuracy_score(yTest, previsionsX)
-        confusionMat.precision = metrics.precision_score(yTest, previsionsX, average='weighted')
-        confusionMat.recall = metrics.recall_score(yTest, previsionsX, average='weighted')
-        confusionMat.f1Score = metrics.f1_score(yTest, previsionsX, average='weighted')
+        confusionMat = ConfusionMatrix.ConfusionMatrix(yTest, previsionsX)
 
         return confusionMat
     except:
