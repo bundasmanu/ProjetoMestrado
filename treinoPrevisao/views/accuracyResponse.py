@@ -1,11 +1,10 @@
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponseRedirect
 
 def showAccResponse(request):
 
     try:
 
-        #PARA JA APENAS UM RESPONSE
-        return HttpResponse()
+        return HttpResponseRedirect()
 
     except:
         raise

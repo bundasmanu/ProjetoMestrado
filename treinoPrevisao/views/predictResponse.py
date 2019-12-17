@@ -1,14 +1,12 @@
-import treinoPrevisao.Forms.trainPredForm as tpForm
-import expDjango.utils as ut
-from django.shortcuts import render_to_response,render, HttpResponseRedirect
-from sklearn import datasets, svm
+from django.shortcuts import render
+from sklearn import svm, metrics
 from sklearn.model_selection import train_test_split
-from Dataset.models import Dataset
 from Dataset.views import DatasetCRUD
 import os
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
 import numpy as np
+from treinoPrevisao.Forms import trainPredForm
+from treinoPrevisao.models import ConfusionMatrix
 
 def uploadTrainPredict(request):
 
@@ -17,7 +15,7 @@ def uploadTrainPredict(request):
         if request.method == 'POST': #IF FORM HAS BEEN SUBMITTED
 
             #GET MY FORM WITH PARAMETERS THAT I NEED TO PREVIEW AND PREDICT
-            upload = tpForm.TrainPredForm(request.POST, request.FILES) #DATA SHOULD BE SEND VIA HTTP POST, MORE SECURE
+            upload = trainPredForm.TrainPredForm(request.POST, request.FILES) #DATA SHOULD BE SEND VIA HTTP POST, MORE SECURE
 
             #IF ALL DATA IS VALID --> TRAIN AND PREDICT
             if upload.is_valid():
@@ -27,13 +25,13 @@ def uploadTrainPredict(request):
                 dropdDownSelectedValue = int(upload.cleaned_data.get("dropDownDatasets"))#STRING FIELD, I NEED TO CONVERT TO INT
 
                 #CALL PREVIEW (PREVIEW INSIDE CALLS TRAIN)
-                accuracyResult = preview(gammaValue=gammaValue, dropdownValue=dropdDownSelectedValue)
+                confusionMat = preview(gammaValue=gammaValue, dropdownValue=dropdDownSelectedValue)
 
                 #RENDER TO RESPONSE--> SEND DATA TO NEW TEMPLATE
-                return render(request, 'treinoPrevisao/showAccuracy.html', {'accValue' : accuracyResult})
+                return render(request, 'treinoPrevisao/showAccuracy.html', {'confusionMatrix' : confusionMat})
         else:
             #REDIRECT TO SAME PAGE WITH UPGRADED FORM
-            form = tpForm.TrainPredForm()
+            form = trainPredForm.TrainPredForm()
             return render(request,'treinoPrevisao/trainPreview.html', {'form' : form}) #ALTERAR DPS O NOME DA FORM
     except:
         raise
@@ -60,13 +58,14 @@ def preview(gammaValue, dropdownValue):
         #RESHAPE PREVISIONS OUTPUT TO FORMAT (1, NUMBER OF SAMPLES)
         previsionsX = previsions.reshape(-1,1)
 
-        # GET ACCURACY OF MY MODEL
-        acc = (previsionsX == yTest).mean()
+        # GET ACCURACY, PRECISION, RECALL AND F1_SCORE --> STORE DATA INTO FORM, TO DISPLAY AFTER ON A NEW TEMPLATE
+        confusionMat = ConfusionMatrix.ConfusionMatrix()
+        confusionMat.accuracy = metrics.accuracy_score(yTest, previsionsX)
+        confusionMat.precision = metrics.precision_score(yTest, previsionsX, average='weighted')
+        confusionMat.recall = metrics.recall_score(yTest, previsionsX, average='weighted')
+        confusionMat.f1Score = metrics.f1_score(yTest, previsionsX, average='weighted')
 
-        # CONVERT FLOAT TO STRING
-        accString = repr(acc)  # RETURN CANONICAL STRING OF OBJECT PASSED IN ARGUMENT
-
-        return accString
+        return confusionMat
     except:
         raise ("Something wrong as appened")
 

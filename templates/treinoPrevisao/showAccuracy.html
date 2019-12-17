@@ -1,4 +1,10 @@
 {% extends 'dataset/index.html' %}
 {% block content %}
-    <p>{{ accValue }}</p>
+    <p>Accuracy: {{ confusionMatrix.accuracy }}</p>
+    </br>
+    <p>Precision: {{ confusionMatrix.precision }}</p>
+    </br>
+    <p>Recall: {{ confusionMatrix.recall }}</p>
+    </br>
+    <p>F1-Score: {{ confusionMatrix.f1Score }}</p>
 {% endblock %}
