@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from sklearn import svm, metrics
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
@@ -8,6 +9,7 @@ import pandas as pd
 import numpy as np
 from treinoPrevisao.Forms import trainPredForm
 from treinoPrevisao.models import ConfusionMatrix
+import urllib.parse
 
 def uploadTrainPredict(request):
 
@@ -28,10 +30,21 @@ def uploadTrainPredict(request):
                 #CALL PREVIEW (PREVIEW INSIDE CALLS TRAIN)
                 confusionMat = preview(gammaValue=gammaValue, dropdownValue=dropdDownSelectedValue)
 
-                #RENDER TO RESPONSE--> SEND DATA TO NEW TEMPLATE
-                return render(request, 'treinoPrevisao/showAccuracy.html', {'confusionMatrix' : confusionMat})
+                #DEFINING DICT OF VALUES TO SEND VIA URL
+                dictOfAllValuesToSend = {'arrayConf' : confusionMat.getConfusionMatrix(),
+                                         'acc' : confusionMat.getAccuracy,
+                                         'prec' : confusionMat.getPrecision,
+                                         'rec' : confusionMat.getRecall,
+                                         'f1' : confusionMat.getF1Score}
+
+                #CONVERT DICT IN A URL (GET)
+                urlNotExtended = "?"+urllib.parse.urlencode(dictOfAllValuesToSend)
+
+                # REDIRECT--> SEND DATA TO NEW TEMPLATE
+                return redirect(reverse('treinoPrev:showAcc', kwargs=dictOfAllValuesToSend))
+
         else:
-            #REDIRECT TO SAME PAGE WITH UPGRADED FORM
+            #RENDER PAGE
             form = trainPredForm.TrainPredForm()
             return render(request,'treinoPrevisao/trainPreview.html', {'form' : form}) #ALTERAR DPS O NOME DA FORM
     except:
