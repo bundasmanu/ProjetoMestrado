@@ -7,7 +7,7 @@ def showAccResponse(request, **kwargs):
     try:
 
         x = kwargs.get('arrayConf')
-        kk = [int(k) for k in x]
+        #kk = [int(k) for k in x]
         acc = kwargs.get('acc')
         prec = kwargs.get('prec')
         rec = kwargs.get('rec')
