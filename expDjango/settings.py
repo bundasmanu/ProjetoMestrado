@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     #'expDjango',
     'treinoPrevisao',
     'Dataset',
+    'users'
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
