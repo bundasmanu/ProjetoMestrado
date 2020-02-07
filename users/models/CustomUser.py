@@ -1,10 +1,13 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+import expDjango.config as config
 
 class CustomUser(AbstractUser):
 
-    is_dataScientist = models.BooleanField(default=False)
-    is_healthCare = models.BooleanField(default=False)
+    userType = models.CharField(max_length=50, choices=
+                        (('D' , config.DATASCIENTIST),
+                         ('A', config.ADMIN),
+                        ('H' , config.HEALTHCARE)))
     username = models.CharField(unique=True, max_length=50)
 
     USERNAME_FIELD = 'username'
