@@ -4,7 +4,7 @@ from django.db import models
 #https://groups.google.com/forum/#!topic/django-users/loVv-yYH2qg
 #A MAIS IMPORTANTE: https://simpleisbetterthancomplex.com/tips/2016/08/16/django-tip-11-custom-manager-with-chainable-querysets.html
 
-class UserQueryset(models.QuerySet):
+class UserQueryset(models.query.QuerySet):
 
     def dataScientist(self):
         return self.filter(userType='D')
@@ -14,3 +14,9 @@ class UserQueryset(models.QuerySet):
 
     def healthCare(self):
         return self.filter(userType='H')
+
+    def checkExists(self, username):
+        numberUsers = self.filter().count(username=username)
+        if numberUsers > 0:
+            return True
+        return False

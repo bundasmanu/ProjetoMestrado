@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 import expDjango.config as config
 from .UserQueryset import UserQueryset
@@ -12,6 +12,7 @@ class CustomUser(AbstractUser):
     username = models.CharField(unique=True, max_length=50)
 
     #MANAGER COM DEPENDENCIA DIRETA PARA O QUERYSET, RESPEITANDO AS NORMAS DE PROGRAMACAO DRY --> https://stackoverflow.com/questions/45957142/django-model-manager-or-django-queryset
+    objects = UserManager() #NECESSITO DE TER O MANAGER POR DEFEITO PARA EVITAR ERROS COMO A CRIACAO DE SUPERUSER'S --> POIS O CUSTOM MANAGER NAO TEM ISSO IMPLEMENTADO POR DEFEITO
     users = UserQueryset.as_manager()
 
     USERNAME_FIELD = 'username'
@@ -19,3 +20,6 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    #SAVE --> https://www.geeksforgeeks.org/overriding-the-save-method-django-models/
+    #DEFINIR DESDE LOGO NO ATO DE CRIACAO O GRUPO DE UM USER
