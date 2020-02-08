@@ -15,6 +15,13 @@ class UserQueryset(models.query.QuerySet):
     def healthCare(self):
         return self.filter(userType='H')
 
+    def getUserByName(self, username):
+        try:
+            user = self.get(username=username)
+            return user
+        except:
+            raise
+
     def checkExists(self, username):
         numberUsers = self.filter().count(username=username)
         if numberUsers > 0:
