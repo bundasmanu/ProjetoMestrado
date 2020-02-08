@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from users.models import CustomUser
 
 #I NEED TO OVERRIDE TWO CUSTOM CUSTOM USER FORMS TO NEW MODEL --> CUSTOM USER

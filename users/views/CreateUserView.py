@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login
 
 class CreateUserView(CreateView):
 
+    #REF: https://stackoverflow.com/questions/4051873/django-creating-object-from-post
+
     form_class = CustomUserCreationForm
     model = CustomUser.CustomUser
     template_name = '' #NECESSITO DE COLOCAR AQUI O TEMPLATE
@@ -43,7 +45,7 @@ class CreateUserView(CreateView):
                 #REDIRECT TO A PAGE THAT IS NOT LOGIN PAGE
                 #return HttpResponseRedirect('/some/page/which/is/not/logginpage')#cause user is already logged in
 
-            #LOGIN PAGE RENDER
+            #LOGIN PAGE RENDER --> ACHO QUE NAO PRECISO O GET FAZ POR MIM
             #return render(request, 'treinoPrevisao/trainPreview.html', {'form': form})  # ALTERAR DPS O NOME DA FORM
         except:
             raise
