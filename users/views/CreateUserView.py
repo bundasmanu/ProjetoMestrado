@@ -18,7 +18,7 @@ class CreateUserView(CreateView):
 
         try:
 
-            formRetrieved = self.form_class(request.POST, instance=CustomUser.CustomUser)
+            formRetrieved = self.form_class(request.POST, instance=self.model)
 
             if formRetrieved.is_valid():
                 #GET ALL DATA ON THE FIELDS --> THE FIELDS ARE: fields = ('username', 'email', 'password', 'first_name', 'last_name')
