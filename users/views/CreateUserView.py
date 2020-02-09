@@ -4,6 +4,7 @@ from users.forms.CustomUserForm import CustomUserCreationForm
 from django.core.exceptions import MultipleObjectsReturned
 from datetime import datetime
 from django.contrib.auth import authenticate, login
+from ..models import GroupQueryset
 
 class CreateUserView(CreateView):
 
@@ -36,7 +37,8 @@ class CreateUserView(CreateView):
                 actual_hour= datetime.now().strftime('%Y-%m-%d %H:%M:%S')
                 self.model.objects.create(first_name=first_name, last_name=last_name, username=username, email=email, password=password,
                                           is_superuser=False, is_staff=False, date_joined=actual_hour, is_active=True, userType='D', last_login=actual_hour)
-
+                #ADD USER TO GROUP
+                GroupQueryset.GroupQueryset.addUserToGroup(username=username, charGroup='D') #GERA EXCECAO NAO E NECESSARIO VERIFICAR
                 #AUTHENTICATE USER AND LOGIN WITH HIS CREDENTIALS, ACCESS DIRECTLY TO WEBSITE
                 credentials ={'username' : username, 'password' : password}
                 user = authenticate(**credentials)
