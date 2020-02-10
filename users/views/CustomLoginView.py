@@ -6,7 +6,7 @@ from django.shortcuts import render
 #https://docs.djangoproject.com/en/3.0/topics/auth/default/#django.contrib.auth.views.LoginView
 
 class CustomLoginView(LoginView):
-    #template_name = '' --> DEFINIR LOGIN_URL NO SETTINGS --> https://stackoverflow.com/questions/56057801/how-to-set-custom-admin-login-url-in-django-admin-on-session-timeout
+    template_name = 'users/Login.html' #--> DEFINIR LOGIN_URL NO SETTINGS --> https://stackoverflow.com/questions/56057801/how-to-set-custom-admin-login-url-in-django-admin-on-session-timeout
     #authentication_form --> IF I WANT TO OVERRIDE CUSTOM AUTHENTICATION_FORM --> I DECLARE NEW FORM HERE
 
     def get(self, request, *args, **kwargs):
