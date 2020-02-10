@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from users.views import HomeRedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dataset/', include('Dataset.urls')),
     path('preview/', include('treinoPrevisao.urls' , namespace='treinoPrev')),
-    path('', include('users.urls', namespace='users'))
+    path('', include('users.urls', namespace='users')),
 ]
 
 '''

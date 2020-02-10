@@ -4,6 +4,6 @@ from .views import DetailUserInfoView, ListAllUsers, CreateUserView, CustomLogin
 app_name = 'userUrls'
 
 urlpatterns = [
-    path('home', HomeRedirectView.HomeRedirectView.as_view() , name='home'),
-    path('login', CustomLoginView.as_view(), name='login')
+    path('home/', HomeRedirectView.HomeRedirectView.as_view() , name='home'),
+    path('login/', CustomLoginView.as_view(), name='login')
 ]

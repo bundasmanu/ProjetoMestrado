@@ -1,8 +1,8 @@
 from django.contrib.auth.views import LoginView
-from ..models import CustomUser
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib import messages
+from django.urls import reverse
+from django.contrib.auth import authenticate
 #https://docs.djangoproject.com/en/3.0/topics/auth/default/#django.contrib.auth.views.LoginView
 
 class CustomLoginView(LoginView):
@@ -12,29 +12,23 @@ class CustomLoginView(LoginView):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name,  {"form" : self.form_class})
 
-    def post(self, request, *args, **kwargs):
-
-        try:
-            if self.form_valid():
-                formRetrieved = self.form_class(request.POST, instance=CustomUser.CustomUser)
-
-                username = formRetrieved.cleaned_data.get('username')
-                password = formRetrieved.cleaned_data.get('password')
-
-                #CHECK AUTENTHICATION
-                auth = authenticate(username=username, password=password)
-                if auth is not None:
-                    login(username, password)
-                    return HttpResponse("Signed in")
-                else:
-                    return HttpResponse("Problem in authentication")
-        except:
-            raise
-
-    def form_valid(self, form):
-        return True
-
-    #DEPOIS VER LOGIN_REDIRECT_URL --> https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-LOGIN_REDIRECT_URL
+    #PODE VIR A SER NECESSÁRIO
+    # def post(self, request, *args, **kwargs):
+    #
+    #     #CHECK AUTHENTICATION
+    #     username = self.request.POST.get('username')
+    #     password = self.request.POST.get('password')
+    #     user = authenticate(username=username, password=password)
+    #
+    #     if user is None:
+    #         return self.form_invalid(self.form_class)
+    #
+    #     return super(CustomLoginView, self).post(self.request)
 
     def form_invalid(self, form):
-        return self.render_to_response()
+        messages.add_message(self.request, messages.INFO, 'ERROR ON FORM')
+        return self.render_to_response({}) #NO CONTEXT ADDED IN RESPONSE TO SAME PAGE
+
+    def get_success_url(self):
+        path = reverse('users:home')
+        return path
