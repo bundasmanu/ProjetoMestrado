@@ -26,9 +26,27 @@ class CustomLoginView(LoginView):
     #     return super(CustomLoginView, self).post(self.request)
 
     def form_invalid(self, form):
-        messages.add_message(self.request, messages.INFO, 'ERROR ON FORM')
-        return self.render_to_response({}) #NO CONTEXT ADDED IN RESPONSE TO SAME PAGE
+        try:
+            self.clean_messages(self.request)
+            messages.add_message(self.request, messages.INFO, 'ERROR ON FORM')
+            return self.render_to_response(self.get_context_data()) #I NEED TO PASS CONTEXT DATA, IF I DON'T PASS IT, I CAN'T SEE FORM
+        except:
+            raise
 
     def get_success_url(self):
-        path = reverse('users:home')
-        return path
+        try:
+            self.clean_messages()
+            path = reverse('users:home')
+            return path
+        except:
+            raise
+
+    #I NEED THIS METHOD TO OVERRIDE ALL MESSAGES CREATED ON USAGE BETWEEN TENTATIVES TO ACCESS TO APPLICATION --> https://stackoverflow.com/questions/42546006/deleting-clearing-django-contrib-messages
+    def clean_messages(self):
+        try:
+            usedMessages = messages.get_messages(self.request)
+            for message in usedMessages:
+                pass
+            usedMessages.used = True
+        except:
+            raise
