@@ -1,7 +1,7 @@
 {% extends 'dataset/index.html' %}
 {% block content %}
     <h1>Information of User</h1>
-    <label> Username : {{ oject.username }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
-    <label> Password : {{ object.password }}</label>
-    <label> UserType : {{ object.userType }}</label>
+    <label> Username : {{ user.username }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
+    <label> Password : {{ user.password }}</label>
+    <label> UserType : {{ user.userType }}</label>
 {% endblock %}

@@ -7,6 +7,7 @@ class DetailUserInfoView(LoginRequiredMixin, DetailView):
     model = CustomUser.CustomUser
     template_name = 'users/InfoUser.html'
     login_url = settings.LOGOUT_REDIRECT_URL
+    context_object_name = 'user'
 
     def get_object(self):
         self.model = self.request.user

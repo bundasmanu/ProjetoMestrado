@@ -1,0 +1,21 @@
+{% extends 'dataset/index.html' %}
+{% block content %}
+    <form method="post"> <!--FORM DE CRIACAO DE UM NOVO USER-->
+        {% csrf_token %}
+        <table>
+                <td>{{ form.email.label_tag }}</td>
+                <td>{{ form.email }}</td>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+                <td>{{ form.userType.label_tag }}</td>
+                <td>{{ form.userType }}</td>
+        </table>
+        <input type="submit" value="Criar Conta">
+    </form>
+{% endblock %}
