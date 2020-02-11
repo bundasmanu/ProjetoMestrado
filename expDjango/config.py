@@ -18,3 +18,7 @@ ADD_DATASET = "Can add dataset"
 CHANGE_DATASET = "Can change dataset"
 DELETE_DATASET = "Can delete dataset"
 VIEW_DATASET = "Can view dataset"
+
+#URLS
+LOGOUT_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/info'

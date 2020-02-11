@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import expDjango.config as config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,8 +47,8 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'users.CustomUser'
 
 #REF --> https://docs.djangoproject.com/en/3.0/ref/settings/
-LOGOUT_REDIRECT_URL = '/home' #URL TO HOMEPAGE, AFTER A LOGOUT
-#LOGIN_REDIRECT_URL = '' #REDIRECT DPS DE EFETUADO UM LOGIN--> TERA DE SER PARA A PAGINA DE DETALHES DE UM UTILIZADOR
+LOGOUT_REDIRECT_URL = config.LOGOUT_REDIRECT_URL #URL TO HOMEPAGE, AFTER A LOGOUT
+LOGIN_REDIRECT_URL = config.LOGIN_REDIRECT_URL #REDIRECT DPS DE EFETUADO UM LOGIN--> TERA DE SER PARA A PAGINA DE DETALHES DE UM UTILIZADOR
 #LOGIN_URL = '' #REDIRECT OF A LOGIN, WHEN I USE LOGIN_REQUIRED OR LOGINREQUIREDMIXIN
 
 MIDDLEWARE = [

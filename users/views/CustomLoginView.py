@@ -27,7 +27,7 @@ class CustomLoginView(LoginView):
 
     def form_invalid(self, form):
         try:
-            self.clean_messages(self.request)
+            self.clean_messages()
             messages.add_message(self.request, messages.INFO, 'ERROR ON FORM')
             return self.render_to_response(self.get_context_data()) #I NEED TO PASS CONTEXT DATA, IF I DON'T PASS IT, I CAN'T SEE FORM
         except:
@@ -36,7 +36,7 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         try:
             self.clean_messages()
-            path = reverse('users:home')
+            path = reverse('users:info')
             return path
         except:
             raise
