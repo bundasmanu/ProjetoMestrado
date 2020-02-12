@@ -20,8 +20,8 @@ class CreateUserView(CreateView):
     model = CustomUser.CustomUser
     template_name = 'users/CreateUser.html' #NECESSITO DE COLOCAR AQUI O TEMPLATE
 
-    def get(self, request, *args, **kwargs):
-        return render(request, self.template_name,  {"form" : self.form_class})
+    # def get(self, request, *args, **kwargs):
+    #     return render(request, self.template_name,  {"form" : self.form_class})
 
     def form_valid(self, form):
 
@@ -36,7 +36,7 @@ class CreateUserView(CreateView):
             self.model.objects.create_user(first_name=self.model.first_name, last_name=self.model.last_name,
                                            username=self.model.username,
                                            email=self.model.email, password=self.model.password,
-                                           is_superuser=False, is_staff=False, date_joined=actual_hour,
+                                           is_superuser=False, is_staff=True, date_joined=actual_hour,
                                            is_active=True, userType=self.model.userType, last_login=actual_hour)
             credentials = {'username': self.model.username, 'password': self.model.password}
             groupName = utils.getNameGroup(self.model.userType)
@@ -70,7 +70,7 @@ class CreateUserView(CreateView):
             messages.add_message(self.request, messages.INFO, 'ERROR ON CREATION')
             #kwargs = {"form" : form}
             #context = self.get_context_data(**kwargs)
-            return render_to_response(self.template_name, self.get_context_data())
+            return render_to_response(self.get_context_data(form=form)) #https://books.google.pt/books?id=8sU7DwAAQBAJ&pg=PA424&lpg=PA424&dq=how+can+i+pass+form+on+form_invalid()+django&source=bl&ots=RNfTHOcCCo&sig=ACfU3U30nGH3-dwZM1BuQK-Dfx-HpqfTdw&hl=pt-PT&sa=X&ved=2ahUKEwikwKfM5MrnAhVQx4UKHf5-DRYQ6AEwB3oECAoQAQ#v=onepage&q=how%20can%20i%20pass%20form%20on%20form_invalid()%20django&f=false
         except:
             raise
 
