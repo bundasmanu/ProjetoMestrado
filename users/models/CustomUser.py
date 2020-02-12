@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     users = UserQueryset.as_manager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email', 'password' 'userType'] #EMAIL AND PASSWORD ARE REQUIRED BY DEFAULT --> É AQUI QUE SE COLOCAM OS ATRIBUTOS QUE SAO UTILIZADOS NA CRIACAO DE UM UTILIZADOR
+    REQUIRED_FIELDS = ['email', 'password' 'userType', 'first_name', 'last_name'] #EMAIL AND PASSWORD ARE REQUIRED BY DEFAULT --> É AQUI QUE SE COLOCAM OS ATRIBUTOS QUE SAO UTILIZADOS NA CRIACAO DE UM UTILIZADOR
 
     def __str__(self):
         return self.username
