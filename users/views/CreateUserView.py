@@ -1,14 +1,12 @@
 from django.views.generic.edit import CreateView
 from users.models import CustomUser
 from users.forms.CustomUserForm import CustomUserCreationForm
-from django.core.exceptions import MultipleObjectsReturned
 from datetime import datetime
 from django.contrib.auth import authenticate, login
 from ..models import GroupQueryset
 from django.urls import reverse
-import expDjango.utils as utils
 from django.contrib import messages
-from django.shortcuts import render_to_response, render, HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
 import expDjango.utils as utils
 
 class CreateUserView(CreateView):
@@ -26,7 +24,7 @@ class CreateUserView(CreateView):
     def form_valid(self, form):
 
         try:
-
+            self.clean_messages()
             # GET DATA ON THE FORM'S --> I PASS THE CONTENT ON FORM TO MY MODEL
             self.get_content_form(form)
 
@@ -65,12 +63,11 @@ class CreateUserView(CreateView):
 
     def form_invalid(self, form):
         try:
-            self.clean_messages()
             print(form.errors)
-            messages.add_message(self.request, messages.INFO, 'ERROR ON CREATION')
+            messages.add_message(self.request, messages.INFO, form.error_messages)
             #kwargs = {"form" : form}
             #context = self.get_context_data(**kwargs)
-            return render_to_response(self.get_context_data(form=form)) #https://books.google.pt/books?id=8sU7DwAAQBAJ&pg=PA424&lpg=PA424&dq=how+can+i+pass+form+on+form_invalid()+django&source=bl&ots=RNfTHOcCCo&sig=ACfU3U30nGH3-dwZM1BuQK-Dfx-HpqfTdw&hl=pt-PT&sa=X&ved=2ahUKEwikwKfM5MrnAhVQx4UKHf5-DRYQ6AEwB3oECAoQAQ#v=onepage&q=how%20can%20i%20pass%20form%20on%20form_invalid()%20django&f=false
+            return self.render_to_response(self.get_context_data()) #https://books.google.pt/books?id=8sU7DwAAQBAJ&pg=PA424&lpg=PA424&dq=how+can+i+pass+form+on+form_invalid()+django&source=bl&ots=RNfTHOcCCo&sig=ACfU3U30nGH3-dwZM1BuQK-Dfx-HpqfTdw&hl=pt-PT&sa=X&ved=2ahUKEwikwKfM5MrnAhVQx4UKHf5-DRYQ6AEwB3oECAoQAQ#v=onepage&q=how%20can%20i%20pass%20form%20on%20form_invalid()%20django&f=false
         except:
             raise
 
@@ -90,3 +87,5 @@ class CreateUserView(CreateView):
             usedMessages.used = True
         except:
             raise
+
+
