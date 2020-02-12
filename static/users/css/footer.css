@@ -1,0 +1,31 @@
+.flex-rw {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+footer {
+  justify-content: center;
+  background: rgb(86, 135, 171);
+  position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-social-section {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 0%;
+}
+
+.footer-bottom-section {
+  width: 100%;
+  padding: 1%;
+  margin-top: 0%;
+}
+
+.footer-bottom-wrapper {
+  font-size: 1.0em;
+  color: #fff;
+    margin: 0 auto;
+}

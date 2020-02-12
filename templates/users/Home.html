@@ -1,4 +1,17 @@
-{% extends 'dataset/index.html' %}
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+{% block stylesheet %} {{ block.super }} {% endblock %}
+{% block extrastyle %}<link rel="stylesheet" type="text/css" href="/static/users/css/footer.css"> {% endblock %}
+{% block branding %} <h1>Website</h1> {% endblock %}
+{% block title %}{{ title }} | {% trans 'Gene Expression Analysis' %}{% endblock %}
+{% block responsive %}
+    {{ block.super }}
+{% endblock %}
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'users:home' %}">Home</a>
+    </div>
+{% endblock %}
 {% block content %}
     {% if messages %}
         <ul class="messages">
@@ -10,5 +23,20 @@
     <h1>Homepage</h1>
     <input type="submit" value="Login" onclick="location.href='{% url 'users:login' %}'">
     <input type="submit" value="Create Account" onclick="location.href='{% url 'users:create' %}'">
+{% endblock %}
+{% block footer %}
+    <footer class="flex-rw">
 
+        <section class="footer-social-section flex-rw">
+            <span class="footer-social-overlap footer-social-icons-wrapper">
+            <a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+            </span>
+        </section>
+        <section class="footer-bottom-section flex-rw">
+    <div class="footer-bottom-wrapper">
+
+    </i> Gustavo Almeida - INSTITUTO SUPERIOR DE ENGENHARIA DE COIMBRA
+    </div>
+        </section>
+    </footer>
 {% endblock %}
