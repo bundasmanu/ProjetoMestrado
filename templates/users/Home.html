@@ -25,8 +25,10 @@
     {% endif %}
     <div id="contentHome">
         <img src="/static/users/img/geneExp.png" alt="Gene Expression" class="responsive">
-        <input type="submit" value="Login" onclick="location.href='{% url 'users:login' %}'">
-        <input type="submit" value="Create Account" onclick="location.href='{% url 'users:create' %}'">
+        <div id="buttonSpaceHome">
+            <input class="loginButton" type="submit" value="Login" onclick="location.href='{% url 'users:login' %}'">
+            <input class="createButton" type="submit" value="Create Account" onclick="location.href='{% url 'users:create' %}'">
+        </div>
     </div>
 {% endblock %}
 {% block footer %}
