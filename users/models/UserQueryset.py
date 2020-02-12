@@ -22,8 +22,12 @@ class UserQueryset(models.query.QuerySet):
         except:
             raise
 
-    def checkExists(self, username):
-        numberUsers = self.filter().count(username=username)
-        if numberUsers > 0:
-            return True
-        return False
+    def checkExists(self, username, email):
+        try:
+            usernameCount = self.filter().count(username=username)
+            emailCount = self.filter().count(email=email)
+            if usernameCount > 0 or emailCount > 0:
+                return True
+            return False
+        except:
+            raise

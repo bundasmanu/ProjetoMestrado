@@ -2,7 +2,7 @@
 {% block content %}
     <form method="post"> <!--FORM DE CRIACAO DE UM NOVO USER-->
         {% csrf_token %}
-        <table>
+        <table class="createTable">
                 <td>{{ form.email.label_tag }}</td>
                 <td>{{ form.email }}</td>
             <tr>
@@ -10,8 +10,20 @@
                 <td>{{ form.username }}</td>
             </tr>
             <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
+                <td>{{ form.password1.label_tag }}</td>
+                <td>{{ form.password1 }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password2.label_tag }}</td>
+                <td>{{ form.password2 }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.first_name.label_tag }}</td>
+                <td>{{ form.first_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.last_name.label_tag }}</td>
+                <td>{{ form.last_name }}</td>
             </tr>
                 <td>{{ form.userType.label_tag }}</td>
                 <td>{{ form.userType }}</td>
