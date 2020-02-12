@@ -1,7 +1,10 @@
 {% extends 'admin/base_site.html' %}
 {% load i18n %}
 {% block stylesheet %} {{ block.super }} {% endblock %}
-{% block extrastyle %}<link rel="stylesheet" type="text/css" href="/static/users/css/footer.css"> {% endblock %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="/static/users/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/home.css">
+{% endblock %}
 {% block branding %} <h1>Website</h1> {% endblock %}
 {% block title %}{{ title }} | {% trans 'Gene Expression Analysis' %}{% endblock %}
 {% block responsive %}
@@ -20,9 +23,11 @@
         {% endfor %}
         </ul>
     {% endif %}
-    <h1>Homepage</h1>
-    <input type="submit" value="Login" onclick="location.href='{% url 'users:login' %}'">
-    <input type="submit" value="Create Account" onclick="location.href='{% url 'users:create' %}'">
+    <div id="contentHome">
+        <img src="/static/users/img/geneExp.png" alt="Gene Expression" class="responsive">
+        <input type="submit" value="Login" onclick="location.href='{% url 'users:login' %}'">
+        <input type="submit" value="Create Account" onclick="location.href='{% url 'users:create' %}'">
+    </div>
 {% endblock %}
 {% block footer %}
     <footer class="flex-rw">
