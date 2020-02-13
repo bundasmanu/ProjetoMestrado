@@ -3,12 +3,16 @@
   flex-flow: row wrap;
 }
 
+.body .flex-rw{
+  margin-left: 0px;
+}
+
 footer {
   justify-content: center;
   background: rgb(86, 135, 171);
   position: fixed;
-    bottom: 0;
-    width: 100%;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-social-section {
@@ -27,5 +31,5 @@ footer {
 .footer-bottom-wrapper {
   font-size: 1.0em;
   color: #fff;
-    margin: 0 auto;
+  margin: 0 auto;
 }

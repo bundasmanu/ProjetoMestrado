@@ -5,15 +5,15 @@
     <link rel="stylesheet" type="text/css"  href="/static/users/css/footer.css">
     <link rel="stylesheet" type="text/css" href="/static/users/css/home.css">
 {% endblock %}
-{% block branding %} <h1>Website</h1> {% endblock %}
+{% block branding %}
+    {% include 'general/branding.html' %}
+ {% endblock %}
 {% block title %}{{ title }} | {% trans 'Gene Expression Analysis' %}{% endblock %}
 {% block responsive %}
     {{ block.super }}
 {% endblock %}
 {% block breadcrumbs %}
-    <div class="breadcrumbs">
-    <a href="{% url 'users:home' %}">Home</a>
-    </div>
+    {% include 'general/homeRedirect.html' %}
 {% endblock %}
 {% block content %}
     {% if messages %}

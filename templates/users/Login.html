@@ -1,4 +1,8 @@
-{% extends 'admin/login.html' %}
+{% extends 'admin/base_site.html' %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css"  href="/static/users/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/loginForm.css">
+{% endblock %}
 {#{% block content %}#}
 {#    <h1>Login</h1>#}
 {#    {% if messages %}#}
@@ -23,11 +27,30 @@
 {#        <input type="submit" value="login">#}
 {#    </form>#}
 {#{% endblock %}#}
+<div id="branding">
 {% block  branding%}
-    <h1>LOGIN</h1>
+    {% include 'general/branding.html' %}
 {% endblock %}
-<footer>
-    <div id="footer">
-        {% include 'general/foot.html' %}
+</div>
+{% block breadcrumbs %}
+    {% include 'general/homeRedirect.html' %}
+{% endblock %}
+{% block bodyclass %}{% endblock %}
+
+{% block content %}
+    <div id="container" style="background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 28em;
+    min-width: 300px;
+    margin: 75px auto;">
+        {% include 'admin/login.html' %}
+
     </div>
-</footer>
+{% endblock %}
+{% block footer %}
+    {% include 'general/foot.html' %}
+{% endblock %}
+
+
