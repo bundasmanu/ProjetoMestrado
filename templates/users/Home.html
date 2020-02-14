@@ -8,7 +8,9 @@
 {% block branding %}
     {% include 'general/branding.html' %}
  {% endblock %}
-{% block title %}{{ title }} | {% trans 'Gene Expression Analysis' %}{% endblock %}
+{% block title %}
+    {% include 'general/titleBarSite.html' %}
+{% endblock %}
 {% block responsive %}
     {{ block.super }}
 {% endblock %}

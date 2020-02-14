@@ -1,4 +1,16 @@
-{% extends 'dataset/index.html' %}
+{% extends 'admin/base_site.html' %}
+{% block title %}
+    {% include 'general/titleBarSite.html' %}
+{% endblock %}
+{% block branding %}
+    {% include 'general/branding.html' %}
+{% endblock %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="/static/users/css/footer.css">
+{% endblock %}
+{% block breadcrumbs %}
+    {% include 'general/homeRedirect.html' %}
+{% endblock %}
 {% block content %}
     {% if messages %}
         <ul class="messages">
@@ -37,4 +49,7 @@
         </table>
         <input type="submit" value="Criar Conta">
     </form>
+{% endblock %}
+{% block footer %}
+    {% include 'general/foot.html' %}
 {% endblock %}
