@@ -1,0 +1,6 @@
+
+ul.messagelist li{ /*Override message list =(problems) on form*/
+    font-weight: 500!important;
+    background-image: url('/static/users/img/icon-no.svg')!important;
+    background-color: whitesmoke !important;
+}
