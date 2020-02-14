@@ -4,3 +4,12 @@ ul.messagelist li{ /*Override message list =(problems) on form*/
     background-image: url('/static/users/img/icon-no.svg')!important;
     background-color: whitesmoke !important;
 }
+
+#containerPrincipalDivForm{
+    border: 1px solid black;
+    border-color: #b9c8c8;
+}
+
+#containerPrincipalDivForm > #header{
+    background-color: #333333;
+}
