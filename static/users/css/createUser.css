@@ -5,11 +5,78 @@ ul.messagelist li{ /*Override message list =(problems) on form*/
     background-color: whitesmoke !important;
 }
 
-#containerPrincipalDivForm{
-    border: 1px solid black;
-    border-color: #b9c8c8;
+#containerPrincipalDivForm{ /*DIV PRINCIPAL, QUE AGREGA AS OUTRAS DIV'S*/
+    width: 28%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 2.5%;
+    border-radius: 4px;
+    border: 1px solid #eaeaea;
+    min-width: 400px; /*TO MAKE DIV RESPONSIVE*/
 }
 
-#containerPrincipalDivForm > #header{
-    background-color: #333333;
+#containerPrincipalDivForm > #header{ /*DIV HEADER, QUE SE ENCONTRA NO INTERIOR DA DIV PRINCIPAL, E QUE É RESPONSÁVEL POR DESCREVER O TÍTULO DA FORM */
+    background-color: #417690;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+#containerPrincipalDivForm #header > h1{ /*MAIN PROPERTIES OF TITLE INSIDE DIV HEADER*/
+    color: #ffffff;
+    margin-right: 4%;
+    margin-bottom: 1%;
+}
+
+#containerPrincipalDivForm > #formDiv{ /*MAIN PROPERTIES OF DIV THAT CONTAINS FORM*/
+    width: auto;
+    height: auto;
+    display: block;
+    justify-content: left;
+    padding: 1em 2em 1em 2em;
+}
+
+.createForm{ /*PROPERTIES OF FORM --> INSIDE FORM_DIV*/
+    width: 100%;
+}
+
+.createForm > .btnCriar{ /*SUBMIT BUTTON*/
+    display: block;
+    margin: auto;
+    margin-top: 3%;
+    cursor: pointer;
+    max-width: 100%;
+}
+
+@media (max-width: 1440px) {
+    .btnCriar{
+        width:30%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .btnCriar{
+        width:50%;
+    }
+}
+
+@media (max-width: 780px) {
+    .btnCriar{
+        width:65%;
+    }
+}
+
+@media (max-width: 640px) {
+    .btnCriar{
+        width:75%;
+    }
+}
+
+@media (max-width: 480px) {
+    .btnCriar{
+        width:90%;
+    }
 }
