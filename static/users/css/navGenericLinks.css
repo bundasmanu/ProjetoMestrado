@@ -16,6 +16,7 @@
 .dropdown {
   float: left;
   overflow: hidden;
+
 }
 
 .dropdown > .dropbtn{ /*MAIN PROPERTIES OF BUTTON*/
@@ -48,17 +49,20 @@
 
 .dropdown-content a{
     float:none !important; /*TO PREVENT --> FLOAT LEFT DEFINED ON navigationGenericBar a*/
-    color: inherit !important;
+    color: white !important;
     padding-top: 5px !important;
     padding-bottom: 5px !important;
     min-width: 80px;
     text-align: center;
     text-decoration: none;
     display: block;
+    background-color: #79aec8 !important;
+    border-bottom: 1px dotted white;
 }
 
 .dropdown-content > a:hover {
   background-color: inherit;
+    color: inherit !important;
 }
 
 .dropdown:hover .dropdown-content {
