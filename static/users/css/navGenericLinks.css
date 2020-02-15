@@ -1,6 +1,6 @@
 .breadcrumbs{ /*DIV THAT CONTAINS NAV BAR*/
     display: flex;
-    min-height: 25px;
+    flex-wrap:  wrap;
 }
 
 #navigationGenericBar{ /*NAV BAR CLASS*/

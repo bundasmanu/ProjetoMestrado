@@ -28,10 +28,20 @@
     {% include 'general/genericNavBar.html' %}
 {% endblock %}
 {% block content %}
-    <h1>Information of User</h1>
-    <label> Username : {{ user.username }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
-    <label> Password : {{ user.password }}</label>
-    <label> UserType : {{ user.userType }}</label>
+    <div id="containerPrincipal">
+        <h1>User information</h1>
+        <div id="infoForbiddenUpdate">
+            <label> UserType : {{ user.userType }}</label>
+            <label> Email : {{ user.email }}</label>
+        </div>
+        <div id="infoMayOverride">
+            <form class="getOverridedValues" method="post">
+            </form>
+            <label> Username : {{ user.username }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
+            <label> First Name : {{ user.first_name }}</label>
+            <label> Last Name : {{ user.last_name }}</label>
+        </div>
+    </div>
 {% endblock %}
 {% block footer %}
     {% include 'general/foot.html' %}
