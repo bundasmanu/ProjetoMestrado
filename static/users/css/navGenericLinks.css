@@ -1,0 +1,19 @@
+.breadcrumbs{ /*DIV THAT CONTAINS NAV BAR*/
+    display: flex;
+    min-height: 50px;
+}
+
+#navigationGenericBar{ /*NAV BAR CLASS*/
+    overflow: hidden; /*IF NECESSARY I NEED TO PUT AUTO IN THIS PROPERTY*/
+}
+
+#navigationGenericBar a{/*PROPERTIES OF ATTRIBUTE a INSIDE NAV BAR*/
+    font-size: 16px;
+    padding: 10px 5px 10px 0px !important;
+    float: left;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}

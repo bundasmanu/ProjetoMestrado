@@ -1,7 +1,37 @@
-{% extends 'dataset/index.html' %}
+{% extends 'admin/base_site.html' %} <!--TESTAR COM ESTA, AINDA NÃO SEI BEM, SE ESTA TEM O QUE PRETENDO-->
+{% load i18n %}
+{% block title%}
+    {% include 'general/titleBarSite.html' %}
+{% endblock %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/users/css/userLinks.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/infoUser.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/footer.css">
+{% endblock %}
+{% block branding %}
+    {% include 'general/branding.html' %}
+{% endblock %}
+{% block usertools %}
+    <div id="user-tools"> <!--Override usertools on base, because i didn't restrict the welcome message, for specific users !-->
+        {% block welcome-msg %}
+            {{ block.super }} <!--Keeps equals to base!-->
+        {%  endblock %}
+        {% block  userlinks %} <!--I need to override this!-->
+            {% include 'general/accountUserLinks.html' %}
+        {% endblock %}
+    </div>
+{% endblock %}
+{% block breadcrumbs %}
+    {% include 'general/genericNavBar.html' %}
+{% endblock %}
 {% block content %}
     <h1>Information of User</h1>
     <label> Username : {{ user.username }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
     <label> Password : {{ user.password }}</label>
     <label> UserType : {{ user.userType }}</label>
+{% endblock %}
+{% block footer %}
+    {% include 'general/foot.html' %}
 {% endblock %}
