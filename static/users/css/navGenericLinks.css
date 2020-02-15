@@ -1,6 +1,6 @@
 .breadcrumbs{ /*DIV THAT CONTAINS NAV BAR*/
     display: flex;
-    min-height: 50px;
+    min-height: 25px;
 }
 
 #navigationGenericBar{ /*NAV BAR CLASS*/
@@ -9,11 +9,58 @@
 
 #navigationGenericBar a{/*PROPERTIES OF ATTRIBUTE a INSIDE NAV BAR*/
     font-size: 16px;
-    padding: 10px 5px 10px 0px !important;
+    padding: 10px 10px 10px 0px;
     float: left;
 }
 
 .dropdown {
   float: left;
   overflow: hidden;
+}
+
+.dropdown > .dropbtn{ /*MAIN PROPERTIES OF BUTTON*/
+    font-size: 16px; /*SAME FONT SIZE OF a href*/
+    font-family: inherit;
+    background-color: inherit;
+    color: white;
+    border: none;
+    outline: none;
+    padding: 10px 5px 10px 0px !important;
+    margin:0;
+}
+
+#navigationGenericBar a:hover, .dropdown .dropbtn:hover{
+    background-color: inherit; /*SAME COLOR --> MORE EASY AND BEAUTIFUL TO SEE HOVER*/
+}
+
+.dropbtn > i {
+    color: white;
+    font-size: 16px;/*THIS VALUE NEEDS TO BE EQUAL TO FONT SIZE OF a ATTRIBUTES ON NAV BAR*/
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: auto;
+    background-color: inherit;
+}
+
+.dropdown-content a{
+    float:none !important; /*TO PREVENT --> FLOAT LEFT DEFINED ON navigationGenericBar a*/
+    color: inherit !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-width: 80px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content > a:hover {
+  background-color: inherit;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
