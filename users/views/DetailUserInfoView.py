@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import expDjango.settings as settings
 from users.forms.CustomUserForm import CustomUserChangeForm
 from django.core.exceptions import ObjectDoesNotExist
+import expDjango.config as config
+from django.contrib import messages
+from django.urls import reverse
 
 #REF, USE A FORM_VIEW INSIDE A DETAIL_VIEW --> https://stackoverflow.com/questions/45659986/django-implementing-a-form-within-a-generic-detailview
 
@@ -32,8 +35,33 @@ class DetailUserInfoView(LoginRequiredMixin, FormMixin ,DetailView):
                 return super(DetailUserInfoView, self).form_valid(form)
 
             #NOW, IF USER MAKE CHANGES ON HIS DATA, I NEED TO MAKE A UPDATE QUERY TO SAVE HIS NEW VALUES
-            return None
+            dictValuesUpdatedData = { #https://stackoverflow.com/questions/49917796/update-django-object
+                config.USERNAME : dataInForm.username,
+                config.FIRST_NAME : dataInForm.first_name,
+                config.LAST_NAME : dataInForm.last_name
+            }
+            self.model.objects.filter(pk=self.model.id).update(**dictValuesUpdatedData)
 
+            #REDIRECT TO NEW PAGE
+
+        except:
+            raise
+
+    def form_invalid(self, form):
+        try:
+            self.clean_messages()
+            messages.add_message(self.request, messages.INFO, config.ERROR_FORM_UPDATE_USER)
+            return self.render_to_response(self.get_context_data())
+        except:
+            raise
+
+    def get_success_url(self):
+        try:
+            self.clean_messages()
+            #ADD MESSAGE --> CORRECT UPDATED VALUES
+            messages.add_message(self.request, messages.INFO, config.CORRECT_UPDATES_VALUES_USER)
+            path = reverse(self.template_name)
+            return path
         except:
             raise
 
@@ -47,6 +75,15 @@ class DetailUserInfoView(LoginRequiredMixin, FormMixin ,DetailView):
             dataUpdated.last_name = form.cleaned_data.get("last_name")
 
             return dataUpdated
+        except:
+            raise
+
+    def clean_messages(self):
+        try:
+            usedMessages = messages.get_messages(self.request)
+            for message in usedMessages:
+                pass
+            usedMessages.used = True
         except:
             raise
 

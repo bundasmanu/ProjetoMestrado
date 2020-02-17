@@ -30,9 +30,18 @@
 {% block content %}
     <div id="containerPrincipal">
         <h1>User information</h1>
+        <div id="BarPersonalInfo">
+            <h2>Personal Info</h2>
+        </div>
         <div id="infoForbiddenUpdate">
-            <label> UserType : {{ user.userType }}</label>
-            <label> Email : {{ user.email }}</label>
+            <div id="userTypeData">
+                <label> UserType:</label>
+                <input type="text" id="userTypeInput" value="{{ user.userType }}" disabled>
+            </div>
+            <div id="emailData">
+                <label> Email:</label>
+                <input type="text" id="emailInput" value="{{ user.email }}" disabled>
+            </div>
         </div>
         <div id="infoMayOverride">
             <form class="getOverridedValues" method="post">

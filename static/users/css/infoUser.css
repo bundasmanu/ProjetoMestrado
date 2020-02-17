@@ -1,12 +1,56 @@
 
 #containerPrincipal{/*DIV PRINCIPAL --> THIS DIV AGGREGATES ALL CONTENT, INCLUDING FORM*/
+    display: block;
+    width:98%;
+    height: auto;
+    margin: 0 auto;
+}
 
+#BarPersonalInfo{
+    background-color: #79aec8;
+    margin: 0; /*SAME WIDTH OF PARENT*/
+}
+
+#BarPersonalInfo > h2{
+    color: white;
+    font-size: 16px;
+    font-weight: lighter;
+    padding: 10px 10px;
 }
 
 #infoForbiddenUpdate{/*THIS DIV CONTAINS ONLY INFO, THAT USER CAN'T CHANGE*/
+    display: block;
+    width: 40%;
+    height: auto;
+}
 
+#userTypeData, #emailData{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    border-bottom: 0.5px solid #eeeeee;
+    padding: 7px 0px 9px 10px;
+    vertical-align: middle;
+}
+
+#userTypeData > label, #emailData > label{
+    width: 25%;
+    display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE*/
+    vertical-align: middle;
+    color: #666;
+}
+
+#userTypeData > input, #emailData > input{
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 36px;
+    box-sizing: border-box;
+    vertical-align: middle;
 }
 
 #infoMayOverride{/*THIS DIV CONTAINS THE FORM, USED IN ORDER TO PERMITS USER TO CHANGE, HIS INFORMATION*/
-
+    display: block;
+    width: 40%;
+    height: auto;
+    border: 2px solid black;
 }
