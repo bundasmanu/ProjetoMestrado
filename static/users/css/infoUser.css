@@ -24,23 +24,23 @@
     height: auto;
 }
 
-#userTypeData, #emailData{
+#userTypeData, #emailData, #usernameData, #firstNameData, #lastNameData{
     display: inline-block;
     width: 100%;
     height: auto;
     border-bottom: 0.5px solid #eeeeee;
-    padding: 7px 0px 9px 10px;
+    padding: 10px 0px 12px 10px;
     vertical-align: middle;
 }
 
-#userTypeData > label, #emailData > label{
-    width: 25%;
+#userTypeData > label, #emailData > label, #usernameData > label, #firstNameData > label, #lastNameData > label{
+    width: 28%;
     display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE*/
     vertical-align: middle;
     color: #666;
 }
 
-#userTypeData > input, #emailData > input{
+#userTypeData > input, #emailData > input, #usernameData > input, #firstNameData > input, #lastNameData > input{
     font-size: 14px;
     font-weight: 500;
     min-height: 36px;
@@ -52,5 +52,58 @@
     display: block;
     width: 40%;
     height: auto;
-    border: 2px solid black;
+}
+
+.getOverridedValues{
+    display: block;
+    width: 100%; /*ALL CONTENT OF PARENT*/
+    height: auto;
+}
+
+#divBtnChangeProfile{/*DIV THAT AGGREGATES BUTTON OF FORM, TO CHANGE USER DATA*/
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.btnChangeProfile{/*BUTTON USED ON SUBMIT FORM (CHANGE USER DATA) --> INHERITES FROM RESPONSIVE AND CSS ADMIN FILES*/
+    display: block;
+    margin-top: 4%;
+    width: 25%;
+}
+
+@media (max-width: 900px) { /*RESPONSIVE DIV'S WHEN WIDTH IS LOW*/
+    #userTypeData, #emailData, #usernameData, #firstNameData, #lastNameData{
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .btnChangeProfile{
+        width:60%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .btnChangeProfile{
+        width:80%;
+    }
+}
+
+@media (max-width: 780px) {
+    .btnChangeProfile{
+        width:100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .btnChangeProfile{
+        width:100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .btnChangeProfile{
+        width:100%;
+    }
 }

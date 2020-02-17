@@ -45,10 +45,23 @@
         </div>
         <div id="infoMayOverride">
             <form class="getOverridedValues" method="post">
+                {% csrf_token %}
+                <div id="usernameData">
+                    <label> Username:</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
+                    <input type="text" id="usernameInput" value="{{ user.username }}">
+                </div>
+                <div id="firstNameData">
+                    <label> First Name:</label>
+                    <input type="text" id="firstNameInput" value="{{ user.first_name }}">
+                </div>
+                <div id="lastNameData">
+                    <label> Last Name:</label>
+                    <input type="text" id="lastNameInput" value="{{ user.last_name }}">
+                </div>
+                <div id="divBtnChangeProfile">
+                    <input type="submit" class="btnChangeProfile" value="Atualizar Profile">
+                </div>
             </form>
-            <label> Username : {{ user.username }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
-            <label> First Name : {{ user.first_name }}</label>
-            <label> Last Name : {{ user.last_name }}</label>
         </div>
     </div>
 {% endblock %}
