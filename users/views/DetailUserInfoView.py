@@ -1,17 +1,54 @@
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormMixin
 from ..models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 import expDjango.settings as settings
+from users.forms.CustomUserForm import CustomUserChangeForm
+from django.core.exceptions import ObjectDoesNotExist
 
-class DetailUserInfoView(LoginRequiredMixin, DetailView):
+#REF, USE A FORM_VIEW INSIDE A DETAIL_VIEW --> https://stackoverflow.com/questions/45659986/django-implementing-a-form-within-a-generic-detailview
+
+class DetailUserInfoView(LoginRequiredMixin, FormMixin ,DetailView):
     model = CustomUser.CustomUser
     template_name = 'users/InfoUser.html'
     login_url = settings.LOGOUT_REDIRECT_URL
     context_object_name = 'user'
+    form_class = CustomUserChangeForm
 
     def get_object(self):
         self.model = self.request.user
         return self.model
+
+    def form_valid(self, form):
+        try:
+            dataInForm = self.getContentOnForm(form)
+
+            #CASE OBJECT IS NULL --> PROBLEMS ON CLEANED_DATA
+            if dataInForm == None:
+                raise ObjectDoesNotExist
+
+            #CHECK WITH USER DOESN'T CHANGE HIS CURRENT VALUES
+            if self.model.username == dataInForm.username and self.model.first_name == dataInForm.first_name and self.model.last_name == dataInForm.last_name:
+                return super(DetailUserInfoView, self).form_valid(form)
+
+            #NOW, IF USER MAKE CHANGES ON HIS DATA, I NEED TO MAKE A UPDATE QUERY TO SAVE HIS NEW VALUES
+            return None
+
+        except:
+            raise
+
+    def getContentOnForm(self, form):
+        try:
+            #CREATION OF NEW USER OBJECT, THAT AGGREGATES ALL DATA UPGRADED ON THE FORM
+            dataUpdated = CustomUser.CustomUser
+
+            dataUpdated.username = form.cleaned_data.get("username")
+            dataUpdated.first_name = form.cleaned_data.get("first_name")
+            dataUpdated.last_name = form.cleaned_data.get("last_name")
+
+            return dataUpdated
+        except:
+            raise
 
     # def get_context_data(self, **kwargs): #GET OBJECT ACTS AFTER THAN GET_OBJECT --> EXAMPLE OF GET_CONTEXT_DATA, I DIDN'T NEED THIS
     #     context = super().get_context_data(**kwargs)
