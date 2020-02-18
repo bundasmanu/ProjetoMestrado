@@ -11,4 +11,4 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta(UserChangeForm.Meta):
         model = CustomUser.CustomUser
-        fields = ('email', 'password', 'first_name', 'last_name', 'username')
+        fields = ('username', 'email', 'first_name', 'last_name')#USERTYPE IS NOT CHANGEABLE --> EMAIL ALSO IS DON'T, BE USERCHANGEFORM MAKE THIS VALIDATION, AND DOES NOT RESULT IN FORM INVALID

@@ -35,11 +35,11 @@
         </div>
         <div id="infoForbiddenUpdate">
             <div id="userTypeData">
-                <label> UserType:</label>
+                <label>{{ form.userType.label_tag }}</label>
                 <input type="text" id="userTypeInput" value="{{ user.userType }}" disabled>
             </div>
             <div id="emailData">
-                <label> Email:</label>
+                <label>{{ form.email.label_tag }}</label>
                 <input type="text" id="emailInput" value="{{ user.email }}" disabled>
             </div>
         </div>
@@ -47,16 +47,16 @@
             <form class="getOverridedValues" method="post">
                 {% csrf_token %}
                 <div id="usernameData">
-                    <label> Username:</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
-                    <input type="text" id="usernameInput" value="{{ user.username }}">
+                    <label>{{ form.username.label_tag }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
+                    <input type="text" id="usernameInput" value="{{ form.username }}">
                 </div>
                 <div id="firstNameData">
-                    <label> First Name:</label>
-                    <input type="text" id="firstNameInput" value="{{ user.first_name }}">
+                    <label>{{ form.first_name.label_tag }}</label>
+                    <input type="text" id="firstNameInput" value="{{ form.first_name }}">
                 </div>
                 <div id="lastNameData">
-                    <label> Last Name:</label>
-                    <input type="text" id="lastNameInput" value="{{ user.last_name }}">
+                    <label>{{ form.last_name.label_tag }}</label>
+                    <input type="text" id="lastNameInput" value="{{ form.last_name }}">
                 </div>
                 <div id="divBtnChangeProfile">
                     <input type="submit" class="btnChangeProfile" value="Atualizar Profile">
