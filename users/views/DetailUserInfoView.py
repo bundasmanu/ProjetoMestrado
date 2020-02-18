@@ -22,24 +22,21 @@ class DetailUserInfoView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
-    def get_initial(self):
-        initial = super(DetailUserInfoView, self).get_initial()
-        initial = initial.copy()
-        initial[config.USERNAME] = self.request.user.username
-        initial[config.FIRST_NAME] = self.request.user.first_name
-        initial[config.LAST_NAME] = self.request.user.last_name
-        return initial
+    def get_form_kwargs(self):
+        kwargs = super(DetailUserInfoView, self).get_form_kwargs()
+        u = self.request.user
+        kwargs['username_initial'] = u.username
+        kwargs['fName_initial'] = u.first_name
+        kwargs['lName_initial'] = u.last_name
+
+        return kwargs
 
     def get_context_data(self, **kwargs): #GET OBJECT ACTS AFTER THAN GET_OBJECT --> EXAMPLE OF GET_CONTEXT_DATA, I DIDN'T NEED THIS
         context = super(DetailUserInfoView, self).get_context_data(**kwargs)
-        context['username'] = self.request.user.username
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        context['form'] = form
         return context
-
-    # def get(self, request, *args, **kwargs):
-    #     form = super(DetailUserInfoView, self).get_form()
-    #     initialBase = self.get_initial()
-    #     form.initial = initialBase
-    #     return render(request, self.template_name, {'form' : form, 'sp' : 'sp'})
 
     def form_valid(self, form):
         try:
