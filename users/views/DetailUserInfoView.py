@@ -1,6 +1,6 @@
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import FormMixin
-from ..models import CustomUser
+from users.models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 import expDjango.settings as settings
 from users.forms.CustomUserForm import CustomUserChangeForm
@@ -22,6 +22,7 @@ class DetailUserInfoView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+    #DEFINITION OF INITIAL FORM VALUES --> THIS METHOD CALLS __INIT__ METHOD ON CUSTOMUSERFORM
     def get_form_kwargs(self):
         kwargs = super(DetailUserInfoView, self).get_form_kwargs()
         u = self.request.user

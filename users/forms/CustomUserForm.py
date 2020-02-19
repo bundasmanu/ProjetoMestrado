@@ -9,7 +9,7 @@ class CustomUserCreationForm(UserCreationForm):
 
 class CustomUserChangeForm(UserChangeForm):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs): #INITIAL VALUES OF FORM
         username_initial = kwargs.pop('username_initial', None)
         fName_initial = kwargs.pop('fName_initial', None)
         lName_initial = kwargs.pop('lName_initial', None)
