@@ -14,3 +14,4 @@ Breast Histopathology Images:
   Escolhi este dataset --> https://www.kaggle.com/paultimothymooney/breast-histopathology-images
   Estou atualmente a criar um script em Jupyter como análise exploratória dos dados e dataset, dps forneço acesso aos dados e documentos.
   Escolhi este dataset, porque do que fui lendo é um dataset complexo e binário.
+  Eventualmente, poderia demorar um pouco mais a preparar este dataset, devido ao facto de ter de reforçar as miinhas bases nas bibliotecas pandas e os.
