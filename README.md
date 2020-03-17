@@ -15,3 +15,12 @@ Breast Histopathology Images:
   Estou atualmente a criar um script em Jupyter como análise exploratória dos dados e dataset, dps forneço acesso aos dados e documentos.
   Escolhi este dataset, porque do que fui lendo é um dataset complexo e binário.
   Eventualmente, poderei demorar um pouco mais a preparar este dataset, devido ao facto de ter de reforçar as miinhas bases nas bibliotecas pandas e os.
+
+## Atualização 17/03:
+  - Já efetuei toda a análise exploratória e já documentei os dados (para além do jupyter notebook criado);
+  - Criar uma arquitetura bem mais robusta para responder ao problema: recorri a fábricas de objetos, estratégia, template, etc. De modo a aumentar a flexibilidade do código, sendo que à partida a arquitetura desenvolvida adapta-se a qualquer tipo de problema. **Ainda estou a retificar últimos ajustes**.
+  - Depois de terminar este último ponto. Em príncipio começo já hoje, a documentar e a explicar o diagrama de classes utilizado. E ainda a explicar as técnicas de pré-processamento utilizadas.
+  - A execução dos modelos e análises dos resultados, pode ser efetuada logo, dado que o código já está todo funcional. 
+  - Os dados são muitos, e as classes não são balanceadas, criei várias estratégias (padrão) para dar resposta a este problema: Undersampling, OverSampling e Data Augmentation. O nº de dados a trabalhar terá de ser bem analisado ainda.
+  - Preparado código para dar resposta a vários otimizadores, com facilidade. Neste momento estou me a concentrar apenas no PSO.
+  - **Assim que terminar a escrita sobre a explicação da arquitetura e das técnicas de pré-processamento, disponibilizo o documento, no repositório. Para que depois me possa concentrar na análise de resultados**.
