@@ -24,3 +24,14 @@ Breast Histopathology Images:
   - Os dados são muitos, e as classes não são balanceadas, criei várias estratégias (padrão) para dar resposta a este problema: Undersampling, OverSampling e Data Augmentation. O nº de dados a trabalhar terá de ser bem analisado ainda.
   - Preparado código para dar resposta a vários otimizadores, com facilidade. Neste momento estou me a concentrar apenas no PSO.
   - **Assim que terminar a escrita sobre a explicação da arquitetura e das técnicas de pré-processamento, disponibilizo o documento, no repositório. Para que depois me possa concentrar na análise de resultados**.
+
+## Atualização 20/03:
+  - A documentação relativa à análise exploratória, pré-processamento dos dados e arquitetura já foi desenvolvida;
+  - Já inseri doc pdf no repositório, com o nome: **breast_histopathology_dataset**;
+  - Neste momento vou começar a analisar os resultados:
+    - Considerando diferentes tipos de rede (AlexNet, VGGNet, e eventual outra como ResNet);
+    - Considerando volumes de dados distintos e complexidade da rede;
+    - Diferentes estratégias de treino: undersampling, oversampling e data augmentation;
+    - Utilização de otimizador, neste caso foco no PSO;
+  - **Como esta análise vai já ser incluída (claro que resumida e devidamente bem fundamentada) no relatório, vou procurar a obtenção de bons resultados, e ainda de proceder uma análise mais cuidada. Vou tentar analisar várias métricas: Matriz confusão e AUC**;
+  - Caso esteja a demorar um pouco mais nesta análise, vou atualizando o ficheiro;
