@@ -35,3 +35,14 @@ Breast Histopathology Images:
     - Utilização de otimizador, neste caso foco no PSO;
   - **Como esta análise vai já ser incluída (claro que resumida e devidamente bem fundamentada) no relatório, vou procurar a obtenção de bons resultados, e ainda de proceder uma análise mais cuidada. Vou tentar analisar várias métricas: Matriz confusão e AUC**;
   - Caso esteja a demorar um pouco mais nesta análise, vou atualizando o ficheiro;
+ 
+ ## Atualização 25/03:
+  - Documentação atualizada;
+  - Documento pdf, permanece com o nome: **breast_histopathology_dataset**;
+  - Toda a análise até à utilização do PSO fundamentada, ilustrada e explicada (AlexNet);
+  - **O PSO provavelmente vai demorar bastante**;
+  - GA lógica desenvolvida (caso haja necessidade, depois aplico);
+  - A análise com VGGNet, vai ser mais resumida cingindo-me aos melhores resultados, porque no AlexNet contei uma história descritiva, de melhoria gradual do modelo;
+  - Análises recorrendo a Matriz confusão, com foco no recall e precision da class menos balanceada (com Invasive Ductal Carcinoma) - maior foco no recall;
+  - O dataset é complexo, mais concretamente na classificação desta classe, do que tenho lido, os resultados parecem-me bem ajustados;
+  - Utilizei diversas abordagens para mellhorar resultados, como: Undersampling, Data Augmentation, class_weights, callbacks, etc;
