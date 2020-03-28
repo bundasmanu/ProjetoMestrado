@@ -46,3 +46,10 @@ Breast Histopathology Images:
   - Análises recorrendo a Matriz confusão, com foco no recall e precision da class menos balanceada (com Invasive Ductal Carcinoma) - maior foco no recall;
   - O dataset é complexo, mais concretamente na classificação desta classe, do que tenho lido, os resultados parecem-me bem ajustados;
   - Utilizei diversas abordagens para mellhorar resultados, como: Undersampling, Data Augmentation, class_weights, callbacks, etc;
+
+## Arualização 28/03:
+  - Documentação Atualizada;
+  - Análise do VGGNet concluída (faltando parte otimização);
+  - Fiz mais testes em AlexNet e consegui melhores resultados;
+  - Maior exaustão na identificação de bons resultados (no VGGNet consegui também resultados interiores, e acima dos do artigo original);
+  - Faltando assim apenas a aplicação do PSO;
