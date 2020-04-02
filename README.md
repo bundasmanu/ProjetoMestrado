@@ -56,9 +56,9 @@ Breast Histopathology Images:
 
 ## Atualização 02/04:
   - Compreensão do âmbito do problema do dataset Skin Mnist já documentada;
-  - Análise exploratória do Skin Mnist já realizada (a documentar neste momento);
-  - Criação de um projeto "aparte" com a arquitetura default a aplicar a qualquer tipo de problema relacionado com imagens (Skin Mnist, já é um git pull repo, deste repositório);
-  - Preparação dos dados do problema já completa, faltando apenas implementar os modelos (apenas construção, que toda a arquitetura já está definida);
+  - Análise exploratória do Skin Mnist já realizada (a documentar neste momento) - Jupyter notebook criado;
+  - Criado um projeto "aparte" com a arquitetura default a aplicar a qualquer tipo de problema relacionado com imagens (Skin Mnist, já é um git pull repo, deste repositório);
+  - Preparação dos dados do problema já completa (leitura, obtenção dos datasets, transformação dos dados, etc) - esta parte também irá ser documentada de seguida, faltando apenas implementar os modelos (apenas construção, já que toda a arquitetura já está definida);
   - Neste momento estou a tentar resolver problemas na Cloud;
     - A minha conta já não é free, mas ainda assim o Google não me deixa aumentar cotas, tou a tentar encontrar abordagens para mitigar este problema;
     - Depois, tive problemas com o acesso remoto à Cloud, tive de reverter a instalação de ambiente gráfico, e utilizar outra ferramenta de acesso remoto;
