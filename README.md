@@ -70,4 +70,4 @@ Breast Histopathology Images:
   - Neste momento já me encontro a criar os modelos (AlexNet já criado e testado, com e sem estratégias de treino);
   - Estou a estudar também a aplicação da rede U-Net, que parece me uma boa opção para a resolução deste problema;
   - Relativamente à Cloud, não me deixam aumentar as quotas, de que necessito;
-  - Já agendei uma reunião com um Especialista da Google, para resolver o problema, entretanto vou trabalhando neste dataset;
+  - Já agendei uma reunião com um Especialista da Google, para resolver o problema, entretanto vou continuar a trabalhar neste dataset;
