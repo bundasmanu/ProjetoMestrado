@@ -62,3 +62,12 @@ Breast Histopathology Images:
   - Neste momento estou a tentar resolver problemas na Cloud;
     - A minha conta já não é free, mas ainda assim o Google não me deixa aumentar cotas, tou a tentar encontrar abordagens para mitigar este problema;
     - Depois, tive problemas com o acesso remoto à Cloud, tive de reverter a instalação de ambiente gráfico, e utilizar outra ferramenta de acesso remoto;
+## Atualização 04/04:
+  **Documentação (atual) inserida no repositório**
+  - Adição de mais detalhes relativos ao âmbito do problema Skin Mnist (documentados);
+  - Análise exploratória totalmente documentada, e alteração/adição de conteúdo no jupyter notebook;
+  - Já foi também documentada a preparação dos dados, que foi necessária e aplicada;
+  - Neste momento já me encontro a criar os modelos (AlexNet já criado e testado, com e sem estratégias de treino);
+  - Estou a estudar também a aplicação da rede U-Net, que parece me uma boa opção para a resolução deste problema;
+  - Relativamente à Cloud, não me deixam aumentar as quotas, de que necessito;
+  - Já agendei uma reunião com um Especialista da Google, para resolver o problema, entretanto vou trabalhando neste dataset;
