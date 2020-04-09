@@ -62,6 +62,7 @@ Breast Histopathology Images:
   - Neste momento estou a tentar resolver problemas na Cloud;
     - A minha conta já não é free, mas ainda assim o Google não me deixa aumentar cotas, tou a tentar encontrar abordagens para mitigar este problema;
     - Depois, tive problemas com o acesso remoto à Cloud, tive de reverter a instalação de ambiente gráfico, e utilizar outra ferramenta de acesso remoto;
+    
 ## Atualização 04/04:
   **Documentação (atual) inserida no repositório**
   - Adição de mais detalhes relativos ao âmbito do problema Skin Mnist (documentados);
@@ -71,3 +72,13 @@ Breast Histopathology Images:
   - Estou a estudar também a aplicação da rede U-Net, que parece me uma boa opção para a resolução deste problema;
   - Relativamente à Cloud, não me deixam aumentar as quotas, de que necessito;
   - Já agendei uma reunião com um Especialista da Google, para resolver o problema, entretanto vou continuar a trabalhar neste dataset;
+
+## Atualização 09/04:
+  - Modelo AlexNet implementado, testado e praticamente quase documentado (com análise bem definida);
+  - Implementados modelos VGGNet e ResNet - já testados (documentação será mais breve);
+  - Utilizei a rede U-Net com pesos obtidos do treino de um problema extenso Coco Dataset (ficheiro com os pesos da rede obtido na web);
+  - Segmentei as imagen utilizando a rede U-Net (predict). Imagens já obtidas. Esta abordagem foi considerada de modo a tentar identificar as partes mais importantes de cada imagem (e classes), na tentativa de melhorar os resultados;
+  - Definição de ensemble, recorrendo aos melhores modelos obtidos (AlexNet, VGGNet, ResNet);
+  - Relativamente à Cloud, ainda estou com problemas com o Google Cloud. Já falei com os profissionais dele, mas eles dão mais importância a empresas. O meu pedido foi para análise novamente. Tou a estudar outras alternativas, como o uso do Gradient (mas terei de pagar mensalmente).
+  - Neste momento, estou a documentar as análises, dado que a implementação está pronta.
+  - Neste problema, considerei um maior nº de abordagens, porque o dataset é mais complexo que o anterior (bem mais). Espero que a utilização futura do PSO, permita a obtenção de melhores resultados;
