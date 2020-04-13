@@ -82,3 +82,11 @@ Breast Histopathology Images:
   - Relativamente à Cloud, ainda estou com problemas com o Google Cloud. Já falei com os profissionais dele, mas eles dão mais importância a empresas. O meu pedido foi para análise novamente. Tou a estudar outras alternativas, como o uso do Gradient (mas terei de pagar mensalmente).
   - Neste momento, estou a documentar as análises, dado que a implementação está pronta.
   - Neste problema, considerei um maior nº de abordagens, porque o dataset é mais complexo que o anterior (bem mais). Espero que a utilização futura do PSO, permita a obtenção de melhores resultados;
+
+## Atualização 13/04:
+  - Documentação atualizada "Skin_MNIST_Analise.pdf";
+  - Toda a análise às três arquiteturas criadas já foi documentada (AlexNet, VGGNet e ResNet);
+  - Redes mais capazes VGGNet e ResNet - comparando os resultados macro average, com os disponibilizados no Kaggle, os mesmos são melhores, sendo que foi considerando sempre um baixo nº de epochs, que influencia ligeiramente os resultados;
+  - A aplicação de segmentação recorrendo à rede U-Net, não permite a obtenção de melhores resultados. Sendo assim, vou descartar esta opção. Mas vou analisar melhor.;
+  - Tenciono aplicar o PSO, recorrendo a duas topologias - Global Best e Local Best;
+  - Relativamente ao problema da Google, já resolvi em parte, mas penso que vou necessitar de recorrer a outras abordagens;
