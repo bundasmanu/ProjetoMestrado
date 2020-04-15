@@ -90,3 +90,12 @@ Breast Histopathology Images:
   - A aplicação de segmentação recorrendo à rede U-Net, não permite a obtenção de melhores resultados. Sendo assim, vou descartar esta opção. Mas vou analisar melhor.;
   - Tenciono aplicar o PSO, recorrendo a duas topologias - Global Best e Local Best;
   - Relativamente ao problema da Google, já resolvi em parte, mas penso que vou necessitar de recorrer a outras abordagens;
+
+## Atualização 16/04:
+  - Documentação atualizada "Skin_MNIST_Analise.pdf";
+  - Documentação atualizada "breast_histopathology_dataset.pdf";
+  - Foi aplicado e documentado o conceito de Ensemble, em ambos os dataset's;
+  - Corrigidos problemas de código, existentes em ambos os respositórios (dois dataset's);
+  - Definida uma Função objetivo mais robusta, para o PSO;
+  - Adição de mais conteúdo relevante e retificação de erros no repositório, que contêm a arquitetura base de todos os dataset's. Pode ser utilizado, no estudo de qualquer dataset de imagens. Ambos os dataset's em estudo são um git pull repo desse mesmo repositório. O seu Diagrama de Classes está inserido no documento: breast_histopathology_dataset.pdf;
+  - Falta-me apenas aplicar o PSO --> necessito de aprovação da minha ideia, por parte do professor;
