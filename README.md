@@ -99,3 +99,6 @@ Breast Histopathology Images:
   - Definida uma Função objetivo mais robusta, para o PSO;
   - Adição de mais conteúdo relevante e retificação de erros no repositório, que contêm a arquitetura base de todos os dataset's. Pode ser utilizado, no estudo de qualquer dataset de imagens. Ambos os dataset's em estudo são um git pull repo desse mesmo repositório. O seu Diagrama de Classes está inserido no documento: breast_histopathology_dataset.pdf;
   - Falta-me apenas aplicar o PSO --> necessito de aprovação da minha ideia, por parte do professor;
+
+## Link Diagrama de Classes Arquitetura:
+ [Architecture Image](breast_Class_Diagram.png)
