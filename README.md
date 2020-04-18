@@ -100,5 +100,13 @@ Breast Histopathology Images:
   - Adição de mais conteúdo relevante e retificação de erros no repositório, que contêm a arquitetura base de todos os dataset's. Pode ser utilizado, no estudo de qualquer dataset de imagens. Ambos os dataset's em estudo são um git pull repo desse mesmo repositório. O seu Diagrama de Classes está inserido no documento: breast_histopathology_dataset.pdf;
   - Falta-me apenas aplicar o PSO --> necessito de aprovação da minha ideia, por parte do professor;
 
+## Atualização 19/04:
+  - Retificados problemas arquiteturais no código do otimizador (PSO);
+  - Análise breve sobre quais os melhores valores a considerar para as constantes c1 e c2 --> abordagem prática e com efeito prático nos problemas;
+  - Análise Estado de Arte --> plataformas web, que permitem efetuar classificação de imagens (ImJoy, NiftyNet, e app's mobile);
+  - Estudo teórico sobre técnicas de Imbalanced Data (Undersampling e Oversampling);
+  - Estudo teórico "breve" sobre a abordagem "Ensemble";
+  - Paperspace revela-se uma boa opção; 
+  
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
