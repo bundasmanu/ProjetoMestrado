@@ -106,7 +106,14 @@ Breast Histopathology Images:
   - Análise Estado de Arte --> plataformas web, que permitem efetuar classificação de imagens (ImJoy, NiftyNet, e app's mobile);
   - Estudo teórico sobre técnicas de Imbalanced Data (Undersampling e Oversampling);
   - Estudo teórico "breve" sobre a abordagem "Ensemble";
-  - Paperspace revela-se uma boa opção; 
+  - Paperspace revela-se uma boa opção;
+ 
+ ## Atualização 24/04:
+  - Retificação de bugs na otimização com o PSO;
+  - PSO já está a correr na Cloud, mas está a demorar bastante cerca de 40h e ainda não terminou o 1º script, acho que vou ter de reduzir as variáveis;
+  - O dataset Colorectal Histopathology já foi estudado, preparados os dados e efetuada a sua pré-análise;
+  - Já foi documentado o problema e ainda a pré-análise realizada;
+  - Vou começar a desenvolver os modelos e a analisar os resultados;
   
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
