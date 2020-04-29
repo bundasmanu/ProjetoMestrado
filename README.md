@@ -115,5 +115,13 @@ Breast Histopathology Images:
   - Já foi documentado o problema e ainda a pré-análise realizada;
   - Vou começar a desenvolver os modelos e a analisar os resultados;
   
+ ## Atualização 30/04:
+  - Tive problemas na definição da função objetivo do PSO, tive de reformular e voltar a executar o script que já tinha executado;
+  - Foram corrigidos pequenos "bugs" identificados em alguns datasets;
+  - Já obtive resultados alusivos à otimização do modelo AlexNet com o PSO (topologia em Roda) e tá a terminar a otimização do modelo VGGNet (também topologia em Roda);
+  - Já conclui o estudo do Dataset Colorectal Histopathology, sendo que consegui obter bons resultados;
+  - Já documentei toda a análise do dataset, inclusivé implementação da técnica ensemble. Faltando apenas documentar a otimização dos modelos com o PSO;
+  - Neste momento estou a estudar a ferramenta Paperspace. De modo a verificar, se a mesma consegue dar resposta ao que pretendo.
+ 
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
