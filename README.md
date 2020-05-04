@@ -125,10 +125,10 @@ Breast Histopathology Images:
   
   ## Atualização 04/05:
    - Tive problemas na "reprodutibilidade" de resultados no Breast Histopathology, e necessitei de refazer uma parte da documentação, e de aplicar e testar novamente os modelos;
-    - Já obtive resultados da aplicação do PSO no dataset Breast Histopathology, nomeadamente AlexNet (Topologia em Roda) e VGGNet (ambas as topologias - Roda e Estrela), faltando apenas obter AlexNet topologia em Estrela;
-    - Os resultados obtidos foram significativamente melhores na aplicação do PSO;
-    - Os meus créditos no Google Cloud terminaram, e já procedi à passagem para o Paperspace.
-    - Alguns "bugs" pontuais no código foram corrigidos;
+   - Já obtive resultados da aplicação do PSO no dataset Breast Histopathology, nomeadamente AlexNet (Topologia em Roda) e VGGNet (ambas as topologias - Roda e Estrela), faltando apenas obter AlexNet topologia em Estrela;
+   - Os resultados obtidos foram significativamente melhores na aplicação do PSO;
+   - Os meus créditos no Google Cloud terminaram, e já procedi à passagem para o Paperspace;
+   - Alguns "bugs" pontuais no código foram corrigidos;
  
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
