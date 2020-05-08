@@ -130,5 +130,13 @@ Breast Histopathology Images:
    - Os meus créditos no Google Cloud terminaram, e já procedi à passagem para o Paperspace;
    - Alguns "bugs" pontuais no código foram corrigidos;
  
+ ## Atualização 08/05:
+  - Analisada e criada arquitetura baseada na rede DenseNet;
+  - Testada no 1º dataset - Breast Histopathology;
+  - Reformulada a optimização de todas as arquiteturas (AlexNet, VGGNet, ResNet e DenseNet) - passei a considerar a otimização das suas arquiteturas também;
+  - **Ainda estou a terminar a reformulação destes custom models;**
+  - Servidor no Paperspace já está completamente funcional para dois dataset's - faltando apenas otimizar os modelos;
+  - **A otimização que fiz previamente, já não irá ser considerada. Uma vez que antes não estava a otimizar a arquitetura dos modelos, enquanto que agora já estou (arquitetura, filtros, neurónios e batch size);
+ 
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
