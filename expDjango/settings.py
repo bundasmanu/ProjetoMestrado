@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'expDjango',
-    'treinoPrevisao',
-    'Dataset',
-    'users'
+    'users',
+    'datasets'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

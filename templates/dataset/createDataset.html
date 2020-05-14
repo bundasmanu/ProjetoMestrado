@@ -1,0 +1,34 @@
+{% extends 'users/InfoUser.html' %}
+{% load i18n %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">
+{% endblock %}
+{% block content %}
+    <div id="ContainerPrincipal">
+        <h1>Criar Dataset</h1>
+        <div id="criaDatasetBar">
+            <h2>Dataset Info</h2>
+        </div>
+        <div id="formDiv">
+            <form class="criaDatasetForm" method="post">
+                {% csrf_token %}
+                <div id="nameDataset">
+                    <label>{{ form.name.label_tag }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
+                    {{ form.name }}
+                </div>
+                <div id="meanDataset">
+                    <label>{{ "Valor Médio (imagens Treino):" }}</label>
+                    {{ form.normalize_mean }}
+                </div>
+                <div id="stdDataset">
+                    <label>{{ "Desvio Padrão (imagens Treino):" }}</label>
+                    {{ form.normalize_std }}
+                </div>
+                <div id="divBtnCriaDataset">
+                    <input type="submit" class="btnCriaDataset" value="Cria Dataset">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -21,9 +21,8 @@ from users.views import HomeRedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dataset/', include('Dataset.urls')),
-    path('preview/', include('treinoPrevisao.urls' , namespace='treinoPrev')),
     path('', include('users.urls', namespace='users')),
+    path('dataset/', include('datasets.urls', namespace='datasets')),
 ]
 
 '''
