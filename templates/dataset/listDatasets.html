@@ -1,0 +1,49 @@
+{% extends 'users/InfoUser.html' %}
+{% load i18n %}
+{% block extrastyle %}
+    {{ block.super }}
+    <!--<link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">-->
+    <link rel="stylesheet" type="text/css" href="/static/dataset/css/listDataset.css">
+{% endblock %}
+{% block content %}
+    <div id="relativeContainer">
+        <div id="containerPrincipal">
+            <h1>Listagem dos Datasets</h1>
+            <div id="datasetsBox">
+                <table id="tabelaDatasets">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Normalized Mean</th>
+                            <th>Normalized STD</th>
+                            <th>Nº CNN Models</th>
+                        </tr>
+                    </thead>
+                    {% for dataset in  object_list %}
+                        <tr>
+                            <td>
+                                {{ dataset.id }}
+                            </td>
+                            <td>
+                                <a href="#">{{ dataset.name }}</a>
+                            </td>
+                            <td>
+                                {{ dataset.normalize_mean }}
+                            </td>
+                            <td>
+                                {{ dataset.normalize_std }}
+                            </td>
+                            <td>
+                                {{ dataset.numbermodels }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div id="buttonOptions">
+                <a href="#" class="criaDataset">Criar Novo</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

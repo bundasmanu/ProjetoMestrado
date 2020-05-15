@@ -1,0 +1,110 @@
+#relativeContainer{
+    display: block;
+    margin: auto;
+    width: 100%;
+    margin-top: 1%;
+}
+
+#containerPrincipal{
+    display: block;
+    width: 98%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#datasetsBox{
+    display: block;
+    width: 60%;
+    height: auto;
+}
+
+#tabelaDatasets{
+    border-spacing: 0px 1px;
+    border-collapse: separate;
+}
+
+#datasetsBox > #tabelaDatasets th{
+    background-color: #79aec8;
+    color: white;
+    font-size: 12px;
+    padding: 12px;
+    height: auto;
+    text-align: center;
+}
+
+#tabelaDatasets > tr, td{
+    height: 25px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+}
+
+#tabelaDatasets tr:nth-child(2n+1){ /* Intercalate color of table rows */
+    background-color:  #f9f9f9;
+}
+
+#tabelaDatasets a:link, a:visited{
+    text-decoration: none;
+    font-weight: 900;
+}
+
+#buttonOptions{
+    display: block;
+    height: auto;
+    width: 10%;
+    margin-top: 2%;
+}
+
+#buttonOptions > .criaDataset{
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    min-height: 36px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 4px;
+    background: #79aec8;
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 20px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    background-image: url("../img/tooltag-add.svg"); /*Relative path from css file, i.e, distant between css and image folder*/
+    background-repeat: no-repeat;
+    background-position: right 7px center;
+    padding-right: 26px;
+}
+
+.criaDataset:hover{
+    opacity: 0.85;
+}
+
+@media (max-width: 1440px) {
+    #buttonOptions{
+        width:20%;
+    }
+}
+
+@media (max-width: 1080px) {
+    #buttonOptions{
+        width:30%;
+    }
+}
+
+@media (max-width: 780px) {
+    #buttonOptions{
+        width:40%;
+    }
+}
+
+@media (max-width: 640px) {
+    #buttonOptions{
+        width:40%;
+    }
+}
+
+@media (max-width: 480px) {
+    #buttonOptions{
+        width:50%;
+    }
+}
