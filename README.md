@@ -137,6 +137,12 @@ Breast Histopathology Images:
   - **Ainda estou a terminar a reformulação destes custom models;**
   - Servidor no Paperspace já está completamente funcional para dois dataset's - faltando apenas otimizar os modelos;
   - **A otimização que fiz previamente, já não irá ser considerada. Uma vez que antes não estava a otimizar a arquitetura dos modelos, enquanto que agora já estou (arquitetura, filtros, neurónios e batch size);**
- 
+
+## Atualização 15/05:
+  - Arquitetura DenseNet melhorada e já devidamente formulada em contexto com o paper original (adição de nova dimensão - compression rate);
+  - Restantes modelos melhorados, isto é, a definição das suas arquiteturas e sua consequente otimização. ResNet em conformidade com o paper original (ResNet 18 e 34);
+  - Melhoria de pequenos aspetos arquiteturais dos modelos AlexNet e VGGNet - mediante os seus papers também (AlexNet teve uma ligeira diferença no 1º dataset - dado o seu menor input (1º conv layer com stride=1, e não 2, para não limitar tanto a definição da arquitetura);
+  - Projeto Django melhorado. Adição de modelos - Dataset e CNN models (relação 1-N). Criação de vistas e templates para dar suporte a criação de dataset, visualização de dataset (e aspetos relacionados com modelos), alteração de dataset;
+
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
