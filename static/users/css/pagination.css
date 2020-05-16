@@ -1,0 +1,15 @@
+/*Pagination of ListView's Stylesheet*/
+
+#pagination{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 0.5%;
+}
+
+#pagination > #boxpreviousSymbol, #boxNumberPages, #boxNextSymbol{
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid ghostwhite;
+    padding: 2px 2px;
+}
