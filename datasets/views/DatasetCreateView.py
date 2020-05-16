@@ -4,7 +4,6 @@ from datasets.models import Dataset
 from django.urls import reverse
 from django.contrib import messages
 from expDjango import config
-from django.shortcuts import HttpResponseRedirect
 
 class DatasetCreateView(CreateView):
 
@@ -26,14 +25,7 @@ class DatasetCreateView(CreateView):
         '''
 
         try:
-
-            # catch object instance
-            dataset = form.save(commit=False)
-
-            # save object
-            dataset.save()
-
-            return HttpResponseRedirect(self.get_success_url())
+            return super(DatasetCreateView, self).form_valid(form)
         except:
             raise
 
@@ -52,7 +44,10 @@ class DatasetCreateView(CreateView):
             storage = messages.get_messages(request=self.request)
             storage.used = True # clean old messages
             messages.add_message(self.request, messages.INFO, config.SUCCESS_DATASET_CREATION) # add message
-            path = reverse('datasets:criaDataset')
+
+            #pass kwargs with pk to ListSpecificDataset --> important need to kwargs because, get queryset method gets pk via kwargs, but i also can send via args, passing a tuple
+            kwargs = {"pk" : self.object.id}
+            path = reverse("datasets:ListaDatasetByID", kwargs=kwargs)
             return path
         except:
             raise

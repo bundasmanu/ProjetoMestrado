@@ -26,7 +26,7 @@
                                 {{ dataset.id }}
                             </td>
                             <td>
-                                <a href="#">{{ dataset.name }}</a>
+                                <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>
                             </td>
                             <td>
                                 {{ dataset.normalize_mean }}
@@ -41,8 +41,12 @@
                     {% endfor %}
                 </table>
             </div>
+            {% block pagination %}
+                {% include 'general/pagination.html' %}
+            {% endblock %}
+            </div>
             <div id="buttonOptions">
-                <a href="#" class="criaDataset">Criar Novo</a>
+                <a href="{% url 'datasets:criaDataset' %}" class="criaDataset">Criar Novo</a>
             </div>
         </div>
     </div>

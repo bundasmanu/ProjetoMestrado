@@ -8,7 +8,7 @@ from django.views.defaults import page_not_found
 
 class ListSpecificDataset(LoginRequiredMixin, DetailView):
 
-    template_name = ''
+    template_name = 'dataset/listSingleDataset.html'
     model = Dataset.Dataset
     login_url = settings.LOGOUT_REDIRECT_URL
 
