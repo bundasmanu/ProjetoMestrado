@@ -1,23 +1,27 @@
 {% if page_obj.has_other_pages %}
     <div id="pagination">
-        <div id="boxpreviousSymbol">
-            {% if page_obj.has_previous %}
+        {% if page_obj.has_previous %}
+            <div id="boxpreviousSymbol">
                 <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
         {% for i in page_obj.paginator.page_range %}
             <div id="boxNumberPages">
                 {% if page_obj.number == i %}
-                    <span>{{ i }} <span class="sr-only"></span></span>
+                    <div id="actualPage">
+                        <span>{{ i }} <span class="sr-only"></span></span>
+                    </div>
                 {% else %}
-                    <a href="?page={{ i }}">{{ i }}</a>
+                    <div id="differentPage">
+                        <a href="?page={{ i }}">{{ i }}</a>
+                    </div>
                 {% endif %}
             </div>
         {% endfor %}
-        <div id="boxNextSymbol">
-            {% if page_obj.has_next %}
+        {% if page_obj.has_next %}
+            <div id="boxNextSymbol">
                 <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
-            {% endif %}
-        </div>
+            </div>
+        {% endif %}
     </div>
 {% endif %}

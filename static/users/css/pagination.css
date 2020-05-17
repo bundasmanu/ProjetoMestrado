@@ -1,15 +1,66 @@
 /*Pagination of ListView's Stylesheet*/
 
 #pagination{
-    display: block;
+    display: flex;
     width: 100%;
     height: auto;
     margin-top: 0.5%;
+    align-items: center; /*REF: https://stackoverflow.com/questions/79461/how-to-vertical-align-elements-in-a-div*/
 }
 
-#pagination > #boxpreviousSymbol, #boxNumberPages, #boxNextSymbol{
-    display: inline-block;
+#pagination > #boxpreviousSymbol, #pagination > #boxNextSymbol{
+    display: inline-flex;
     box-sizing: border-box;
-    border: 1px solid ghostwhite;
-    padding: 2px 2px;
+    border: 1px solid #eaeaea;
+    background-color: white;
+}
+
+#boxpreviousSymbol{
+    border-radius: 5px 0 0 5px;
+}
+
+#boxNextSymbol{
+    border-radius: 0 5px 5px 0;
+}
+
+#boxNumberPages{
+    display: inline-flex;
+    box-sizing: border-box;
+    border: 0.1px dotted #eaeaea;
+}
+
+#boxpreviousSymbol a, #boxNextSymbol a{
+    font-size: 20px;
+    color: #417690;
+    padding: 4px 8px 4px 8px;
+    text-decoration: none;
+}
+
+#boxNumberPages > #actualPage{
+    background-color: #79aec8;
+    flex: 1;
+    text-align: center;
+    padding: 4px 8px 4px 8px;
+    border: 1px solid #eaeaea;
+}
+
+#actualPage span{
+    font-size: 20px;
+    color: white;
+    display: inline-flex;
+}
+
+#boxNumberPages > #differentPage{
+    background-color: white;
+    flex: 1;
+    text-align: center;
+    padding: 4px 8px 4px 8px;
+    border: 1px solid #eaeaea;
+}
+
+#differentPage a{
+    font-size: 20px;
+    color: #79aec8;
+    display: inline-flex;
+    text-decoration: none;
 }
