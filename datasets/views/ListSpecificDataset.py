@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import expDjango.settings as settings
 from ..models import Dataset
 from django.shortcuts import HttpResponseRedirect
-from django.urls import reverse
 from django.views.defaults import page_not_found
 
 class ListSpecificDataset(LoginRequiredMixin, DetailView):

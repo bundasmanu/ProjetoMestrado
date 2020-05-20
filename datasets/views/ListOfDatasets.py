@@ -1,13 +1,15 @@
 from django.views.generic.list import ListView
 from ..models import Dataset, CNNModel
 from django.db.models import Count, Subquery
-from django.db.models import F
+from django.contrib.auth.mixins import LoginRequiredMixin
+import expDjango.settings as settings
 
-class ListOfDatasets(ListView):
+class ListOfDatasets(ListView, LoginRequiredMixin):
 
     model = Dataset.Dataset
     paginate_by = 8
     template_name = 'dataset/listDatasets.html'
+    login_url = settings.LOGOUT_REDIRECT_URL
 
     # concatenate queryset's link: https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view
     def get_queryset(self):
