@@ -1,6 +1,7 @@
 from django import forms
 from ..models import Dataset
 from django.db.models import Count
+from expDjango import config, settings
 
 class PredictForm(forms.Form):
 
@@ -19,3 +20,5 @@ class PredictForm(forms.Form):
                                         widget=forms.Select(choices=dataset_choices), required=True)
     models_dropdown = forms.CharField(label="Model",
                                       widget=forms.Select(choices=models_choices), required=True)
+    image_upload = forms.ImageField(max_length=config.MAX_IMAGE_SIZE, required=True, label='Seleccione uma imagem',
+                                    help_text='Tamanho máximo 20MB', allow_empty_file=False)

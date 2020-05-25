@@ -38,3 +38,9 @@ CORRECT_UPDATES_VALUES_USER = "PARAMETROS ATUALIZADOS CORRETAMENTE"
 # Validation Errors
 DATASET_ALREADY_EXISTS = "This Dataset Already Exists"
 SUCCESS_DATASET_CREATION = "Dataset Criado com Sucesso"
+PLEASE_FILL_FORM_CORRECTLY = "Please fill form correctly"
+ERROR_ON_PREDICT = "Error during prediction of image"
+
+# image size upload max length --> 20MB
+MAX_IMAGE_SIZE = 20971520
+SIZE_GREATER_TEMPORARY = 2621440

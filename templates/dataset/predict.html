@@ -1,9 +1,10 @@
 {% extends 'users/InfoUser.html' %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% block extrastyle %}
     {{ block.super }}
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 {% endblock %}
 {% block content %}
     <div id="ContainerPrincipal">
@@ -12,13 +13,16 @@
             <h2>Dataset Info</h2>
         </div>
         <div id="formDiv">
-                <form id="predictOutputModelClass" method="post" data-models-url="{% url 'datasets:ajaxModelsLoad' %}" novalidate>
+                <form id="predictOutputModelClass" method="post" enctype="multipart/form-data" data-models-url="{% url 'datasets:ajaxModelsLoad' %}" novalidate>
                 {% csrf_token %}
                 <div id="datasetsDropDown">
                     {{ form.dataset_dropdown }}
                 </div>
                 <div id="modelsDropDown">
                     {{ form.models_dropdown }}
+                </div>
+                <div>
+                    {{ form.image_upload }}
                 </div>
                 <div id="divBtnCriaDataset">
                     <input type="submit" class="btnCriaDataset" value="Efetuar Previsão">
@@ -27,30 +31,6 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-
-        $("#id_dataset_dropdown").change(function () {
-            var url = $("#predictOutputModelClass").attr("data-models-url");
-            var datasetID = $(this).val();
-
-            if (datasetID === '') { /*check empty dataset --> Selecciona Modelo option*/
-                var options = {'': 'Selecciona Modelo'};
-                var $select_model = $("#id_models_dropdown");
-                $select_model.children('option:not(:first)').remove();
-            }
-            else {
-                $.ajax({
-                    url: url,
-                    data: {
-                        'id_model': datasetID
-                    },
-                    success: function (data) {
-                        $("#id_models_dropdown").html(data);
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="{% static "dataset/js/dependentDropDownPredictPage.js" %}"></script>
 
 {% endblock %}

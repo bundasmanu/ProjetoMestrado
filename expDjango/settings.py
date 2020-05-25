@@ -140,3 +140,6 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cdn") #content delivery network
+
+# folder that aggregates upload users images for predict
+IMAGES_UPLOAD_ROOT = os.path.join(STATIC_ROOT, "predict/img")
