@@ -3,7 +3,8 @@
 {% load static %}
 {% block extrastyle %}
     {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/general/css/filterToolbar.css">
 {% endblock %}
 {% block content %}
-    {% include 'general/filterToolBarWithCheckBoxes.html' %}
+    {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="sdgsdgsgd" %}
 {% endblock %}

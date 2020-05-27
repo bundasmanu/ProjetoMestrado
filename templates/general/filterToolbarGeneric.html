@@ -1,9 +1,38 @@
+{% load static %}
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static "general/js/alertBox.js"%}"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 {% block filterToolBar %}
     <div id="filterToolbar">
-        <label for="supportImgToolBar">
-            <img src="/static/dataset/img/search.svg">
-        </label>
-        {% block applyFilterElement %}
+
+        {% block titleFilter %}
+            <div id="filterTitle">
+                <h1>Opções:</h1>
+            </div>
         {% endblock %}
+
+        {% block addFilter %}
+            <div id="addFilterOption">
+                <a href="{{ linkAdd }}" class="linkAdicionaFiltro">Adicionar</a>
+            </div>
+        {% endblock %}
+
+        {% block changeFilter %}
+            <div id="changeFilterOption">
+                <a href="{{ linkChange }}" class="linkAlteraFiltro">Alterar</a>
+            </div>
+        {% endblock %}
+
+        {% block deleteFilter %}
+            <div id="deleteFilterOption">
+                <a href="#" onclick="confirmDialog('Pretende mesmo apagar')" class="linkApagaFiltro">Apagar</a>
+            </div>
+        {% endblock %}
+
+        {% block applyFilterElement %}
+
+        {% endblock %}
+
     </div>
 {% endblock %}

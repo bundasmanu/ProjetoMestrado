@@ -1,0 +1,68 @@
+
+#filterToolbar{
+    display: block;
+    background-color: #f8f8f8;
+    width: 42%;
+    float: left;
+    height: auto;
+    padding: 10px 10px;
+    margin-bottom: 1%;
+    border: 1px solid #eaeaea;
+}
+
+#filterTitle{
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+}
+
+#filterTitle > h1{
+    font-size: 14px;
+    color: #666666;
+    font-weight: 600;
+    margin-bottom: 0;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+#filterTitle > h1:before{
+    padding: 0 10px;
+    background-image: url("../img/options.svg");
+    background-position-x: 0;
+    background-position-y: 1px;
+    background-repeat: no-repeat;
+    content: "";
+    background-size: 17px 17px;
+}
+
+#addFilterOption, #changeFilterOption, #deleteFilterOption{
+    display: inline-block;
+    height: auto;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+a:link, a:visited{
+    color: #447e9b;
+    text-decoration: none;
+}
+
+.linkAdicionaFiltro, .linkAlteraFiltro, .linkApagaFiltro{
+    padding-left: 16px;
+}
+
+.linkAdicionaFiltro:hover, .linkAlteraFiltro:hover, .linkApagaFiltro:hover{
+    opacity: 0.7;
+}
+
+.linkAdicionaFiltro{
+    background: url(../img/icon-addlink.svg) 0 1px no-repeat;
+}
+
+.linkAlteraFiltro{
+    background: url(../img/icon-changelink.svg) 0 1px no-repeat;
+}
+
+.linkApagaFiltro{
+    background: url(../img/garbage.svg) 0 1px no-repeat;
+}
+

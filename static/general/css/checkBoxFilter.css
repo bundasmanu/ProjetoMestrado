@@ -1,0 +1,69 @@
+
+/*ref: https://appitventures.com/styling-checkbox-css-tips/*/
+
+#inlineFilterCheckBoxOption{
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    padding-left: 20px;
+}
+
+.inlineCheckBoxLabelFilter{
+    font-size: 14px;
+    color: #666666;
+    font-weight: 500;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.inlineCheckBoxLabelFilter input{
+    opacity: 0;
+    height: 0; /*retrieve space of original checkbox*/
+    width: 0; /*retrieve space of original checkbox*/
+}
+
+.inlineCheckBoxLabelFilter .customCheckBox{
+    display: inline-block;
+    margin-left: 2px;
+    height: 14px;
+    width: 14px;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin-top: 0;
+    vertical-align: middle;
+}
+
+.inlineCheckBoxLabelFilter .customCheckBox::after{
+    content: "";
+    height: 0;
+    opacity: 1;
+    font-weight: 800;
+    border-radius: 5px;
+    border-width: 0 3px 0 0;
+    display: block;
+    width: 100%;
+    margin-top: -3px;
+    vertical-align: middle;
+}
+
+.inlineCheckBoxLabelFilter input:checked ~ .customCheckBox{
+    border-radius: 5px;
+    opacity: 1;
+    border: 2px solid black;
+    background-color: white;
+    display: inline-block;
+    margin-top: 0;
+    vertical-align: middle;
+}
+
+.inlineCheckBoxLabelFilter input:checked ~ .customCheckBox::after{
+    content: "\2718";
+    font-size: 15px;
+    background: transparent;
+    opacity: 1;
+    border-radius: 0;
+    vertical-align: middle;
+}

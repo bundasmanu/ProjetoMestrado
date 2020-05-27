@@ -9,7 +9,7 @@
 
 #navigationGenericBar a{/*PROPERTIES OF ATTRIBUTE a INSIDE NAV BAR*/
     font-size: 16px;
-    padding: 10px 10px 10px 0px;
+    padding: 10px 10px 10px 0;
     float: left;
 }
 
@@ -61,10 +61,30 @@
 }
 
 .dropdown-content > a:hover {
-  background-color: inherit;
+    background-color: inherit;
     color: inherit !important;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/*ref transition link: https://stackoverflow.com/questions/30352431/css-transition-not-working-with-underline*/
+.transitionLink{
+    display: inline-block;
+}
+
+.transitionLink:after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: all .5s ease-out;
+    margin-top: 2px;
+    vertical-align: top;
+}
+
+.transitionLink:hover:after{
+    width: 100%;
 }

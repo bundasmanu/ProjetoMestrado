@@ -6,11 +6,14 @@
     <!--<link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">-->
     <link rel="stylesheet" type="text/css" href="/static/dataset/css/listDataset.css">
     <link rel="stylesheet" type="text/css" href="/static/users/css/pagination.css">
+    <link rel="stylesheet" type="text/css" href="/static/general/css/filterToolbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/general/css/checkBoxFilter.css">
 {% endblock %}
 {% block content %}
     <div id="relativeContainer">
         <div id="containerPrincipal">
             <h1>Listagem dos Datasets</h1>
+            {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="sdgsdgsgd" %}
             <div id="datasetsBox">
                 <table id="tabelaDatasets">
                     <thead>
@@ -73,6 +76,9 @@
                     {% endfor %}
                 </table>
             </div>
+            {% block alertBox %}
+                {% include 'general/alertBoxConfirmation.html' %}
+            {% endblock %}
             {% block pagination %}
                 {% include 'general/pagination.html' %}
             {% endblock %}

@@ -1,7 +1,5 @@
 {% extends 'general/filterToolbarGeneric.html' %}
-{% block filterToolBar %}
-    {{ block.super }}
-    {% block applyFilterElement %}
-        <label>ewfewefwwwwwww</label>
-    {% endblock %}
+
+{% block applyFilterElement %}
+    {% include 'general/inlineCheckBox.html' %}
 {% endblock %}
