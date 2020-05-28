@@ -1,0 +1,8 @@
+#imageBrandingBox{
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/static/general/img/image_predict_initBar.png');
+    width: 200px;
+    height: 40px;
+}

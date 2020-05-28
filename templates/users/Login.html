@@ -2,6 +2,8 @@
 {% block extrastyle %}
     <link rel="stylesheet" type="text/css"  href="/static/users/css/footer.css">
     <link rel="stylesheet" type="text/css" href="/static/users/css/loginForm.css">
+    <link rel="stylesheet" type="text/css" href="/static/general/css/branding.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
 {% endblock %}
 <div id="branding">
 {% block  branding%}
@@ -9,7 +11,7 @@
 {% endblock %}
 </div>
 {% block breadcrumbs %}
-    {% include 'general/homeRedirect.html' %}
+    {% include 'general/navMinorLink.html' %}
 {% endblock %}
 {% block bodyclass %}{% endblock %}
 

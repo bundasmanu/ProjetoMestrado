@@ -9,7 +9,7 @@
 
 #navigationGenericBar a{/*PROPERTIES OF ATTRIBUTE a INSIDE NAV BAR*/
     font-size: 16px;
-    padding: 10px 10px 10px 0;
+    padding: 5px 20px 5px 0 !important;
     float: left;
 }
 
@@ -72,6 +72,7 @@
 /*ref transition link: https://stackoverflow.com/questions/30352431/css-transition-not-working-with-underline*/
 .transitionLink{
     display: inline-block;
+    padding: 5px 8px 5px 0;
 }
 
 .transitionLink:after{
