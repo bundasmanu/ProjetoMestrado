@@ -1,21 +1,14 @@
-{% extends 'admin/base_site.html' %} <!--TESTAR COM ESTA, AINDA NÃO SEI BEM, SE ESTA TEM O QUE PRETENDO-->
+{% extends 'general/base_layout.html' %} <!--TESTAR COM ESTA, AINDA NÃO SEI BEM, SE ESTA TEM O QUE PRETENDO-->
 {% load i18n %}
 {% load staticfiles %}
-{% block title%}
-    {% include 'general/titleBarSite.html' %}
-{% endblock %}
+
 {% block extrastyle %}
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="/static/users/css/userLinks.css">
-    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
     <link rel="stylesheet" type="text/css" href="/static/users/css/infoUser.css">
-    <link rel="stylesheet" type="text/css" href="/static/users/css/footer.css">
-    <link rel="stylesheet" type="text/css" href="/static/general/css/branding.css">
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 {% endblock %}
-{% block branding %}
-    {% include 'general/branding.html' %}
-{% endblock %}
+
 {% block usertools %}
     <div id="user-tools"> <!--Override usertools on base, because i didn't restrict the welcome message, for specific users !-->
         {% block welcome-msg %}
@@ -26,9 +19,11 @@
         {% endblock %}
     </div>
 {% endblock %}
+
 {% block breadcrumbs %}
     {% include 'general/genericNavBar.html' %}
 {% endblock %}
+
 {% block content %}
     <div id="containerPrincipal">
         <h1>User information</h1>
@@ -66,7 +61,4 @@
             </form>
         </div>
     </div>
-{% endblock %}
-{% block footer %}
-    {% include 'general/foot.html' %}
 {% endblock %}

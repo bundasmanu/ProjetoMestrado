@@ -1,19 +1,10 @@
-{% extends 'admin/base_site.html' %}
-{% block title %}
-    {% include 'general/titleBarSite.html' %}
-{% endblock %}
-{% block branding %}
-    {% include 'general/branding.html' %}
-{% endblock %}
+{% extends 'general/base_layout.html' %}
+
 {% block extrastyle %}
-    <link rel="stylesheet" type="text/css" href="/static/users/css/footer.css">
+    {{ block.super }}
     <link rel="stylesheet" type="text/css" href="/static/users/css/createUser.css">
-    <link rel="stylesheet" type="text/css" href="/static/general/css/branding.css">
-    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
 {% endblock %}
-{% block breadcrumbs %}
-    {% include 'general/navMinorLink.html' %}
-{% endblock %}
+
 {% block content %}
     <div id="containerPrincipalDivForm">
         <div id="header">
@@ -52,7 +43,4 @@
             </form>
         </div>
     </div>
-{% endblock %}
-{% block footer %}
-    {% include 'general/foot.html' %}
 {% endblock %}

@@ -1,23 +1,8 @@
-{% extends 'admin/base_site.html' %}
+{% extends 'general/base_layout.html' %}
 {% load i18n %}
-{% block stylesheet %} {{ block.super }} {% endblock %}
 {% block extrastyle %}
-    <link rel="stylesheet" type="text/css"  href="/static/users/css/footer.css">
-    <link rel="stylesheet" type="text/css" href="/static/users/css/home.css">
-    <link rel="stylesheet" type="text/css" href="/static/general/css/branding.css">
-    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
-{% endblock %}
-{% block branding %}
-    {% include 'general/branding.html' %}
- {% endblock %}
-{% block title %}
-    {% include 'general/titleBarSite.html' %}
-{% endblock %}
-{% block responsive %}
     {{ block.super }}
-{% endblock %}
-{% block breadcrumbs %}
-    {% include 'general/navMinorLink.html' %}
+    <link rel="stylesheet" type="text/css" href="/static/users/css/home.css">
 {% endblock %}
 {% block content %}
     {% if messages %}
@@ -44,7 +29,4 @@
             <img src="/static/users/img/geneExp.png" alt="Gene Expression" class="responsive">
         </div>
     </div>
-{% endblock %}
-{% block footer %}
-    {% include "general/foot.html" %}
 {% endblock %}

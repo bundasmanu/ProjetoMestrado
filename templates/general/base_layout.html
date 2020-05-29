@@ -1,0 +1,37 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+
+{% block stylesheet %} {{ block.super }} {% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css"  href="/static/users/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/static/general/css/branding.css">
+    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
+{% endblock %}
+
+{% block branding %}
+    {% include 'general/branding.html' %}
+ {% endblock %}
+
+{% block usertools %}
+{% endblock %}
+
+{% block title %}
+    {% include 'general/titleBarSite.html' %}
+{% endblock %}
+
+{% block responsive %}
+    {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {% include 'general/navMinorLink.html' %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+    {% include "general/foot.html" %}
+{% endblock %}

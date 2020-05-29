@@ -1,19 +1,9 @@
-{% extends 'admin/base_site.html' %}
+{% extends 'general/base_layout.html' %}
+
 {% block extrastyle %}
-    <link rel="stylesheet" type="text/css"  href="/static/users/css/footer.css">
+    {{ block.super }}
     <link rel="stylesheet" type="text/css" href="/static/users/css/loginForm.css">
-    <link rel="stylesheet" type="text/css" href="/static/general/css/branding.css">
-    <link rel="stylesheet" type="text/css" href="/static/users/css/navGenericLinks.css">
 {% endblock %}
-<div id="branding">
-{% block  branding%}
-    {% include 'general/branding.html' %}
-{% endblock %}
-</div>
-{% block breadcrumbs %}
-    {% include 'general/navMinorLink.html' %}
-{% endblock %}
-{% block bodyclass %}{% endblock %}
 
 {% block content %}
     <div id="container" style="background: #fff;
@@ -25,9 +15,6 @@
     margin: 80px auto;">
         {% include 'admin/login.html' %}
     </div>
-{% endblock %}
-{% block footer %}
-    {% include 'general/foot.html' %}
 {% endblock %}
 
 
