@@ -1,32 +1,312 @@
-#contentHome > .responsive{
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-    width: 18%;
-    height: 18%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2.5%;
+#inlineBoxHomeImage{
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    margin-top: 6%;
+    float: right;
+    margin-right: 26%;
 }
 
-#contentHome #buttonSpaceHome{
-    margin-top: 3%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#inlineBoxHomeImage > .responsive{
+    width: 100%;
+    height: 100%;
 }
 
-#contentHome #buttonSpaceHome > .loginButton {
-    margin-top: 2%;
-    margin-right: 2%;
+#buttonSpaceHome{
+    display: inline-block;
+    width: 27%;
+    height: 10%;
+    left: 22%;
+    margin-top: 21%;
+    position: relative;
+    min-width: 27%;
+    padding-top: 20px;
+}
+
+#buttonSpaceHome > .loginButton {
+    float: left;
     font-size: 1.5em;
-    width: auto;
-    min-width: 10%;
+    width: 45%;
 }
 
-#contentHome #buttonSpaceHome > .createButton{
-    margin-top: 2%;
-    margin-left: 2%;
+#buttonSpaceHome > .createButton{
     font-size: 1.5em;
+    margin-left: 30px;
+    width: 45%;
+}
+
+#textContext{
+    display: inline-block;
+    width: 22%;
+    height: 20%;
+    left: 25%;
+    top: 45%;
+    position: absolute;
+}
+
+#textContext .titleApp{
+    color: #79aec8;
+    font-size: 50px;
+    font-weight: 700;
+    text-align: justify;
+    margin-bottom: 12px;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+}
+
+#textContext .contextApp{
+    color: #417690;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: justify;
+    line-height: 20px;
+    padding-top: 8px;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+@-moz-document url-prefix() { /*MOZILLA*/
+    #buttonSpaceHome{
+        display: inline-block;
+        width: 27%;
+        height: 10%;
+        left: 22%;
+        margin-top: 20%;
+        position: relative;
+        min-width: 27%;
+        padding-top: 20px;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { /*INTERNET EXPLORER*/
+    #buttonSpaceHome{
+        display: inline-block;
+        width: 27%;
+        height: 10%;
+        left: 22%;
+        margin-top: 20%;
+        position: relative;
+        min-width: 27%;
+        padding-top: 30px;
+    }
+}
+
+@supports (-ms-ime-align:auto) { /*EDGE*/
+    #buttonSpaceHome{
+        display: inline-block;
+        width: 27%;
+        height: 10%;
+        left: 22%;
+        margin-top: 20%;
+        position: relative;
+        min-width: 27%;
+        padding-top: 20px;
+    }
+}
+
+/*Main styles for different resolutions*/
+@media (max-width: 1440px) {
+    #inlineBoxHomeImage{
+        width: 22%;
+        height: 22%;
+        margin-top: 6%;
+        float: right;
+        margin-right: 24%;
+    }
+    #buttonSpaceHome{
+        width: 34%;
+        left: 16%;
+        margin-top: 23%;
+    }
+    #textContext{
+        display: inline-block;
+        width: 22%;
+        height: 20%;
+        left: 22%;
+        top: 43%;
+        position: absolute;
+    }
+}
+
+@media (max-width: 1280px) {
+    #inlineBoxHomeImage{
+        width: 25%;
+        height: 25%;
+        margin-top: 5%;
+        float: right;
+        margin-right: 23%;
+    }
+    #buttonSpaceHome{
+        width: 38%;
+        left: 12%;
+        margin-top: 25%;
+    }
+    #textContext{
+        display: inline-block;
+        width: 20%;
+        height: 18%;
+        left: 19%;
+        top: 42%;
+        position: absolute;
+    }
+    #textContext .titleApp{
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    #textContext .contextApp{
+        font-size: 14px;
+        font-weight: 700;
+    }
+    #buttonSpaceHome > .loginButton {
+        float: left;
+        font-size: 1.3em;
+        width: 45%;
+    }
+
+    #buttonSpaceHome > .createButton{
+        font-size: 1.3em;
+        margin-left: 30px;
+        width: 45%;
+    }
+}
+
+@media (max-width: 1120px) {
+    #inlineBoxHomeImage{
+        width: 25%;
+        height: 25%;
+        margin-top: 7%;
+        float: right;
+        margin-right: 17%;
+    }
+
+    #textContext{
+        display: inline-block;
+        width: 32%;
+        height: 30%;
+        left: 17%;
+        top: 48%;
+        position: absolute;
+    }
+    #textContext .titleApp{
+        font-size: 34px;
+        font-weight: 600;
+    }
+    #textContext .contextApp{
+        font-size: 13px;
+        font-weight: 500;
+    }
+    #buttonSpaceHome{
+        width: 46%;
+        left: 10%;
+        margin-top: 25%;
+    }
+    #buttonSpaceHome > .loginButton {
+        float: left;
+        font-size: 1.1em;
+        width: 45%;
+    }
+
+    #buttonSpaceHome > .createButton{
+        font-size: 1.1em;
+        margin-left: 15px;
+        width: 45%;
+    }
+}
+
+@media (max-width: 840px) {
+    #inlineBoxHomeImage{
+        width: 25%;
+        height: 25%;
+        margin-top: 8%;
+        float: right;
+        margin-right: 15%;
+    }
+
+    #textContext{
+        display: inline-block;
+        width: 38%;
+        height: 38%;
+        left: 14%;
+        top: 47%;
+        position: absolute;
+    }
+    #textContext .titleApp{
+        font-size: 28px;
+        font-weight: 600;
+    }
+    #textContext .contextApp{
+        font-size: 13px;
+        font-weight: 500;
+    }
+    #buttonSpaceHome{
+        width: 48%;
+        left: 10%;
+        margin-top: 26%;
+    }
+    #buttonSpaceHome > .loginButton {
+        float: left;
+        font-size: 1.0em;
+        width: 45%;
+    }
+
+    #buttonSpaceHome > .createButton{
+        font-size: 1.0em;
+        margin-left: 15px;
+        width: 45%;
+    }
+}
+
+@media (max-width: 640px) {
+    #inlineBoxHomeImage{
+        width: 25%;
+        height: 25%;
+        margin-top: 14%;
+        float: right;
+        margin-right: 18%;
+    }
+
+    #textContext{
+        display: inline-block;
+        width: 30%;
+        height: 30%;
+        left: 14%;
+        top: 45%;
+        position: absolute;
+    }
+    #textContext .titleApp{
+        font-size: 22px;
+        font-weight: 600;
+    }
+    #textContext .contextApp{
+        font-size: 10px;
+        font-weight: 500;
+    }
+    #buttonSpaceHome{
+        width: 48%;
+        margin-top: 38%;
+        left: 6%;
+    }
+    #buttonSpaceHome > .loginButton {
+        float: left;
+        font-size: 0.7em;
+    }
+
+    #buttonSpaceHome > .createButton{
+        font-size: 0.6em;
+        margin-left: 12px;
+    }
+}
+
+@media (max-width: 500px){
+    #inlineBoxHomeImage{
+        width: 25%;
+        height: 25%;
+        margin-top: 19%;
+        float: right;
+        margin-right: 18%;
+    }
+    #buttonSpaceHome{
+        width: 48%;
+        margin-top: 44%;
+        left: 6%;
+    }
 }

@@ -28,10 +28,20 @@
         </ul>
     {% endif %}
     <div id="contentHome">
-        <img src="/static/users/img/geneExp.png" alt="Gene Expression" class="responsive">
+        <div id="textContext">
+            <p class="titleApp">imagePredict</p>
+            <p class="contextApp">
+                Divulga os teus modelos convolucionais,
+                e promove a sua eficiência, com a
+                funcionalidade de diagnóstico interativo
+            </p>
+        </div>
         <div id="buttonSpaceHome">
             <input class="loginButton" type="submit" value="Login" onclick="location.href='{% url 'users:login' %}'">
             <input class="createButton" type="submit" value="Create Account" onclick="location.href='{% url 'users:create' %}'">
+        </div>
+        <div id="inlineBoxHomeImage">
+            <img src="/static/users/img/geneExp.png" alt="Gene Expression" class="responsive">
         </div>
     </div>
 {% endblock %}
