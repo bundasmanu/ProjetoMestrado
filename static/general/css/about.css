@@ -1,0 +1,49 @@
+#containerAboutLinks{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.inlineLinks{
+    padding-bottom: 10px;
+    display: block;
+}
+
+.link a{
+    text-decoration: none;
+    color: #79aec8;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.link a:hover{
+    transition: all .3s ease-out; /*the transition effect is provided by the border_bottom that goes down when a href is activated in active a*/
+    color: #417690;
+    cursor: pointer;
+}
+
+/*ref: jquery active li element: https://stackoverflow.com/questions/31682531/jquery-style-the-other-li-element-by-cliking-li*/
+.active a{
+    padding-bottom: 15px;
+    border-bottom: 2px solid #417690;
+}
+
+.inlineLinks .link{
+    display: inline;
+    font-size: 40px;
+    color: white;
+    padding-left: 3vw;
+    padding-right: 4vw;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+}
+
+@media (max-width: 700px) {
+    .inlineLinks .link{
+        display: inline;
+        font-size: 30px;
+        color: white;
+        padding-left: 2vw;
+        padding-right: 4vw;
+    }
+}

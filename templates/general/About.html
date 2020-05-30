@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'general/base_layout.html' %}
+{% load static %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/general/css/about.css">
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <div id="containerAboutLinks">
+        <ul class="inlineLinks">
+            <li class="link active">
+                <a href="#" class="author">Autor</a>
+            </li>
+            <li class="link">
+                <a href="#" class="scope">Âmbito</a>
+            </li>
+            <li class="link">
+                <a href="#" class="methodology">Método</a>
+            </li>
+        </ul>
+        <div id="insertContent">
+            <div id="aboutMe">
+                <h3>Sobre Gustavo Almeida</h3>
+                <p>Gustavo Almeida é um finalista do Mestrado em Informática e Sistemas, leccionado pelo Instituto Superior de Engenharia de Coimbra.</p>
+                <p>Nos últimos anos tenho-me aperfeiçoado e demonstrado maior interesse, nas seguintes áreas: Machine Learning, Otimização e Desenvolvimento de Software.</p>
+                <p>Atualmente redido em Sever do Vouga (concelho do Distrito de Aveiro), e o meu tempo livre é dispendido a ouvir música, correr ou investigar novos conceitos emergentes</p>
+                <div id="referencesBlock">
+
+                </div>
+            </div>
+            <div id="aboutProject">
+                <h3>Sobre o Projeto</h3>
+                <p>Esta Plataforma foi desenvolvida, no âmbito da minha tese de mestrado.</p>
+                <p>A tese consiste na otimização de convolutional neural networks (CNN), recorrendo ao algoritmo de Swarm Intelligence, Particle Swarm Optimization (PSO).</p>
+                <p>No estudo foram consideradas 3 benchmarks: Breast Histopathology, Skin MNIST e Colorectal Histopathology.</p>
+                <p>Para cada um destes datasets, o PSO identificou a estrutura/parâmetros mais adequados para as seguintes arquiteturas convolucionais: AlexNet, VGGNet, ResNet e DenseNet</p>
+                <p>A plataforma abrange assim um âmbito mais genérico, permitindo aos utilizadores, a submissão e o acesso a modelos (criados em Tensorflow)
+                    criados para a resolução de um determinado problem.
+                </p>
+                <p>A plataforma permite ainda aos utilizadores, efetuar o diagnóstico de uma determinada amostra, recorrendo à utilização dos modelos
+                    disponíveis na Plataforma.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'general/js/aboutPageScripts.js' %}"></script>
+
+{% endblock %}
