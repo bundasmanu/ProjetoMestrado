@@ -38,6 +38,111 @@
     font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
 }
 
+#insertContent{
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    height: auto;
+    margin-top: 1vw;
+}
+
+#insertContent > #aboutMe, #insertContent > #aboutProject, #insertContent > #aboutMethodology{
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#aboutMe > h2, #aboutProject > h2, #aboutMethodology h2{
+    text-align: left; /*Align left*/
+    margin-top: 1vw; /*overrides specified value from extended templates*/
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Vivaldi", sans-serif;
+}
+
+#aboutMe > p , #aboutProject > p, #aboutMethodology > p{
+    text-align: justify;
+    font-size: 14px;
+}
+
+#aboutMe > h4{
+    text-align: left;
+    font-size: 18px;
+    margin-top: 0;
+    font-weight: 500;
+    font-family: 'Roboto', 'Noto', sans-serif;
+}
+
+#referencesBlock{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2vw;
+}
+
+#referencesBlock .githubRef, #referencesBlock .linkedinRef, #referencesBlock .mailRef{
+    margin-right: 1.5vw; /*if i need to put images on left, i need to use float: left;*/
+}
+
+#referencesBlock .githubRef:hover, #referencesBlock .linkedinRef:hover, #referencesBlock .mailRef:hover{
+   opacity: 0.7;
+}
+
+#referencesBlock .githubRef > img, #referencesBlock .linkedinRef > img{
+    width: 50px;
+    height: 50px;
+}
+
+#referencesBlock .mailRef > img{
+    width: 60px;
+    height: 50px;
+}
+
+#aboutMethodology > #modelsDimensions{
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    padding: 0 0;
+}
+
+#modelsDimensions #alexNet, #modelsDimensions #vggNet, #modelsDimensions #resNet, #modelsDimensions #denseNet{
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+}
+
+#alexDimensions li, #vggDimensions li, #resnetDimensions li, #densenetDimensions li{
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+}
+
+#arrowButton:after{
+    margin-left: -5px;
+    content: '\25BC';
+    cursor: pointer;
+}
+
+#alexDimensions > li, #vggDimensions > li, #resnetDimensions > li, #densenetDimensions > li{
+    list-style: none;
+}
+
+#alexDimensions > li:before, #vggDimensions > li:before, #resnetDimensions > li:before, #densenetDimensions > li:before{
+    content: '\f0fe'; /*font-awesome code icon*/
+    color: black;
+    margin-left: -15px; /*how apply list-style none, i need to override margin-left, because list-style none, deletes this properties*/
+    padding-right: 5px;
+    text-align: left;
+    font-family: FontAwesome;
+}
+
+.lastMethodologyParagraph{
+    padding-bottom: 1vw;
+}
+
 @media (max-width: 700px) {
     .inlineLinks .link{
         display: inline;

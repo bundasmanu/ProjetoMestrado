@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/static/general/css/about.css">
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block content %}
@@ -22,16 +23,25 @@
         </ul>
         <div id="insertContent">
             <div id="aboutMe">
-                <h3>Sobre Gustavo Almeida</h3>
+                <h2>Sobre o autor ...</h2>
                 <p>Gustavo Almeida é um finalista do Mestrado em Informática e Sistemas, leccionado pelo Instituto Superior de Engenharia de Coimbra.</p>
                 <p>Nos últimos anos tenho-me aperfeiçoado e demonstrado maior interesse, nas seguintes áreas: Machine Learning, Otimização e Desenvolvimento de Software.</p>
                 <p>Atualmente redido em Sever do Vouga (concelho do Distrito de Aveiro), e o meu tempo livre é dispendido a ouvir música, correr ou investigar novos conceitos emergentes</p>
+                <h4>Contactos:</h4>
                 <div id="referencesBlock">
-
+                    <a href="mailto:a21240005@isec.pt" class="mailRef">
+                        <img src="/static/general/img/webmail_icon.png" alt="mail">
+                    </a>
+                    <a href="https://github.com/bundasmanu" class="githubRef">
+                        <img src="/static/general/img/github_icon.png" alt="github">
+                    </a>
+                    <a href="https://www.linkedin.com/in/gustavo-almeida-bab13612b/" class="linkedinRef">
+                        <img src="/static/general/img/linkedin_icon.png" alt="linkedin">
+                    </a>
                 </div>
             </div>
             <div id="aboutProject">
-                <h3>Sobre o Projeto</h3>
+                <h2>Sobre o Projeto</h2>
                 <p>Esta Plataforma foi desenvolvida, no âmbito da minha tese de mestrado.</p>
                 <p>A tese consiste na otimização de convolutional neural networks (CNN), recorrendo ao algoritmo de Swarm Intelligence, Particle Swarm Optimization (PSO).</p>
                 <p>No estudo foram consideradas 3 benchmarks: Breast Histopathology, Skin MNIST e Colorectal Histopathology.</p>
@@ -41,6 +51,66 @@
                 </p>
                 <p>A plataforma permite ainda aos utilizadores, efetuar o diagnóstico de uma determinada amostra, recorrendo à utilização dos modelos
                     disponíveis na Plataforma.</p>
+            </div>
+            <div id="aboutMethodology">
+                <h2>Sobre a Metodologia</h2>
+                <p>Numa fase inicial, o autor realizou uma análise exploratória de cada uma das benchmarks em análise. Este estudo, ajudou o autor
+                    na compreensão dos dados referentes a cada um dos datasets. Permitiu ainda a identificação das principais limitações existentes, facilitando
+                    o processo de estipulação de técnicas de atenuação das limitações e consequente melhoria dos resultados.</p>
+                <p>Após a definição de todo o fluxo, de leitura e preparação dos dados (para cada benchmark), procedeu-se à construção customizada, dos
+                modelos convulucionais em estudo(e a utilizar no processo de classificação e otimização): AlexNet, VGGNet, ResNet e DenseNet.
+                Ou seja, o processo de construção de cada um destes modelos, permite ao utilizador criar uma estrutura e definição de
+                    parâmetros (apenas alguns) totalmente personalizada.
+                </p>
+                <ul id="modelsDimensions">
+                    <li id="alexNet">AlexNet
+                        <span id="arrowButton"></span>
+                        <ul id="alexDimensions">
+                            <li>Nº single conv layer</li>
+                            <li>Nº stack conv layers</li>
+                            <li>Nº initial filters</li>
+                            <li>Growth Rate</li>
+                            <li>Nº Dense Layers</li>
+                            <li>Nº neurons on Dense Layers</li>
+                            <li>Batch size</li>
+                        </ul>
+                    </li>
+                    <li id="vggNet">VGGNet
+                        <span id="arrowButton"></span>
+                        <ul id="vggDimensions">
+                            <li>Nº stack conv layers</li>
+                            <li>Nº initial filters</li>
+                            <li>Growth Rate</li>
+                            <li>Nº Dense Layers</li>
+                            <li>Nº neurons on Dense Layers</li>
+                            <li>Batch size</li>
+                        </ul>
+                    </li>
+                    <li id="resNet">ResNet
+                        <span id="arrowButton"></span>
+                        <ul id="resnetDimensions">
+                            <li>Nº convolutional blocks</li>
+                            <li>Nº building blocks in each conv block</li>
+                            <li>Nº initial filters</li>
+                            <li>Growth Rate</li>
+                            <li>Batch size</li>
+                        </ul>
+                    </li>
+                    <li id="denseNet">DenseNet
+                        <span id="arrowButton"></span>
+                        <ul id="densenetDimensions">
+                            <li>Nº Dense blocks</li>
+                            <li>Nº composite blocks in each block</li>
+                            <li>Nº initial filters</li>
+                            <li>Growth Rate</li>
+                            <li>Compression Rate</li>
+                            <li>Batch size</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="lastMethodologyParagraph">Por último, e para as três benchmarks em estudo, procedeu-se à otimização da arquitetura/hiperparâmetros mais adequados, para os 4 modelos
+                definidos atrás, e tendo em consideração cada um dos problemas a resolver. Sendo utilizado o algoritmo de otimização Particle Swarm Optimization,
+                na procura iterativa da solução que reúne melhor performance, com o menor custo possível (menor complexidade da rede).</p>
             </div>
         </div>
     </div>

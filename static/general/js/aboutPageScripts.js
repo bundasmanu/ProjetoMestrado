@@ -1,6 +1,7 @@
 function load() {
-    var aboutProj = document.getElementById('aboutProject');
-    aboutProj.style.display = "none";
+    var divs = getAboutDivs();
+    divs[1].style.display = "none"; /*aboutProject div*/
+    divs[2].style.display = "none"; /*aboutMethodology div*/
 }
 window.onload = load();
 
@@ -27,10 +28,19 @@ $('.link .scope').click(function () {
     setDisplayNoneOtherDivs(defNewList(values, 1));
 });
 
+$('.link .methodology').click(function () {
+    var values = getAboutDivs();
+    if (values[2].style.display === 'none'){
+        values[2].style.display = 'block';
+    }
+    setDisplayNoneOtherDivs(defNewList(values, 2));
+});
+
 function getAboutDivs(){
     $x = window.parent.document.getElementById("aboutMe");
     $y = window.parent.document.getElementById("aboutProject");
-    return [$x, $y]
+    $z = window.parent.document.getElementById("aboutMethodology");
+    return [$x, $y, $z]
 }
 
 function setDisplayNoneOtherDivs(values){
