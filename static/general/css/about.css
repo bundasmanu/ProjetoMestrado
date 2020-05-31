@@ -120,23 +120,26 @@
     font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
 }
 
-#arrowButton:after{
+.arrowButton:after{
     margin-left: -5px;
     content: '\25BC';
     cursor: pointer;
 }
 
-#alexDimensions > li, #vggDimensions > li, #resnetDimensions > li, #densenetDimensions > li{
+#alexDimensions > li, #vggDimensions > li, #resnetDimensions > li, #densenetDimensions > li{ /*li text style*/
     list-style: none;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Arial", sans-serif;
 }
 
-#alexDimensions > li:before, #vggDimensions > li:before, #resnetDimensions > li:before, #densenetDimensions > li:before{
+#alexDimensions > li:before, #vggDimensions > li:before, #resnetDimensions > li:before, #densenetDimensions > li:before{ /*icon before li style*/
     content: '\f0fe'; /*font-awesome code icon*/
     color: black;
     margin-left: -15px; /*how apply list-style none, i need to override margin-left, because list-style none, deletes this properties*/
     padding-right: 5px;
     text-align: left;
-    font-family: FontAwesome;
+    font-family: FontAwesome, sans-serif;
 }
 
 .lastMethodologyParagraph{

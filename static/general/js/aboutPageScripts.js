@@ -32,6 +32,7 @@ $('.link .methodology').click(function () {
     var values = getAboutDivs();
     if (values[2].style.display === 'none'){
         values[2].style.display = 'block';
+        disableAllDimensionsLists(); /*disable all lists from all models*/
     }
     setDisplayNoneOtherDivs(defNewList(values, 2));
 });
@@ -58,3 +59,62 @@ function defNewList(values, value){
     cloneArray.splice(value,1);
     return cloneArray;
 }
+
+/*functions that expand and collapse list of models dimensions optimization*/
+function disableAllDimensionsLists(){ /*load function used to disable display of all lists on methodology click*/
+    document.getElementById("alexDimensions").style.display = 'none';
+    document.getElementById("vggDimensions").style.display = 'none';
+    document.getElementById("resnetDimensions").style.display = 'none';
+    document.getElementById("densenetDimensions").style.display = 'none';
+}
+
+/*logic of span icon click --> expand and collapse*/
+var span_arrow_buttons = document.getElementsByClassName('arrowButton');
+
+span_arrow_buttons[0].addEventListener('click', function () { /*alexNet ul*/
+
+    var parent =  span_arrow_buttons[0].closest('li');
+    var children_click_ul = parent.getElementsByTagName('ul')[0];/*returns list, i need this, even if it only returns one element*/
+    if (children_click_ul.style.display === 'none'){ /*if is not opened, expand*/
+        children_click_ul.style.display = 'block';
+    }
+    else{ /*if it's already opened, then i collapse the ul*/
+        children_click_ul.style.display = 'none';
+    }
+});
+
+span_arrow_buttons[1].addEventListener('click', function () { /*vggNet ul*/
+
+    var parent =  span_arrow_buttons[1].closest('li');
+    var children_click_ul = parent.getElementsByTagName('ul')[0];/*returns list, i need this, even if it only returns one element*/
+    if (children_click_ul.style.display === 'none'){ /*if is not opened, expand*/
+        children_click_ul.style.display = 'block';
+    }
+    else{ /*if it's already opened, then i collapse the ul*/
+        children_click_ul.style.display = 'none';
+    }
+});
+
+span_arrow_buttons[2].addEventListener('click', function () { /*resnet ul*/
+
+    var parent =  span_arrow_buttons[2].closest('li');
+    var children_click_ul = parent.getElementsByTagName('ul')[0];/*returns list, i need this, even if it only returns one element*/
+    if (children_click_ul.style.display === 'none'){ /*if is not opened, expand*/
+        children_click_ul.style.display = 'block';
+    }
+    else{ /*if it's already opened, then i collapse the ul*/
+        children_click_ul.style.display = 'none';
+    }
+});
+
+span_arrow_buttons[3].addEventListener('click', function () { /*densenet ul*/
+
+    var parent =  span_arrow_buttons[3].closest('li');
+    var children_click_ul = parent.getElementsByTagName('ul')[0];/*returns list, i need this, even if it only returns one element*/
+    if (children_click_ul.style.display === 'none'){ /*if is not opened, expand*/
+        children_click_ul.style.display = 'block';
+    }
+    else{ /*if it's already opened, then i collapse the ul*/
+        children_click_ul.style.display = 'none';
+    }
+});
