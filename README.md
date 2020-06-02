@@ -143,6 +143,14 @@ Breast Histopathology Images:
   - Restantes modelos melhorados, isto é, a definição das suas arquiteturas e sua consequente otimização. ResNet em conformidade com o paper original (ResNet 18 e 34);
   - Melhoria de pequenos aspetos arquiteturais dos modelos AlexNet e VGGNet - mediante os seus papers também (AlexNet teve uma ligeira diferença no 1º dataset - dado o seu menor input (1º conv layer com stride=1, e não 2, para não limitar tanto a definição da arquitetura);
   - Projeto Django melhorado. Adição de modelos - Dataset e CNN models (relação 1-N). Criação de vistas e templates para dar suporte a criação de dataset, visualização de dataset (e aspetos relacionados com modelos), alteração de dataset;
+ 
+ ## Atualização 02/06:
+  - Melhoria na definição das arquiteturas, em conformidade com o conteúdo original;
+  - Criação de um maior nº de templates na plataforma;
+  - Layout geral da aplicação definido (responsivo);
+  - Criação de Fluxos, a explicar a abordagem aplicada;
+  - Definição dos layout's de CRUD definidos (à espera de confirmação);
+  - Realização de apresentação do trabalho desenvolvido e a realizar;
 
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
