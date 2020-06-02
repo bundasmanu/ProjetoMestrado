@@ -10,20 +10,22 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('datasets', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Dataset',
+            name='CNNModel',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('n_classes', models.IntegerField(default=None)),
-                ('n_samples', models.IntegerField(default=None)),
-                ('dataset_path', models.CharField(max_length=500)),
-                ('link_info', models.URLField(max_length=2000, null=True)),
+                ('name', models.CharField(default=None, max_length=100)),
+                ('normalize_mean', models.FloatField(default=None)),
+                ('normalize_std', models.FloatField(default=None)),
                 ('creation_date', models.DateField(auto_now_add=True)),
+                ('output_dict', models.CharField(default=None, max_length=2000, null=True)),
+                ('model_path', models.CharField(default=None, max_length=500)),
+                ('dataset_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.DATASET_MODEL)),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

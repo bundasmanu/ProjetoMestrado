@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
-from ..models import Dataset, CNNModel
-from django.db.models import Count, Subquery
+from ..models import Dataset
+from django.db.models import Count
 from django.contrib.auth.mixins import LoginRequiredMixin
 import expDjango.settings as settings
 

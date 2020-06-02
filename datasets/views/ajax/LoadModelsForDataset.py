@@ -1,5 +1,6 @@
 from django.views.generic.base import TemplateView
-from ...models import CNNModel, Dataset
+from modelos.models import CNNModel
+
 
 class LoadModelsForDataset(TemplateView):
 

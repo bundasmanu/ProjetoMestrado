@@ -1,1 +1,1 @@
-from datasets.models import Dataset, CNNModel
+from datasets.models import Dataset

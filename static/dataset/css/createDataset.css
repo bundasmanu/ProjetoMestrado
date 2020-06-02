@@ -36,7 +36,7 @@ input{
     vertical-align: middle;
 }
 
-#nameDataset, #meanDataset, #stdDataset{
+#nameDataset, #nClasses, #nSamples, #linkInfo{
     display: inline-block;
     height: auto;
     width:100%;
@@ -45,7 +45,7 @@ input{
     vertical-align: middle;
 }
 
-#nameDataset > label, #meanDataset > label, #stdDataset > label{
+#nameDataset > label, #nClasses > label, #nSamples > label, #linkInfo > label{
     color: #666;
     display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
     vertical-align: middle;

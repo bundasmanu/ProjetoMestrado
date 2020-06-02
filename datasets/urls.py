@@ -8,6 +8,6 @@ urlpatterns = [
     path('create', DatasetCreateView.DatasetCreateView.as_view(), name='criaDataset'),
     path('list', ListOfDatasets.ListOfDatasets.as_view(), name='listaDatasets'),
     path('list/<int:pk>', ListSpecificDataset.ListSpecificDataset.as_view(), name="ListaDatasetByID"),
-    path('predict', PredictView.PredictView.as_view(), name='predict'),
+    #path('predict', PredictView.PredictView.as_view(), name='predict'),
     path('ajax/loadmodel', LoadModelsForDataset.LoadModelsForDataset.as_view(), name="ajaxModelsLoad"),
 ]

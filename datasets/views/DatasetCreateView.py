@@ -25,11 +25,13 @@ class DatasetCreateView(CreateView):
         '''
 
         try:
+
             return super(DatasetCreateView, self).form_valid(form)
         except:
             raise
 
     def form_invalid(self, form):
+        print(form.errors)
         form = DatasetCreationForm.DatasetCreationForm(request=self.request) # reset form --> reset errors to only appear once
         return super(DatasetCreateView, self).form_invalid(form)
 

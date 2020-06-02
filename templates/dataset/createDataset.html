@@ -17,13 +17,17 @@
                     <label>{{ form.name.label_tag }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
                     {{ form.name }}
                 </div>
-                <div id="meanDataset">
-                    <label>{{ "Valor Médio (imagens Treino):" }}</label>
-                    {{ form.normalize_mean }}
+                <div id="nClasses">
+                    <label>{{ form.n_classes.label_tag }}</label>
+                    {{ form.n_classes }}
                 </div>
-                <div id="stdDataset">
-                    <label>{{ "Desvio Padrão (imagens Treino):" }}</label>
-                    {{ form.normalize_std }}
+                <div id="nSamples">
+                    <label>{{ form.n_samples.label_tag }}</label>
+                    {{ form.n_samples }}
+                </div>
+                <div id="linkInfo">
+                    <label>{{ form.link_info.label_tag }}</label>
+                    {{ form.link_info }}
                 </div>
                 <div id="divBtnCriaDataset">
                     <input type="submit" class="btnCriaDataset" value="Cria Dataset">

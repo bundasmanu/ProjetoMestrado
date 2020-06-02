@@ -2,6 +2,8 @@ from django.forms import ModelForm
 from ..models import Dataset
 from expDjango import config
 from django.contrib import messages
+from expDjango import settings
+import os
 
 class DatasetCreationForm(ModelForm):
 
@@ -11,7 +13,21 @@ class DatasetCreationForm(ModelForm):
 
     class Meta:
         model = Dataset.Dataset
-        exclude = ('id', ) # tuple
+        exclude = ('id', 'creation_date', 'dataset_path','user_id') # tuple
+
+    def save(self, commit=True):
+
+        try:
+            dataset = super(DatasetCreationForm, self).save(commit=False)
+            dataset.user_id = self.request.user
+            str_path = os.path.join(settings.DATASET_PATH, dataset.name) # get path string
+            path = os.mkdir(str_path) # create path
+            dataset.dataset_path = str_path # associate dataset_path with created model path
+            if commit == True:
+                dataset.save()
+            return dataset
+        except:
+            raise
 
     def clean_name(self):
 

@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'expDjango',
     'users',
-    'datasets'
+    'datasets',
+    'modelos'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
+DATASET_MODEL = 'datasets.Dataset'
 
 #REF --> https://docs.djangoproject.com/en/3.0/ref/settings/
 LOGOUT_REDIRECT_URL = config.LOGOUT_REDIRECT_URL #URL TO HOMEPAGE, AFTER A LOGOUT
@@ -143,3 +145,5 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cd
 
 # folder that aggregates upload users images for predict
 IMAGES_UPLOAD_ROOT = os.path.join(STATIC_ROOT, "predict/img")
+
+DATASET_PATH = os.path.join(os.path.dirname(BASE_DIR), "Projeto_Mestrado/static/dataset/models")
