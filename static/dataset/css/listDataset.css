@@ -10,6 +10,7 @@
     width: 98%;
     height: auto;
     margin: 0 auto;
+    overflow: hidden; /*preventing scroll problem of table*/
 }
 
 #datasetsBox{
@@ -21,13 +22,15 @@
 #tabelaDatasets{
     border-spacing: 0 1px;
     border-collapse: separate;
+    width: auto;
+
 }
 
 #datasetsBox > #tabelaDatasets th{
     background-color: #79aec8;
     color: white;
     font-size: 12px;
-    padding: 12px;
+    padding: 0.9vw;
     height: auto;
     text-align: center;
 }
@@ -52,7 +55,7 @@
     display: block;
     height: auto;
     width: 10%;
-    padding-left: 12px;
+    padding-left: 10px;
     margin-top: 2%;
 }
 
@@ -136,9 +139,23 @@ span > p{
     }
 }
 
+@media (max-width: 1024px) {
+    #datasetsBox > #tabelaDatasets th{
+        font-size: 11px;
+        padding: 0.6vw;
+    }
+    #tabelaDatasets > tr, td{
+        font-size: 12px !important;
+    }
+}
+
 @media (max-width: 780px) {
     #buttonOptions{
         width:40%;
+    }
+    .tooltip .tooltiptext {
+        width: 70px;
+        font-size: 11px;
     }
 }
 

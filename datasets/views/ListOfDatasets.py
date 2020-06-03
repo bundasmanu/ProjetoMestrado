@@ -10,7 +10,6 @@ class ListOfDatasets(ListView, LoginRequiredMixin):
     paginate_by = 6
     template_name = 'dataset/listDatasets.html'
     login_url = settings.LOGOUT_REDIRECT_URL
-    ordering = ['name']
 
     # concatenate queryset's link: https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view
     def get_queryset(self):

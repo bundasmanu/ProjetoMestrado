@@ -16,21 +16,18 @@
                 <table id="tabelaDatasets">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>
+                            <th>Edit/Drop</th>
+                            <th>Nome</th>
                             <th>Nº Classes</th>
                             <th>Nº Amostras</th>
                             <th>Data de Criação</th>
-                            <th>Nº modelos associados</th>
+                            <th>Nº modelos</th>
                         </tr>
                     </thead>
-                    <script type="text/javascript">
-                        var counter = 0;
-                    </script>
                     {% for dataset in object_list %}
                         <tr>
                             <td>
-
+                                {% include 'general/individualCheckBoxTable.html' %}
                             </td>
                             <td>
                                 <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>

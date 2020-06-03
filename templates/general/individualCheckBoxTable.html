@@ -1,0 +1,13 @@
+{% extends 'general/filterToolbarGeneric.html' %}
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="/static/general/css/checkBoxInTable.css">
+{% endblock %}
+{% block filterToolBar %}
+    {% block applyFilterElement %}
+        <label class="inlineCheckBoxLabelFilter">
+            <input type="checkbox">
+            <span class="customCheckBoxInTable"></span>
+        </label>
+    {% endblock %}
+
+{% endblock %}
