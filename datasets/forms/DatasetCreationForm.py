@@ -21,7 +21,7 @@ class DatasetCreationForm(ModelForm):
             dataset = super(DatasetCreationForm, self).save(commit=False)
             dataset.user_id = self.request.user
             str_path = os.path.join(settings.DATASET_PATH, dataset.name) # get path string
-            path = os.mkdir(str_path) # create path
+            os.mkdir(str_path) # create path --> no return, if can't create raises exception (no problem here, because clean_name checks name validation)
             dataset.dataset_path = str_path # associate dataset_path with created model path
             if commit == True:
                 dataset.save()

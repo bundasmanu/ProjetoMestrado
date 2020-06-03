@@ -1,6 +1,7 @@
 {% extends 'users/InfoUser.html' %}
 {% load i18n %}
 {% load staticfiles %}
+{% load dataset_extras %} <!-- dataset extras, with index customization-->
 {% block extrastyle %}
     {{ block.super }}
     <!--<link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">-->
@@ -17,56 +18,48 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Normalized Mean</th>
-                            <th>Normalized STD</th>
-                            <th>Nº CNN Models</th>
+                            <th>Nº Classes</th>
+                            <th>Nº Amostras</th>
+                            <th>Data de Criação</th>
+                            <th>Nº modelos associados</th>
                         </tr>
                     </thead>
-                    <script>
+                    <script type="text/javascript">
                         var counter = 0;
                     </script>
                     {% for dataset in object_list %}
                         <tr>
                             <td>
-                                {{ dataset.id }}
+
                             </td>
                             <td>
                                 <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>
                             </td>
                             <td>
-                                {{ dataset.normalize_mean }}
+                                {{ dataset.n_classes }}
                             </td>
                             <td>
-                                {{ dataset.normalize_std }}
+                                {{ dataset.n_samples }}
+                            </td>
+                            <td>
+                                {{ dataset.creation_date }}
                             </td>
                             <td>
                                 <div class="tooltip">
-                                    {% for n_model in number_models %}
-                                        {% if n_model.id  == dataset.id %}
-                                            {{ n_model.numbermodels }}
-                                        {% endif %}
-                                    {% endfor %}
+                                    {{ number_models | index:forloop.counter0 | getattr:"numbermodels"}}
                                     <span class="tooltiptext">
-                                        <script type="text/javascript">
-                                            var x = 0;
-                                        </script>
-                                        {% for model in models %}
-                                            {% if model.id == dataset.id %}
-                                                {% if model.cnnmodel__name != None %}
-                                                    <p>{{ model.cnnmodel__name }}</p>
-                                                    <script type="text/javascript">
-                                                        x = 1;
-                                                    </script>
-                                                {% endif %}
-                                            {% endif %}
-                                        {% endfor %}
+                                        {% define number_models forloop.counter0 "numbermodels" as n_models %}
+                                        {% define_single_var forloop.counter0 as counter %}
+                                        {% define_int counter n_models as increment %}
+                                        {% filter_range counter increment as n_models_by_dataset %}
+                                        {% if n_models != 0 %}
+                                            {% for i in n_models_by_dataset %}
+                                                <p>{{ models | index:i | getattrfilterDict:"cnnmodel__name"}}</p>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p>Nenhum</p>
+                                        {% endif %}
                                     </span>
-                                    <script type="text/javascript">
-                                        if (x === 0){
-                                            var span_class = document.getElementsByClassName('tooltiptext');
-                                            span_class[{{ forloop.counter0 }}].innerHTML = "Nenhum" ;
-                                        }
-                                    </script>
                                 </div>
                             </td>
                         </tr>
@@ -80,8 +73,8 @@
                 {% include 'general/pagination.html' %}
             {% endblock %}
             </div>
-            <div id="buttonOptions">
-                <a href="{% url 'datasets:criaDataset' %}" class="criaDataset">Criar Novo</a>
-            </div>
+{#            <div id="buttonOptions">#}
+{#                <a href="{% url 'datasets:criaDataset' %}" class="criaDataset">Criar Novo</a>#}
+{#            </div>#}
         </div>
 {% endblock %}

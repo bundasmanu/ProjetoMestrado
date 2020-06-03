@@ -7,15 +7,14 @@ import expDjango.settings as settings
 class ListOfDatasets(ListView, LoginRequiredMixin):
 
     model = Dataset.Dataset
-    paginate_by = 8
+    paginate_by = 6
     template_name = 'dataset/listDatasets.html'
     login_url = settings.LOGOUT_REDIRECT_URL
     ordering = ['name']
 
     # concatenate queryset's link: https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view
     def get_queryset(self):
-        datasets = Dataset.Dataset.objects.all().values('name',
-                                                                'normalize_std', 'normalize_mean', 'id')\
+        datasets = Dataset.Dataset.objects.all().values('name', 'n_classes', 'n_samples', 'creation_date', 'id')\
                                                                 .order_by('id').distinct('id')
 
         return datasets
