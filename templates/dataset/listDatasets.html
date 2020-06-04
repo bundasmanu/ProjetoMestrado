@@ -1,11 +1,14 @@
 {% extends 'users/InfoUser.html' %}
 {% load i18n %}
 {% load staticfiles %}
+{% load static %}
 {% load dataset_extras %} <!-- dataset extras, with index customization-->
 {% block extrastyle %}
     {{ block.super }}
     <!--<link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">-->
     <link rel="stylesheet" type="text/css" href="/static/dataset/css/listDataset.css">
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 {% endblock %}
 {% block content %}
     <div id="relativeContainer">
@@ -27,7 +30,9 @@
                     {% for dataset in object_list %}
                         <tr>
                             <td>
-                                {% include 'general/individualCheckBoxTable.html' %}
+                                {% if user_id == dataset.user_id %}
+                                    {% include 'general/individualCheckBoxTable.html' %}
+                                {% endif %}
                             </td>
                             <td>
                                 <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>
@@ -43,13 +48,12 @@
                             </td>
                             <td>
                                 <div class="tooltip">
-                                    {{ number_models | index:forloop.counter0 | getattr:"numbermodels"}}
+                                    {{ dataset.numbermodels}}
                                     <span class="tooltiptext">
-                                        {% define number_models forloop.counter0 "numbermodels" as n_models %}
                                         {% define_single_var forloop.counter0 as counter %}
-                                        {% define_int counter n_models as increment %}
+                                        {% define_int counter dataset.numbermodels as increment %}
                                         {% filter_range counter increment as n_models_by_dataset %}
-                                        {% if n_models != 0 %}
+                                        {% if dataset.numbermodels != 0 %}
                                             {% for i in n_models_by_dataset %}
                                                 <p>{{ models | index:i | getattrfilterDict:"cnnmodel__name"}}</p>
                                             {% endfor %}
@@ -74,4 +78,13 @@
 {#                <a href="{% url 'datasets:criaDataset' %}" class="criaDataset">Criar Novo</a>#}
 {#            </div>#}
         </div>
+
+        <!-- Prior definition of variables to pass to js file-->
+        <script>
+            var user_id = {{ user_id }};
+        </script>
+
+        <!-- Call Javascript file -->
+        <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
+
 {% endblock %}

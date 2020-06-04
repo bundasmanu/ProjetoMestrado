@@ -1,4 +1,4 @@
-.inlineCheckBoxLabelFilter{
+.inlineCheckBoxLabelFilter2{
     font-size: 14px;
     color: #666666;
     font-weight: 500;
@@ -8,13 +8,13 @@
     display: inline-block;
 }
 
-.inlineCheckBoxLabelFilter input{
+.inlineCheckBoxLabelFilter2 input{
     opacity: 0;
     height: 0; /*retrieve space of original checkbox*/
     width: 0; /*retrieve space of original checkbox*/
 }
 
-.inlineCheckBoxLabelFilter .customCheckBoxInTable{
+.inlineCheckBoxLabelFilter2 .customCheckBoxInTable2{
     display: inline-block;
     margin-left: 2px;
     height: 14px;
@@ -26,7 +26,7 @@
     vertical-align: middle;
 }
 
-.inlineCheckBoxLabelFilter .customCheckBoxInTable::after{
+.inlineCheckBoxLabelFilter2 .customCheckBoxInTable2::after{
     content: "";
     height: 0;
     opacity: 1;
@@ -39,7 +39,7 @@
     vertical-align: middle;
 }
 
-.inlineCheckBoxLabelFilter input:checked ~ .customCheckBoxInTable{
+.inlineCheckBoxLabelFilter2 input:checked ~ .customCheckBoxInTable2{
     border-radius: 5px;
     opacity: 1;
     border: 2px solid black;
@@ -49,7 +49,7 @@
     vertical-align: middle;
 }
 
-.inlineCheckBoxLabelFilter input:checked ~ .customCheckBoxInTable::after{
+.inlineCheckBoxLabelFilter2 input:checked ~ .customCheckBoxInTable2::after{
     content: "\2718";
     font-size: 15px;
     background: transparent;
