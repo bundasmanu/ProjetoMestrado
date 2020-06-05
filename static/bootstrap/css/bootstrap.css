@@ -1470,8 +1470,8 @@ input[type="button"].btn-block {
   background-color: #000000;
 }
 .modal-backdrop.fade {
-  filter: alpha(opacity=0);
-  opacity: 0;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
 }
 .modal-backdrop.in {
   filter: alpha(opacity=50);

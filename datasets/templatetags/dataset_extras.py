@@ -14,7 +14,6 @@ def define_single_var(var): # define variable from template: usage {% define num
 
 @register.filter
 def index(indexable, i): # get specific object in a list, passing it's index, usage: {{ number_models | index: forloop.counter0 }}
-    print(type(indexable[i]))
     return indexable[i]
 
 @register.filter

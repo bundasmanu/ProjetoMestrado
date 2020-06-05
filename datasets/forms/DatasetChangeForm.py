@@ -5,4 +5,4 @@ class DatasetChangeForm(ModelForm):
 
     class Meta:
         model = Dataset.Dataset
-        exclude = ('id',)  # tuple
+        exclude = ('id', )  # tuple

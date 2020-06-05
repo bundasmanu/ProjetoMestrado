@@ -1,15 +1,17 @@
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from datasets.forms import DatasetCreationForm
 from datasets.models import Dataset
 from django.urls import reverse
 from django.contrib import messages
-from expDjango import config
+from expDjango import config, settings
 
-class DatasetCreateView(CreateView):
+class DatasetCreateView(CreateView, LoginRequiredMixin):
 
     form_class = DatasetCreationForm.DatasetCreationForm
     model = Dataset.Dataset
     template_name = 'dataset/createDataset.html' # need to complement
+    login_url = settings.LOGOUT_REDIRECT_URL
 
     def get_form_kwargs(self, *args, **kwargs):
         form_args = super(DatasetCreateView, self).get_form_kwargs(*args, **kwargs)

@@ -1,8 +1,5 @@
 {% load static %}
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="{% static "general/js/alertBox.js"%}"></script>
-<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+
 {% block extrastyle %}
     <link rel="stylesheet" type="text/css" href="/static/general/css/filterToolbar.css">
 {% endblock %}
@@ -23,13 +20,13 @@
 
         {% block changeFilter %}
             <div id="changeFilterOption">
-                <a href="{{ linkChange }}" class="linkAlteraFiltro">Alterar</a>
+                <a href="#" class="linkAlteraFiltro">Alterar</a>
             </div>
         {% endblock %}
 
         {% block deleteFilter %}
             <div id="deleteFilterOption">
-                <a href="#" onclick="confirmDialog('Pretende mesmo apagar')" class="linkApagaFiltro">Apagar</a>
+                <a href="#" class="linkApagaFiltro">Apagar</a>
             </div>
         {% endblock %}
 

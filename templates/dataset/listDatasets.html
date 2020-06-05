@@ -7,8 +7,11 @@
     {{ block.super }}
     <!--<link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">-->
     <link rel="stylesheet" type="text/css" href="/static/dataset/css/listDataset.css">
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type='text/javascript' src='/static/dependencies/js/http_ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.js'></script>
+    <script src="/static/dependencies/js/http_code.jquery.com_jquery-3.3.1.js"></script>
+    <script src="/static/dependencies/js/http_cdn.jsdelivr.net_npm_js-cookie@rc_dist_js.cookie.js"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
 {% endblock %}
 {% block content %}
     <div id="relativeContainer">
@@ -34,6 +37,7 @@
                                     {% include 'general/individualCheckBoxTable.html' %}
                                 {% endif %}
                             </td>
+                            <td style="display: none">{{ dataset.id }}</td> <!--i needt this to pass to permit to make other operations-->
                             <td>
                                 <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>
                             </td>
@@ -63,12 +67,18 @@
                                     </span>
                                 </div>
                             </td>
+                            <td class="deleteLinkDatasetById" style="display: none">
+                                <a href="{% url 'datasets:deleteDatasetByID' pk=dataset.id %}"></a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
             </div>
             {% block alertBox %}
                 {% include 'general/alertBoxConfirmation.html' %}
+            {% endblock %}
+            {% block warningBox %}
+                {% include 'general/alertBoxWarning.html' %}
             {% endblock %}
             {% block pagination %}
                 {% include 'general/pagination.html' %}

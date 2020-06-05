@@ -1,0 +1,7 @@
+<form id="deleteDatasetForm" method="post" style="display: none">
+    {% csrf_token %}
+    <div id="divWithDatasetID">{{ obj.id}}</div>
+    <div id="divBtnCriaDataset">
+        <input type="submit" class="btnCriaDataset" value="Cria Dataset">
+    </div>
+</form>
