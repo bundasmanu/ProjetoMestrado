@@ -70,7 +70,7 @@ function check_exists_checkboxes_actived(element){ /*clean of activated checkbox
 /*modals usage for CRUD operations, edit and delete dataset's*/
 
 $('.linkApagaFiltro').click(function() { /*click class of a href delete button*/
-    exist_one_checkbox_activated = canUserProcessOperation(); /*check if exists a checkbox activated (can only exist one at a time, events have already been defined to respond to this)*/
+    var exist_one_checkbox_activated = canUserProcessOperation(); /*check if exists a checkbox activated (can only exist one at a time, events have already been defined to respond to this)*/
     if (exist_one_checkbox_activated === false){
         warningDialog('Tem de seleccionar um dataset primeiro');
     }
@@ -78,14 +78,6 @@ $('.linkApagaFiltro').click(function() { /*click class of a href delete button*/
         confirmDialogDelete('Pretende mesmo apagar?');
     }
 
-});
-
-$('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
-
-    exist_one_checkbox_activated = canUserProcessOperation(); /*check if exists a checkbox activated (can only exist one at a time, events have already been defined to respond to this)*/
-    if (exist_one_checkbox_activated === false){ /*if doesn't exists, then i need to create a modal that displays a warning to user*/
-        warningDialog('Tem de seleccionar um dataset primeiro');
-    }
 });
 
 function canUserProcessOperation() { /*this function checks whether the user can edit or change a dataset. That is, it checks if a user has selected a dataset, if he can go ahead, if not, an alert message appears */
@@ -134,7 +126,10 @@ function warningDialog(message){
 
 function applyLogicDeleteDataset(){
 
+    var exists_pagination_before = document.getElementById("pagination"); /*check if exists pagination before AJAX call*/
+
     var index_selected_dataset = getSelectedOptionToEdit(); /*id to delete from database*/
+
     if (index_selected_dataset !== -1) { /*if return numeric index*/
         var link_by_id = getLinkOptionByID(1, index_selected_dataset);
 
@@ -143,10 +138,13 @@ function applyLogicDeleteDataset(){
             type: 'POST',
             url: link_by_id,
             success: function (res) {
-                window.location.reload(true);
-            },
-            error: function (res) {
-                alert('Erro');
+
+                if (exists_pagination_before !== null){
+                    window.location.href = '/dataset/list';
+                }
+                else{ /*no pagination before delete, and i don't have preocupations here, i only need to reload page*/
+                    window.location.reload(true);
+                }
             }
         });
     }
@@ -177,13 +175,35 @@ function getSelectedOptionToEdit(){ /*this function get's the id of dataset to e
 
 function getLinkOptionByID(option, index){ /*this function presents the logic to get link of clicked dataset --> option parameter 0: edit and 1:delete*/
 
+    var td_element_with_url_datasetID = undefined;
     if (option === 0){ /*edit*/
-
+        td_element_with_url_datasetID = document.getElementsByClassName("changeLinkDatasetById")[index];
     }
     else{ /*delete*/
-        var td_element_with_url_datasetID_delete = document.getElementsByClassName("deleteLinkDatasetById")[index];
-        var link_dataset_delete_id = td_element_with_url_datasetID_delete.getElementsByTagName("a")[0];
-        return link_dataset_delete_id.getAttribute("href");
+        td_element_with_url_datasetID = document.getElementsByClassName("deleteLinkDatasetById")[index];
     }
-
+    var link_dataset_delete_id = td_element_with_url_datasetID.getElementsByTagName("a")[0];
+    return link_dataset_delete_id.getAttribute("href");
 }
+
+/*logic edit dataset*/
+
+$('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
+
+    var exist_one_checkbox_activated = canUserProcessOperation(); /*check if exists a checkbox activated (can only exist one at a time, events have already been defined to respond to this)*/
+
+    if (exist_one_checkbox_activated === false){ /*if doesn't exists, then i need to create a modal that displays a warning to user*/
+        warningDialog('Tem de seleccionar um dataset primeiro');
+    }
+    else{ /*if user selects one checkbox, can proceed to edit that dataset*/
+        var edit_dataset_button = document.getElementById("changeFilterOption");
+        if (edit_dataset_button !== undefined){ /*if exists (exists, i made this only to safety), i need to change his href url*/
+
+            var index_selected_dataset = getSelectedOptionToEdit(); /* get index of select checkbox row*/
+
+            var link_change_dataset = getLinkOptionByID(option=0, index_selected_dataset); /*get link to redirect*/
+
+            window.location.href = link_change_dataset;
+        }
+    }
+});

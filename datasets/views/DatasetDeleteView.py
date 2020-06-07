@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from ..models import Dataset
 import json
 from expDjango import settings
+from django.contrib import messages
 
 class DatasetDeleteView(DeleteView, LoginRequiredMixin):
     model = Dataset.Dataset
@@ -16,6 +17,10 @@ class DatasetDeleteView(DeleteView, LoginRequiredMixin):
         return queryset.filter(id=id_user_to_delete)
 
     def delete(self, request, *args, **kwargs):
-        self.get_object().delete()
-        delete_sucess = {'sucess' : 'ok'}
-        return HttpResponse(json.dumps(delete_sucess), content_type='application/json')
+        try:
+            self.get_object().delete()
+            delete_sucess = {'sucess' : 'ok'}
+            messages.success(request, "Dataset eliminado com sucesso") # add success message to listDataset page, after success delete of dataset
+            return HttpResponse(json.dumps(delete_sucess), content_type='application/json')
+        except:
+            messages.error(request, "Erro ao eliminar o dataset")

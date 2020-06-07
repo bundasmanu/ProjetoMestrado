@@ -70,6 +70,9 @@
                             <td class="deleteLinkDatasetById" style="display: none">
                                 <a href="{% url 'datasets:deleteDatasetByID' pk=dataset.id %}"></a>
                             </td>
+                            <td class="changeLinkDatasetById" style="display: none">
+                                <a href="{% url 'datasets:changeDatasetByID' pk=dataset.id %}"></a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -96,5 +99,6 @@
 
         <!-- Call Javascript file -->
         <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
+        <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
 
 {% endblock %}

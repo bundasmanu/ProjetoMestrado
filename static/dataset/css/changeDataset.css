@@ -1,29 +1,29 @@
-#ContainerPrincipal{
+#changeDatasetContainerBox{
     display: block;
     width: 98%;
     height: auto;
     margin: 0 auto; /*CENTER*/
 }
 
-#criaDatasetBar{
+#changeDatasetBar{
     background-color: #79aec8;
     margin: 0; /*SAME WIDTH OF PARENT*/
 }
 
-#criaDatasetBar > h2{
+#changeDatasetBar > h2{
     font-size: 16px;
     font-weight: lighter;
     color: white;
     padding: 10px 10px;
 }
 
-#formDiv{
+#changeDatasetBox{
     display: block;
     width: 40%;
     height: auto;
 }
 
-.criaDatasetForm{
+#changeDatasetForm{
     display: block;
     width: 100%; /*ALL CONTENT OF PARENT*/
     height: auto;
@@ -36,7 +36,7 @@ input{
     vertical-align: middle;
 }
 
-#nameDataset, #nClasses, #nSamples, #linkInfo{
+#changeDatasetNameBox, #changeDatasetN_ClassesBox, #changeDatasetN_SamplesBox, #changeDatasetLink_infoBox{
     display: inline-block;
     height: auto;
     width:100%;
@@ -45,63 +45,62 @@ input{
     vertical-align: middle;
 }
 
-#nameDataset > label, #nClasses > label, #nSamples > label, #linkInfo > label{
+#changeDatasetNameBox > label, #changeDatasetN_ClassesBox > label, #changeDatasetN_SamplesBox > label, #changeDatasetLink_infoBox > label{
     color: #666;
     display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
     vertical-align: middle;
     width:28%;
 }
 
- #linkInfo > input{
+ #changeDatasetLink_infoBox > input{
      width: 280px;
      min-width: 280px;
  }
 
-
-#divBtnCriaDataset{
+#changeSubmitButtonBox{
     display: block;
     margin: 0 auto;
     width: 100%;
 }
 
-.btnCriaDataset{
+.changeDatasetSubmitButton{
     display: block;
     margin-top: 4%;
     width: 25%;
 }
 
 @media (max-width: 900px) { /*RESPONSIVE DIV'S WHEN WIDTH IS LOW*/
-    #nameDataset, #nClasses, #nSamples, #linkInfo{
+    #changeDatasetNameBox, #changeDatasetN_ClassesBox, #changeDatasetN_SamplesBox, #changeDatasetLink_infoBox{
         min-width: 400px;
     }
 }
 
 @media (max-width: 1440px) {
-    .btnCriaDataset{
+    .changeDatasetSubmitButton{
         width:60%;
     }
 }
 
 @media (max-width: 1080px) {
-    .btnCriaDataset{
+    .changeDatasetSubmitButton{
         width:80%;
     }
 }
 
 @media (max-width: 780px) {
-    .btnCriaDataset{
+    .changeDatasetSubmitButton{
         width:100%;
     }
 }
 
 @media (max-width: 640px) {
-    .btnCriaDataset{
+    .changeDatasetSubmitButton{
         width:100%;
     }
 }
 
 @media (max-width: 480px) {
-    .btnCriaDataset{
+    .changeDatasetSubmitButton{
         width:100%;
     }
 }
