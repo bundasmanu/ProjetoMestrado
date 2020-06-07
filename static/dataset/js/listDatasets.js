@@ -21,6 +21,9 @@ $.ajaxSetup({
     }
 });
 
+var rows_delete_table = []; /*html rows elements, that doesn't are created by users, and are "unchecked"*/
+var position_delete_rows = []; /*position of rows elements "deleted", in order to put them in table after disable "Submitted by me" option, in his correct position*/
+
 $('.inlineCheckBoxLabelFilter').one().click(function(){
 
     var ffff = document.getElementsByClassName('inlineCheckBoxLabelFilter');
@@ -29,19 +32,26 @@ $('.inlineCheckBoxLabelFilter').one().click(function(){
 
     if ($check_content === true){ /*if checkbox is clicked to check --> event (False (unchecked) --> True (check)) --> i need to hid datasets that aren't not submitted by logged user*/
 
+        var counter = -1; /*because first tr doesn't matter*/
         for (let row of table.rows){ /*fill all table rows, except first one (thead row)*/
             var k = row.cells[0].innerText;
-            if (row.cells[0].innerText === ''){
-                row.style.display = 'none';
+            if (row.cells[0].innerText === ''){ /*doesn't have checkbox, and it's not submitted by logged user*/
+                /**row.style.display = 'none';**/
+                rows_delete_table.push(row); /*put row element on array*/
+                position_delete_rows.push(counter); /*put his position on table on array*/
+                var x = row.parentNode;
+                row.parentNode.removeChild(row); /*remove child from parent*/
             }
+            counter = counter + 1;
         }
     }
     else{
-        for (let row of table.rows){ /*fill all table rows, except first one (thead row)*/
-            if (row.style.display === 'none'){
-                row.style.display = '';
-            }
+        var tbody = document.getElementsByTagName("tbody")[0];
+        for (var i=0; i<rows_delete_table.length; i++){
+            tbody.insertBefore(rows_delete_table[i], tbody.children[position_delete_rows[i]]); /*tbody is parent of table rows, and insert in his correct position*/
         }
+        rows_delete_table = []; /*reset array*/
+        position_delete_rows = [] /*reset array*/
     }
 });
 
@@ -145,6 +155,7 @@ function applyLogicDeleteDataset(){
                 else{ /*no pagination before delete, and i don't have preocupations here, i only need to reload page*/
                     window.location.reload(true);
                 }
+                deleteAllCookies(); /*delete cookies*/
             }
         });
     }
@@ -187,7 +198,6 @@ function getLinkOptionByID(option, index){ /*this function presents the logic to
 }
 
 /*logic edit dataset*/
-
 $('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
 
     var exist_one_checkbox_activated = canUserProcessOperation(); /*check if exists a checkbox activated (can only exist one at a time, events have already been defined to respond to this)*/
@@ -203,7 +213,31 @@ $('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
 
             var link_change_dataset = getLinkOptionByID(option=0, index_selected_dataset); /*get link to redirect*/
 
+            /*reset cookies*/
+            deleteAllCookies();
+
+            /*redirect to page*/
             window.location.href = link_change_dataset;
         }
     }
 });
+
+/*preserve checked box option when user uses pagination*/
+$("#differentPage, #boxpreviousSymbol, #boxNextSymbol").click(function () {
+    var is_checked_inline_checkbox = document.getElementsByClassName('inlineCheckBoxLabelFilter')[0].getElementsByTagName("input")[0].checked;
+    if (is_checked_inline_checkbox === true){
+        setCookie("inlineCheckBox", "true"); /*set inline cookie to true*/
+    }
+    else{
+        setCookie("inlineCheckBox", "false"); /* set cookie to false*/
+    }
+});
+
+
+/*listener logic when happens a refresh*/
+document.addEventListener('DOMContentLoaded', function() {
+    var is_inline_checkbox_checked = getCookie("inlineCheckBox");
+    if (is_inline_checkbox_checked === "true"){
+        document.getElementsByClassName('inlineCheckBoxLabelFilter')[0].click(); /*simule click*/
+    }
+}, false);

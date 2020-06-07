@@ -98,6 +98,7 @@
         </script>
 
         <!-- Call Javascript file -->
+        <script src="{% static 'general/js/cookies.js' %}"></script> <!--this script needs to be first, because listDatasets uses cookies functions -->
         <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
         <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
 
