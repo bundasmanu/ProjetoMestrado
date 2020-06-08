@@ -98,8 +98,12 @@
         </script>
 
         <!-- Call Javascript file -->
+        <script src="{% static 'general/js/ajaxSetup.js' %}"></script>
         <script src="{% static 'general/js/cookies.js' %}"></script> <!--this script needs to be first, because listDatasets uses cookies functions -->
+        <script src="{% static 'dataset/js/specificVariablesListDatasets.js' %}"></script>
+        <script src="{% static 'dataset/js/listViewCommomLogic.js'%}"></script>
         <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
+        <script src="{% static 'general/js/modalListViews.js'%}"></script>
         <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
 
 {% endblock %}

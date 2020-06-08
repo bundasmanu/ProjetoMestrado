@@ -1,7 +1,7 @@
 /*definition of cookie shared information between pagination*/
 /*https://www.w3schools.com/js/js_cookies.asp*/
 function setCookie(cname, cvalue) {
-  document.cookie = cname + "=" + cvalue;
+  document.cookie = cname + "=" + cvalue +'; Path=/;';
 }
 
 function getCookie(cname) {
@@ -27,15 +27,10 @@ function deleteAllCookies() {
         var cookie = cookies[i];
         var eqPos = cookie.indexOf("=");
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT"; /*this date is a previous date comparing to current date*/
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'; /*this date is a previous date comparing to current date*/
     }
 }
 
-/*reset cookies, when user clicks in menu options*/
-var navBarPrincipal = document.getElementById("navigationGenericBar");
-
-Array.prototype.forEach.call(navBarPrincipal.getElementsByTagName("a"),child =>{
-    child.addEventListener('click', function (event) {
-        deleteAllCookies();
-    })
-});
+function delete_cookie(name) {
+  document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
