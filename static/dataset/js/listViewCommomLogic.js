@@ -76,10 +76,22 @@ userToolsBarArray.forEach(function (input) {
 });
 
 function resetPageOptionsWhenUsersJumpsOutsideThisPage(){
+
+    /*uncheck filter checkbox if it's already checked*/
     var check_content = document.getElementsByClassName('inlineCheckBoxLabelFilter')[0].getElementsByTagName("input")[0].checked;
     if (check_content === true){
         document.getElementsByClassName('inlineCheckBoxLabelFilter')[0].click(); /*simule click*/
     }
+
+    /*if exists a checkbox selected, then i need to uncheck this checkbox
+    *I just need to be careful with checkbox on the same page, on other pages in the load does automatic reset, ie I just need to worry about checking the page where I am*/
+    var index_selected_checkbox = getSelectedOptionToEdit();
+
+    if (index_selected_checkbox !== -1){
+        var div_checkbox_to_check = table.rows[index_selected_checkbox+1].cells[0].getElementsByClassName("inlineCheckBoxLabelFilter2")[0]; /* +1 because initial tr*/
+        div_checkbox_to_check.getElementsByTagName("input")[0].checked = false;
+    }
+
 }
 
 /*-------------------------COMMOM FUNCTIONS--------------------------------------------------------------*/
@@ -176,10 +188,12 @@ $('.inlineCheckBoxLabelFilter').one().click(function(){ /*extend and coolapse on
                 /**row.style.display = 'none';**/
                 rows_delete_table.push(row); /*put row element on array*/
                 position_delete_rows.push(counter); /*put his position on table on array*/
-                var x = row.parentNode;
-                row.parentNode.removeChild(row); /*remove child from parent*/
             }
             counter = counter + 1;
+        }
+        /*delete datasets/models that are not submitted by looged user*/
+        for (var i=0; i<rows_delete_table.length; i++){
+            rows_delete_table[i].parentNode.removeChild(rows_delete_table[i]); /*remove child from parent*/
         }
     }
     else{

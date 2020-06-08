@@ -55,6 +55,9 @@ $('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
     var selected_edit_link = getCookie("link_edit");
 
     if (selected_edit_link !== ''){
+
+        resetPageOptionsWhenUsersJumpsOutsideThisPage();
+
         /*reset cookies*/
         deleteAllCookies();
 
