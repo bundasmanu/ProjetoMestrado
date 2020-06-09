@@ -1,0 +1,86 @@
+{% extends 'users/InfoUser.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% load static %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/models/css/listModels.css">
+    <script type='text/javascript' src='/static/dependencies/js/http_ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.js'></script>
+    <script src="/static/dependencies/js/http_code.jquery.com_jquery-3.3.1.js"></script>
+    <script src="/static/dependencies/js/http_cdn.jsdelivr.net_npm_js-cookie@rc_dist_js.cookie.js"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+{% endblock %}
+
+{% block content %}
+    <div id="relativeContainer">
+        <div id="listModelsBox">
+            <h1>Listagem de Modelos</h1>
+            {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="sdgsdgsgd" %}
+            <div id="modelsBox">
+                <table id="modelsTable">
+                    <thead>
+                        <tr>
+                            <th>Edit/Drop</th>
+                            <th>Nome</th>
+                            <th>Normalized Std</th>
+                            <th>Normalized Mean</th>
+                            <th>Output dict</th>
+                            <th>Dataset Name</th>
+                        </tr>
+                    </thead>
+                    {% for model in object_list %}
+                        <tr>
+                            <td> <!-- check if this model was submitted by logged user -->
+                                {% if user_id == model.user_id %}
+                                    {% include 'general/individualCheckBoxTable.html' %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url '#' %}">{{ model.name }}</a>
+                            </td>
+                            <td>
+                                {{ model.normalize_std }}
+                            </td>
+                            <td>
+                                {{ model.normalize_mean }}
+                            </td>
+                            <td>
+                                {{ model.output_dict }}
+                            </td>
+                            <td>
+                                {{ model.dataset_id__name }}
+                            </td>
+                            <td class="deleteLinkModelById" style="display: none">
+                                <a href="{% url '#' pk=model.id %}"></a>
+                            </td>
+                            <td class="changeLinkModelById" style="display: none">
+                                <a href="{% url '#' pk=model.id %}"></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% block pagination %}
+                {% include 'general/pagination.html' %}
+            {% endblock %}
+            {% block alertBox %}
+                {% include 'general/alertBoxConfirmation.html' %}
+            {% endblock %}
+            {% block warningBox %}
+                {% include 'general/alertBoxWarning.html' %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="{% static 'general/js/ajaxSetup.js' %}"></script>
+    <script src="{% static 'general/js/cookies.js' %}"></script> <!--this script needs to be first, because listDatasets uses cookies functions -->
+    <script src="{% static 'models/js/specificVariablesListModels.js' %}"></script>
+    <script src="{% static 'general/js/modalListViews.js'%}"></script>
+    <script src="{% static 'dataset/js/listViewCommomLogic.js'%}"></script>
+    <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
+    <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
+
+{% endblock %}

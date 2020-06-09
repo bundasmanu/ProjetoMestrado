@@ -37,7 +37,7 @@
                                     {% include 'general/individualCheckBoxTable.html' %}
                                 {% endif %}
                             </td>
-                            <td style="display: none">{{ dataset.id }}</td> <!--i needt this to pass to permit to make other operations-->
+                            <td style="display: none">{{ dataset.id }}</td> <!--i need this to pass to permit to make other operations-->
                             <td>
                                 <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>
                             </td>
@@ -86,24 +86,24 @@
             {% block pagination %}
                 {% include 'general/pagination.html' %}
             {% endblock %}
-            </div>
+        </div>
 {#            <div id="buttonOptions">#}
 {#                <a href="{% url 'datasets:criaDataset' %}" class="criaDataset">Criar Novo</a>#}
 {#            </div>#}
-        </div>
+    </div>
 
-        <!-- Prior definition of variables to pass to js file-->
-        <script>
-            var user_id = {{ user_id }};
-        </script>
+    <!-- Prior definition of variables to pass to js file-->
+    <script>
+        var user_id = {{ user_id }};
+    </script>
 
-        <!-- Call Javascript file -->
-        <script src="{% static 'general/js/ajaxSetup.js' %}"></script>
-        <script src="{% static 'general/js/cookies.js' %}"></script> <!--this script needs to be first, because listDatasets uses cookies functions -->
-        <script src="{% static 'dataset/js/specificVariablesListDatasets.js' %}"></script>
-        <script src="{% static 'general/js/modalListViews.js'%}"></script>
-        <script src="{% static 'dataset/js/listViewCommomLogic.js'%}"></script>
-        <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
-        <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
+    <!-- Call Javascript file -->
+    <script src="{% static 'general/js/ajaxSetup.js' %}"></script>
+    <script src="{% static 'general/js/cookies.js' %}"></script> <!--this script needs to be first, because listDatasets uses cookies functions -->
+    <script src="{% static 'dataset/js/specificVariablesListDatasets.js' %}"></script>
+    <script src="{% static 'general/js/modalListViews.js'%}"></script>
+    <script src="{% static 'dataset/js/listViewCommomLogic.js'%}"></script>
+    <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
+    <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
 
 {% endblock %}

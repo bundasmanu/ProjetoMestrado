@@ -1,0 +1,62 @@
+#relativeContainer{
+    display: block;
+    margin: auto;
+    width: 100%;
+    margin-top: 1%;
+}
+
+#listModelsBox{
+    display: block;
+    width: 98%;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden; /*preventing scroll problem of table*/
+}
+
+#modelsBox{
+    display: block;
+    width: 60%;
+    height: auto;
+}
+
+#modelsTable{
+    border-spacing: 0 1px;
+    border-collapse: separate;
+    width: auto;
+}
+
+#modelsBox > #modelsTable th{
+    background-color: #79aec8;
+    color: white;
+    font-size: 12px;
+    padding: 0.9vw;
+    height: auto;
+    text-align: center;
+}
+
+#modelsTable > tr, td{
+    height: 25px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 14px;
+}
+
+#modelsTable tr:nth-child(2n+1){ /* Intercalate color of table rows */
+    background-color:  #f9f9f9;
+}
+
+#modelsTable a:link, a:visited{
+    text-decoration: none;
+    font-weight: 900;
+}
+
+/*media queries*/
+@media (max-width: 1024px) {
+    #modelsBox > #modelsTable th{
+        font-size: 11px;
+        padding: 0.6vw;
+    }
+    #modelsTable > tr, td{
+        font-size: 12px !important;
+    }
+}

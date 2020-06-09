@@ -33,33 +33,6 @@ $("#differentPage, #boxpreviousSymbol, #boxNextSymbol").click(function () {
 
 });
 
-/*listener logic when happens a refresh*/
-document.addEventListener('DOMContentLoaded', function() {
-    var is_inline_checkbox_checked = getCookie("inlineCheckBox");
-    if (is_inline_checkbox_checked === "true"){
-        document.getElementsByClassName('inlineCheckBoxLabelFilter')[0].click(); /*simule click*/
-    }
-
-    /*apply check between pages, if exists*/
-    /*check if links exists in this page*/
-    for (var i=0; i< table.rows.length; i++){
-        var td_element_edit = document.getElementsByClassName("changeLinkDatasetById")[i];
-        var td_element_delete = document.getElementsByClassName("deleteLinkDatasetById")[i];
-        if (td_element_edit !== undefined && td_element_delete !== undefined){
-            var td_element_edit_link = td_element_edit.getElementsByTagName("a")[0].getAttribute("href");
-            var td_element_delete_link = td_element_delete.getElementsByTagName("a")[0].getAttribute("href");
-            var x = getCookie("link_edit");
-            var y = getCookie("link_delete");
-            if (td_element_edit_link === x && td_element_delete_link === y){
-                /*simule click on rows_check_boxes option correspondent to links*/
-                var div_checkbox_to_check = table.rows[i+1].cells[0].getElementsByClassName("inlineCheckBoxLabelFilter2")[0];
-                div_checkbox_to_check.getElementsByTagName("input")[0].checked = true;
-            }
-        }
-    }
-
-}, false);
-
 /*listeners to delete cookies when user clicks in other page contents*/
 navBarPrincipalArray.forEach(function (input) {
     input.addEventListener('click', function (event) {
@@ -104,7 +77,6 @@ function getSelectedOptionToEdit(){ /*this function get's the id of dataset to e
         var info = table.rows[i].cells[0].innerText;
         if (table.rows[i].cells[0].innerText !== ""){ /*if exist content*/
             if (rows_check_boxes[counter_user_datasets].getElementsByTagName("input")[0].checked === true){ /*if checkbox is checked*/
-                id = table.rows[i].cells[1].innerText;
                 return i-1; /*because first row doesn't matter, and i doesn't start in 0 but in 1, i need to subtract 1 element to start in 0*/
             }
         counter_user_datasets = counter_user_datasets + 1;
@@ -112,19 +84,6 @@ function getSelectedOptionToEdit(){ /*this function get's the id of dataset to e
     }
 
     return index;
-}
-
-function getLinkOptionByID(option, index){ /*this function presents the logic to get link of clicked dataset --> option parameter 0: edit and 1:delete*/
-
-    var td_element_with_url_datasetID = undefined;
-    if (option === 0){ /*edit*/
-        td_element_with_url_datasetID = document.getElementsByClassName("changeLinkDatasetById")[index];
-    }
-    else{ /*delete*/
-        td_element_with_url_datasetID = document.getElementsByClassName("deleteLinkDatasetById")[index];
-    }
-    var link_dataset_delete_id = td_element_with_url_datasetID.getElementsByTagName("a")[0];
-    return link_dataset_delete_id.getAttribute("href");
 }
 
 function canUserProcessOperation() { /*this function checks whether the user can edit or change a dataset. That is, it checks if a user has selected a dataset, if he can go ahead, if not, an alert message appears */
@@ -204,4 +163,40 @@ $('.inlineCheckBoxLabelFilter').one().click(function(){ /*extend and coolapse on
         rows_delete_table = []; /*reset array*/
         position_delete_rows = [] /*reset array*/
     }
+});
+
+$('.linkApagaFiltro').click(function() { /*click class of a href delete button*/
+
+    /*get delete cookie*/
+    var selected_delete_link = getCookie("link_delete");
+
+    if (selected_delete_link !== '') {
+        confirmDialogDelete('Pretende mesmo apagar?');
+    }
+    else{
+        warningDialog('Tem de seleccionar um dataset primeiro');
+    }
+
+});
+
+/*logic edit dataset*/
+$('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
+
+    /*get cookies*/
+    var selected_edit_link = getCookie("link_edit");
+
+    if (selected_edit_link !== ''){
+
+        resetPageOptionsWhenUsersJumpsOutsideThisPage();
+
+        /*reset cookies*/
+        deleteAllCookies();
+
+        /*redirect to page*/
+        window.location.href = selected_edit_link;
+    }
+    else{
+        warningDialog('Tem de seleccionar um dataset primeiro');
+    }
+
 });
