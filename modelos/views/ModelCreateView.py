@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.files.storage import default_storage
 import os
+import time
 
 class ModelCreateView(LoginRequiredMixin, CreateView):
     model = CNNModel.CNNModel
@@ -32,7 +33,11 @@ class ModelCreateView(LoginRequiredMixin, CreateView):
         # add file to selected dataset folder
         dataset_path = os.path.join(settings.DATASET_PATH, selected_dataset.name)  # get string of dataset folder (that aggregates all it's models)
         uploaded_file_name = form.cleaned_data["file_upload"].name
-        model_file_path = os.path.join(dataset_path, uploaded_file_name)  # add uploaded file to path
+
+        #define unique id to model path: /user_id/date_time_now/file.h5
+        path_with_user_id = os.path.join(dataset_path, str(self.request.user.id))
+        path_with_user_id_and_current_date = os.path.join(path_with_user_id, time.strftime("%Y%m%d-%H%M%S"))
+        model_file_path = os.path.join(path_with_user_id_and_current_date, uploaded_file_name)  # add uploaded file to path
 
         # associate model path to table
         self.object.model_path = model_file_path
