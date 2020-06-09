@@ -44,3 +44,4 @@ ERROR_ON_PREDICT = "Error during prediction of image"
 # image size upload max length --> 20MB
 MAX_IMAGE_SIZE = 20971520
 SIZE_GREATER_TEMPORARY = 2621440
+MAX_SIZE_OF_UPLOADED_MODEL = 100000000 # 100 mb

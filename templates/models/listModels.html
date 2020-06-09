@@ -28,6 +28,7 @@
                             <th>Normalized Mean</th>
                             <th>Output dict</th>
                             <th>Dataset Name</th>
+                            <th>Autor</th>
                         </tr>
                     </thead>
                     {% for model in object_list %}
@@ -38,7 +39,7 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <a href="{% url '#' %}">{{ model.name }}</a>
+                                <a href="#">{{ model.name }}</a>
                             </td>
                             <td>
                                 {{ model.normalize_std }}
@@ -52,11 +53,14 @@
                             <td>
                                 {{ model.dataset_id__name }}
                             </td>
+                            <td>
+                                {{ model.user_id__username }}
+                            </td>
                             <td class="deleteLinkModelById" style="display: none">
-                                <a href="{% url '#' pk=model.id %}"></a>
+                                <a href="#"></a>
                             </td>
                             <td class="changeLinkModelById" style="display: none">
-                                <a href="{% url '#' pk=model.id %}"></a>
+                                <a href="#"></a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -80,7 +84,7 @@
     <script src="{% static 'models/js/specificVariablesListModels.js' %}"></script>
     <script src="{% static 'general/js/modalListViews.js'%}"></script>
     <script src="{% static 'dataset/js/listViewCommomLogic.js'%}"></script>
-    <script src="{% static 'dataset/js/listDatasets.js'%}"></script>
+    <script src="{% static 'models/js/listModels.js'%}"></script>
     <script src="{% static 'general/js/messagesTimeout.js'%}"></script>
 
 {% endblock %}

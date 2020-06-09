@@ -1,7 +1,9 @@
 {% extends 'users/InfoUser.html' %}
 {% load i18n %}
+{% load static %}
 {% block extrastyle %}
     {{ block.super }}
+    <script src="{% static 'dependencies/js/http_ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="/static/dataset/css/createDataset.css">
 {% endblock %}
 {% block content %}
@@ -35,4 +37,7 @@
             </form>
         </div>
     </div>
+
+    <script src="{% static 'general/js/messagesTimeout.js' %}"></script>
+
 {% endblock %}

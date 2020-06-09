@@ -1,0 +1,51 @@
+{% extends 'users/InfoUser.html' %}
+{% load i18n %}
+{% load static %}
+{% block extrastyle %}
+    {{ block.super }}
+    <script src="{% static 'dependencies/js/http_ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="/static/models/css/createModel.css">
+{% endblock %}
+{% block content %}
+    <div id="ContainerPrincipal">
+        <h1>Criar Modelo</h1>
+        <div id="criaModelBar">
+            <h2>Model Info</h2>
+        </div>
+        <div id="formDiv">
+            <form class="criaModelForm" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div id="nameModel">
+                    <label>{{ form.name.label_tag }}</label> <!--MODEL ON CREATEUSERVIEW IS CUSTOMUSER, AND NOW I NEED TO USE THIS FIELDS AND INHERITED FIELDS FROM USER CLASS-->
+                    {{ form.name }}
+                </div>
+                <div id="normalizedStdModel">
+                    <label>{{ form.normalize_std.label_tag }}</label>
+                    {{ form.normalize_std }}
+                </div>
+                <div id="normalizedMeanModel">
+                    <label>{{ form.normalize_mean.label_tag }}</label>
+                    {{ form.normalize_mean }}
+                </div>
+                <div id="outputDictModel">
+                    <label>{{ form.output_dict.label_tag }}</label>
+                    {{ form.output_dict }}
+                </div>
+                <div id="datasetIdOptions">
+                    <label>Seleccione o Dataset:</label>
+                    {{ form.dataset_id_options }}
+                </div>
+                <div id="modelUploadFile">
+                    <label title="{{ form.file_upload.help_text }}">Upload Keras.h5 file:</label>
+                    {{ form.file_upload }}
+                </div>
+                <div id="divBtnCriaModel">
+                    <input type="submit" class="btnCriaModel" value="Criar Modelo">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'general/js/messagesTimeout.js' %}"></script>
+
+{% endblock %}

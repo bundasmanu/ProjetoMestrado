@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('users.urls', namespace='users')),
     path('dataset/', include('datasets.urls', namespace='datasets')),
+    path('models/', include('modelos.urls', namespace='models')),
 ]
 
 '''

@@ -7,7 +7,7 @@ class CNNModel(models.Model):
     normalize_mean = models.FloatField(null=False, default=None)
     normalize_std = models.FloatField(null=False, default=None)
     creation_date = models.DateField(auto_now_add=True, blank=True, null=False)
-    output_dict = models.CharField(max_length=2500, default=None, null=True)
+    output_dict = models.CharField(max_length=2500, default={"Enter a valid dictionary"}, null=False, error_messages={'required': 'Please pass a dictionary in this format: {"class1": 0, "class2" : 1}'})
     model_path = models.CharField(max_length=500, default=None, null=False)
     dataset_id = models.ForeignKey(Dataset.Dataset, on_delete=models.CASCADE)
     user_id = models.ForeignKey(CustomUser.CustomUser, on_delete=models.CASCADE)
