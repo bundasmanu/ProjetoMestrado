@@ -11,6 +11,7 @@ var rows_check_boxes = document.querySelectorAll('.inlineCheckBoxLabelFilter2');
 /*------------------LOGIC COOKIES REDIRECTION (SET AND DELETE)----------------------------------*/
 /*preserve checked box option when user uses pagination*/
 $("#differentPage, #boxpreviousSymbol, #boxNextSymbol").click(function () {
+    localStorage.entrou = 1;
     var is_checked_inline_checkbox = document.getElementsByClassName('inlineCheckBoxLabelFilter')[0].getElementsByTagName("input")[0].checked;
     if (is_checked_inline_checkbox === true){
         setCookie("inlineCheckBox", "true"); /*set inline cookie to true*/

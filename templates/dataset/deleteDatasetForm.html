@@ -1,7 +1,7 @@
-<form id="deleteDatasetForm" method="post" style="display: none">
+<form id="deleteDatasetForm" method="post" style="display: none"> <!-- AJAX sends post request to delete dataset -->
     {% csrf_token %}
-    <div id="divWithDatasetID">{{ obj.id}}</div>
-    <div id="divBtnCriaDataset">
-        <input type="submit" class="btnCriaDataset" value="Cria Dataset">
+    <div id="divWithDatasetID">{{ obj.id}}</div> <!-- I don't need this  -->
+    <div id="divBtnApagaDataset">
+        <input type="submit" class="btnApagaDataset" value="Apaga Dataset">
     </div>
 </form>
