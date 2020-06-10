@@ -1,0 +1,106 @@
+#changeModelContainerBox{
+    display: block;
+    width: 98%;
+    height: auto;
+    margin: 0 auto; /*CENTER*/
+}
+
+#changeModelBar{
+    background-color: #79aec8;
+    margin: 0; /*SAME WIDTH OF PARENT*/
+}
+
+#changeModelBar > h2{
+    font-size: 16px;
+    font-weight: lighter;
+    color: white;
+    padding: 10px 10px;
+}
+
+#changeModelBox{
+    display: block;
+    width: 40%;
+    height: auto;
+}
+
+#changeModelForm{
+    display: block;
+    width: 100%; /*ALL CONTENT OF PARENT*/
+    height: auto;
+}
+
+input{
+    font-weight: 500;
+    min-height: 36px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+#changeModelNameBox, #changeModelNormalizedStdBox, #changeModelNormalizedMeanBox, #changeModelOutputDictBox, #changeModelDatasetIdBox, #changeModelUploadedFileBox{
+    display: inline-block;
+    height: auto;
+    width:100%;
+    border-bottom: 0.5px solid #eeeeee;
+    padding: 12px 0px 12px 10px;
+    vertical-align: middle;
+}
+
+#changeModelNameBox > label, #changeModelNormalizedStdBox > label, #changeModelNormalizedMeanBox > label, #changeModelOutputDictBox > label, #changeModelDatasetIdBox > label, #changeModelUploadedFileBox > label{
+    color: #666;
+    display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
+    vertical-align: middle;
+    width:28%;
+}
+
+#changeModelUploadedFileBox > label{
+    width: 20%;
+    font-size: 14px;
+}
+
+#changeSubmitButtonBox{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.changeModelSubmitButton{
+    display: block;
+    margin-top: 2%;
+    width: 25%;
+}
+
+@media (max-width: 900px) { /*RESPONSIVE DIV'S WHEN WIDTH IS LOW*/
+    #changeModelNameBox, #changeModelNormalizedStdBox, #changeModelNormalizedMeanBox, #changeModelOutputDictBox, #changeModelDatasetIdBox, #changeModelUploadedFileBox{
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .changeModelSubmitButton{
+        width:60%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .changeModelSubmitButton{
+        width:80%;
+    }
+}
+
+@media (max-width: 780px) {
+    .changeModelSubmitButton{
+        width:100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .changeModelSubmitButton{
+        width:100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .changeModelSubmitButton{
+        width:100%;
+    }
+}
