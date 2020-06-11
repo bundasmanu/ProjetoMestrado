@@ -38,7 +38,7 @@ function applyLogicDeleteDataset(){
 document.addEventListener('DOMContentLoaded', function() {
     var is_inline_checkbox_checked = getCookie("inlineCheckBox");
 
-    if (localStorage.entrou === "0"){ /*if user doesnt redirect clicking in pagination*/
+    if (localStorage.entrou === "0"){ /*if user doesn't redirect clicking in pagination*/
         resetPageOptionsWhenUsersJumpsOutsideThisPage();
         deleteAllCookies();
     }

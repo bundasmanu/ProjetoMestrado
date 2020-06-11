@@ -103,7 +103,10 @@ function canUserProcessOperation() { /*this function checks whether the user can
 /*FOR EACH EVENT CHECKBOXES CLICK'S*/
 rows_check_boxes.forEach(function(input){
    input.addEventListener('click', function (event) {
+
        check_exists_checkboxes_actived(input); /*clean all actived checkboxes*/
+       delete_cookie("link_edit");
+       delete_cookie("link_delete");
 
        /*check if exist an option checked*/
        var index_checkbox_checked = getSelectedOptionToEdit();
