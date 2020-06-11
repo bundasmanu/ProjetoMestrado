@@ -58,5 +58,5 @@ class ModelCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         messages.success(self.request, "Modelo criado com sucesso")
-        path = reverse('modelos:listaModels')
+        path = reverse('models:listaModels')
         return path

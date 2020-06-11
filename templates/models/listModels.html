@@ -57,10 +57,10 @@
                                 {{ model.user_id__username }}
                             </td>
                             <td class="deleteLinkModelById" style="display: none">
-                                <a href="#"></a>
+                                <a href="{% url 'models:deleteModelByID' pk=model.id %}"></a>
                             </td>
                             <td class="changeLinkModelById" style="display: none">
-                                <a href="#"></a>
+                                <a href="{% url 'models:atualizaModelo' pk=model.id %}"></a>
                             </td>
                         </tr>
                     {% endfor %}

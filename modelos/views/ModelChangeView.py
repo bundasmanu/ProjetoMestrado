@@ -8,6 +8,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.files.storage import default_storage
 import os
+import time
+import shutil
 
 class ModelChangeView(LoginRequiredMixin, UpdateView):
     model = CNNModel.CNNModel
@@ -47,20 +49,65 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
         self.object = form.save(commit=False)
 
         # get selected dataset
+        old_dataset_id = self.object.dataset_id
         self.object.dataset_id = form.cleaned_data["dataset_id_options"]
 
         # get uploaded file --> if not exists, and i don't need to make anything,
         # if exists i need to check if it's equal to the current model, and if it is i don't need to make anything,
         # but if uploaded model is different from current model, i need to change model path, and delete current model and save new model
         uploaded_file = form.cleaned_data["file_upload"]
-        if uploaded_file != None: # if user uploaded a model
-            if uploaded_file.name != self.get_file_name(): # if uploaded file is different from current file, then i need to change model path, and delete and save respectively old and new model
-                old_path = self.object.model_path # full directory where is file: C:/../../file.h5
-                parent_path = os.path.abspath(os.path.join(old_path, os.pardir)) # get parent directory folder: C:/../Breast_Histopathology
-                default_storage.delete(old_path) # delete old file
-                new_path = os.path.join(parent_path, uploaded_file.name) # new path to save file: C:/../Breast_Histopathology/new_file.h5
-                default_storage.save(new_path, uploaded_file) # save file in directory (new_path)
-                self.object.model_path = new_path # change model path to new path
+        if old_dataset_id == self.object.dataset_id:  # no changes in selected dataset
+            if uploaded_file != None: # if user uploaded a model
+                if uploaded_file.name != self.get_file_name(): # if uploaded file is different from current file, then i need to change model path, and delete and save respectively old and new model
+
+                    old_path = self.object.model_path # full directory where is file: C:/../../file.h5
+
+                    # loop to parent directories --> C:/Breast_Histopathology/2/2020-06-10/file.h5 to C:/Breast_Histopathology/2
+                    parent_path = old_path
+                    for i in range(2):
+                        parent_path = os.path.abspath(os.path.join(parent_path, os.pardir)) # get parent directory folder: C:/../Breast_Histopathology
+
+                    # create new date time folder with the date of file update
+                    new_folder_of_file = os.path.join(parent_path, time.strftime("%Y%m%d-%H%M%S"))
+
+                    # delete parent path
+                    shutil.rmtree(os.path.abspath(os.path.join(old_path, os.pardir)), ignore_errors=True)
+
+                    # put file on new folder
+                    new_path_with_file = os.path.join(new_folder_of_file, uploaded_file.name) # new path to save file: C:/../Breast_Histopathology/new_file.h5
+
+                    # save file
+                    default_storage.save(new_path_with_file, uploaded_file) # save file in directory (new_path)
+
+                    # change model path of object
+                    self.object.model_path = new_path_with_file
+
+        else: # selected dataset is different from old dataset, then i need to delete current path's, and put in new path folder (dataset folder)
+
+            old_path = self.object.model_path # get current path
+
+            # save file (if user doesn't pass a new file)
+            model_file = default_storage.open(old_path) # i need to open file in order to save this file in new directory, witn user doesn't provide a new model
+
+            #definition of path to save model
+            dataset_path = os.path.join(settings.DATASET_PATH, self.object.dataset_id.name) # path in concordance to selected dataset, e.g, C:/../Breast_Histopathology
+            path_with_user_id = os.path.join(dataset_path, str(self.request.user.id))
+            path_with_date_of_creation = os.path.join(path_with_user_id, time.strftime("%Y%m%d-%H%M%S"))
+
+            # save file
+            if uploaded_file == None: # if the user passed a model
+                path_with_filename = os.path.join(path_with_date_of_creation, os.path.basename(model_file.name))
+                default_storage.save(path_with_filename, model_file)
+            else: # if the user did not pass a model
+                path_with_filename = os.path.join(path_with_date_of_creation, uploaded_file.name)
+                default_storage.save(path_with_filename, uploaded_file)
+
+            # get user path with file: /../2/2020-06-10/file.h5 --> get /2020-06-10
+            model_file.close() # close the file in order to delete folder, otherwise it generates an exception, saying that the file is in use
+            shutil.rmtree(os.path.abspath(os.path.join(old_path, os.pardir)), ignore_errors=True) # delete directory associative to user and file
+
+            # define new model path
+            self.object.model_path = path_with_filename
 
         # commit object
         form.save(commit=True)
@@ -78,5 +125,5 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, "Modelo atualizado com sucesso")
-        path = reverse('modelos:listaModels')
+        path = reverse('models:listaModels')
         return path

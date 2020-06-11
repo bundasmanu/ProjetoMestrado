@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from ..models import CNNModel
 from expDjango import settings
 from django.contrib import messages
-from django.core.files.storage import default_storage
 import json
+import shutil
 import os
 
 class ModelDeleteView(LoginRequiredMixin, DeleteView):
@@ -13,16 +13,11 @@ class ModelDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'models/deleteModelForm.html'
     login_url = settings.LOGOUT_REDIRECT_URL
 
-    def get_queryset(self):
-        queryset = super(ModelDeleteView, self).get_queryset()
-        model_id = self.kwargs.get("pk")
-        return queryset.filter(id=model_id)
-
     def delete(self, request, *args, **kwargs):
 
         try:
             # get object, i can also use get_object method
-            self.object = self.get_queryset()
+            self.object = self.get_object()
 
             # first, i need to drop object from database, if a problem occur in delete file already exists, and if a problem occurs on delete directory with file the objects already doesn't exists, and there are no problems (even if it is not possible to delete the file from the local system, because the object no longer exists in bd)
             self.object.delete()
@@ -34,7 +29,7 @@ class ModelDeleteView(LoginRequiredMixin, DeleteView):
             path_to_drop = os.path.abspath(os.path.join(model_path, os.pardir))
 
             # drop directory
-            default_storage.delete(path_to_drop)
+            shutil.rmtree(path_to_drop, ignore_errors=True)
 
             # add success message to listModels page
             messages.success(request, "Dataset eliminado com sucesso")
@@ -43,6 +38,6 @@ class ModelDeleteView(LoginRequiredMixin, DeleteView):
             return HttpResponse(json.dumps(delete_sucess), content_type='application/json')
 
         except:
-            messages.error(request, "Erro ao eliminar o dataset")
-            delete_sucess = {'sucess': 'error'}
-            return HttpResponse(json.dumps(delete_sucess), content_type='application/json')
+            messages.success(request, "Erro ao eliminar o dataset")
+            delete_insucess = {'sucess': 'error'}
+            return HttpResponse(json.dumps(delete_insucess), content_type='application/json')
