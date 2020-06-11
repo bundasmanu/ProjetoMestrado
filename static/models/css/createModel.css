@@ -40,7 +40,7 @@ input{
     min-width: 250px;
 }
 
-#nameModel, #normalizedStdModel, #normalizedMeanModel, #outputDictModel, #datasetIdOptions, #modelUploadFile{
+#nameModel, #normalizedStdModel, #normalizedMeanModel, #outputDictModel, #inputShapeModel, #datasetIdOptions, #modelUploadFile{
     display: inline-block;
     height: auto;
     width:100%;
@@ -49,7 +49,7 @@ input{
     vertical-align: middle;
 }
 
-#nameModel > label, #normalizedStdModel > label, #normalizedMeanModel > label, #outputDictModel > label, #datasetIdOptions > label, #modelUploadFile > label{
+#nameModel > label, #normalizedStdModel > label, #normalizedMeanModel > label, #outputDictModel > label, #inputShapeModel > label, #datasetIdOptions > label, #modelUploadFile > label{
     color: #666;
     display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
     vertical-align: middle;
@@ -64,12 +64,12 @@ input{
 
 .btnCriaModel{
     display: block;
-    margin-top: 4%;
+    margin-top: 0;
     width: 25%;
 }
 
 @media (max-width: 900px) { /*RESPONSIVE DIV'S WHEN WIDTH IS LOW*/
-    #nameModel, #normalizedStdModel, #normalizedMeanModel, #outputDictModel, #datasetIdOptions, #modelUploadFile{
+    #nameModel, #normalizedStdModel, #normalizedMeanModel, #outputDictModel, #inputShapeModel, #datasetIdOptions, #modelUploadFile{
         min-width: 400px;
     }
 }

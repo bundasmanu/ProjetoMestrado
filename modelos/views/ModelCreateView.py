@@ -51,8 +51,9 @@ class ModelCreateView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
-        print(form.errors)
-        messages.error(self.request, "Insira um modelo Keras válido")
+        errors_dict = dict(form.errors)
+        first_error = errors_dict.get('output_dict').data[0].message
+        messages.error(self.request, first_error)
         form = ModelCreateForm.ModelCreateForm()
         return super(ModelCreateView, self).form_invalid(form)
 

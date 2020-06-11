@@ -19,6 +19,7 @@ class ModelChangeForm(ModelForm):
         initial_normalized_mean = kwargs.pop("normalize_mean")
         initial_output_dict = kwargs.pop("output_dict")
         initial_dataset_id = kwargs.pop("dataset_id")
+        initial_input_shape = kwargs.pop("input_shape")
 
         # call constructor, without kwargs values (pop drop his values)
         super(ModelChangeForm, self).__init__(*args, **kwargs)
@@ -29,6 +30,7 @@ class ModelChangeForm(ModelForm):
         self.fields["normalize_mean"].initial = initial_normalized_mean
         self.fields["output_dict"].initial = initial_output_dict
         self.fields["dataset_id_options"].initial = initial_dataset_id
+        self.fields["input_shape"].initial = initial_input_shape
 
     class Meta:
         model = CNNModel.CNNModel

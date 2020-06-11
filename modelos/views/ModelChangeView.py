@@ -40,6 +40,7 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
         kwargs["normalize_mean"] = self.object.normalize_mean
         kwargs["output_dict"] = self.object.output_dict
         kwargs["dataset_id"] = self.object.dataset_id
+        kwargs["input_shape"] = self.object.input_shape
 
         return kwargs
 
@@ -117,8 +118,9 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
 
     def form_invalid(self, form):
         # if form is invalid, i reset form with initial values
-        print(form.errors)
-        messages.error(self.request, "Erro ao atualizar o modelo") # send error message to template
+        errors_dict = dict(form.errors)
+        first_error = errors_dict.get('output_dict').data[0].message
+        messages.error(self.request, first_error)
         kwargs = self.get_form_kwargs()
         form = ModelChangeForm.ModelChangeForm(**kwargs) # reset form with initial values
         return super(ModelChangeView, self).form_invalid(form)

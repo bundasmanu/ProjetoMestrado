@@ -7,7 +7,7 @@ class LoadModelsForDataset(TemplateView):
     template_name = 'dataset/loadModelForDataset.html'
 
     def get_models(self, id_model):
-        queryset = CNNModel.CNNModel.objects.filter(dataset_id__cnnmodel=id_model).order_by('dataset_id__cnnmodel')
+        queryset = CNNModel.CNNModel.objects.filter(dataset_id=id_model).order_by('dataset_id')
         return queryset
 
     def get_context_data(self, **kwargs):

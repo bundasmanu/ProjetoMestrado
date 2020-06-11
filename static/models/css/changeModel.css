@@ -36,7 +36,7 @@ input{
     vertical-align: middle;
 }
 
-#changeModelNameBox, #changeModelNormalizedStdBox, #changeModelNormalizedMeanBox, #changeModelOutputDictBox, #changeModelDatasetIdBox, #changeModelUploadedFileBox{
+#changeModelNameBox, #changeModelNormalizedStdBox, #changeModelNormalizedMeanBox, #changeModelInputShapeBox, #changeModelOutputDictBox, #changeModelDatasetIdBox, #changeModelUploadedFileBox{
     display: inline-block;
     height: auto;
     width:100%;
@@ -45,7 +45,7 @@ input{
     vertical-align: middle;
 }
 
-#changeModelNameBox > label, #changeModelNormalizedStdBox > label, #changeModelNormalizedMeanBox > label, #changeModelOutputDictBox > label, #changeModelDatasetIdBox > label, #changeModelUploadedFileBox > label{
+#changeModelNameBox > label, #changeModelNormalizedStdBox > label, #changeModelNormalizedMeanBox > label, #changeModelInputShapeBox > label, #changeModelOutputDictBox > label, #changeModelDatasetIdBox > label, #changeModelUploadedFileBox > label{
     color: #666;
     display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
     vertical-align: middle;
@@ -70,7 +70,7 @@ input{
 }
 
 @media (max-width: 900px) { /*RESPONSIVE DIV'S WHEN WIDTH IS LOW*/
-    #changeModelNameBox, #changeModelNormalizedStdBox, #changeModelNormalizedMeanBox, #changeModelOutputDictBox, #changeModelDatasetIdBox, #changeModelUploadedFileBox{
+    #changeModelNameBox, #changeModelNormalizedStdBox, #changeModelNormalizedMeanBox, #changeModelInputShapeBox, #changeModelOutputDictBox, #changeModelDatasetIdBox, #changeModelUploadedFileBox{
         min-width: 400px;
     }
 }

@@ -13,7 +13,7 @@
             <h2>Dataset Info</h2>
         </div>
         <div id="formDiv">
-                <form id="predictOutputModelClass" method="post" enctype="multipart/form-data" data-models-url="{% url 'datasets:ajaxModelsLoad' %}" novalidate>
+            <form id="predictOutputModelClass" method="post" enctype="multipart/form-data" data-models-url="{% url 'datasets:ajaxModelsLoad' %}" novalidate>
                 {% csrf_token %}
                 <div id="datasetsDropDown">
                     {{ form.dataset_dropdown }}
