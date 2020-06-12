@@ -25,12 +25,21 @@
                     {{ form.image_upload }}
                 </div>
                 <div id="divBtnCriaDataset">
-                    <input type="submit" class="btnCriaDataset" value="Efetuar Previsão">
+                    <input type="submit" class="btnCriaDataset" value="Efetuar Previsão" onclick="loading_bar();">
                 </div>
             </form>
         </div>
     </div>
 
+    <div id="loadingBox" style="display: none">
+        {% include 'general/loading.html' %}
+    </div>
+
+    <div id="showResults">
+        {% include 'dataset/showResults.html' %}
+    </div>
+
     <script src="{% static "dataset/js/dependentDropDownPredictPage.js" %}"></script>
+    <script src="{% static "dataset/js/predict.js" %}"></script>
 
 {% endblock %}

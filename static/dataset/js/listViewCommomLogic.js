@@ -204,3 +204,10 @@ $('.linkAlteraFiltro').click(function() { /*click class of a href edit button*/
     }
 
 });
+
+/*this function allows users to hide the modal by clicking on the windows*/
+$(document).click(function (e) {
+    if ($(e.target).hasClass('modal-backdrop')) {
+        $("#warningModal").modal("hide");
+    }
+});

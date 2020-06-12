@@ -5,8 +5,16 @@ from ..forms import PredictForm
 from django.contrib import messages
 from expDjango import config
 from modelos.models import CNNModel
+from tensorflow.keras.models import load_model
 from django.core.files.storage import default_storage
+import cv2
+import numpy as np
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from collections import OrderedDict
+import ast
 import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 class PredictView(LoginRequiredMixin, FormView):
 
@@ -27,7 +35,7 @@ class PredictView(LoginRequiredMixin, FormView):
                 os.remove(image_url) # os.remove doesn't have return, i.e. if it goes wrong it generates exception
                 return True
         except:
-            return False
+            raise
 
     # this function is used to retrieve keras .h5 file, of selected model
     def get_model_object(self, model_id) -> CNNModel.CNNModel:
@@ -40,13 +48,14 @@ class PredictView(LoginRequiredMixin, FormView):
 
         try:
 
-            model_object = CNNModel.CNNModel.objects.objects.all.filter(id=model_id)
+            queryset = CNNModel.CNNModel.objects.all().filter(id=model_id)
+            model_object = queryset.get()
 
             return model_object
         except:
             return None
 
-    def pre_process_image(self, image, model: CNNModel.CNNModel):
+    def resize_and_transform_to_array(self, image, model: CNNModel.CNNModel):
 
         '''
         This function is used to apply pre-process technique to sample image, in concordance with normalized values passed on model creation and with keras file
@@ -57,12 +66,63 @@ class PredictView(LoginRequiredMixin, FormView):
 
         try:
 
+            # get input_shape of object
+            input_shape = tuple(map(int, model.input_shape.split(', ')))
 
+            # read image
+            image_read = cv2.imread(image)
 
-            return image
+            # apply resize of image
+            x = cv2.resize(image_read, (input_shape[0], input_shape[1])) #input_shape[0] represents height and input_shape[1] represents width
+
+            return np.array(x)
         except:
             return None
 
+    def normalize_data(self, sample_array, model: CNNModel.CNNModel):
+
+        '''
+        This function is used to apply standardization technique to sample array, using training std and mean values of training data
+        :param sample_array: numpy array: sample numpy array with shape (1, height, width, channels)
+        :param model: CNNModel object: selected model
+        :return: numpy array with each pixel standardized
+        '''
+
+        try:
+
+            # apply normalization to all pixels of sample array
+            sample_array = (sample_array - model.normalize_mean)/(model.normalize_std+1e-7)
+
+            return sample_array
+
+        except:
+            return None
+
+    def interpreting_results(self, prediction, dictionary_model):
+
+        '''
+        This function is used to define a dictionary with results per class (dictionary defined when the model was submitted by the user)
+        :param prediction: numpy array, with shape (classes, ) --> predict value for each class
+        :param dictionary_model: dictionary with classes names order
+        :return: dictionary with predict value for each class
+        '''
+
+        try:
+
+            # if values are not integers, i need convert them, and sort by values
+            sorted_classes = OrderedDict(sorted(dictionary_model.items(), key=lambda t: int(t[1])))
+
+            preds_by_class = dict()
+            if len(sorted_classes) == prediction.shape[1]:  # needs to have same size, e.g, the number of declared classes on dictionary needs to be equal to number of predictions
+                # i need to define new dictionary that for each key, put prediction value on them
+                counter = 0
+                for key, value in sorted_classes.items():
+                    preds_by_class[key] = prediction[0][counter]
+                    counter =  counter + 1
+
+                return preds_by_class
+        except:
+            pass
 
     def get_context_data(self, **kwargs):
         context = super(PredictView, self).get_context_data(**kwargs)
@@ -73,42 +133,85 @@ class PredictView(LoginRequiredMixin, FormView):
         try:
 
             # collect form data
-            dataset_id = form.cleaned_data['dataset_dropdown']
-            model_id = form.cleaned_data['models_dropdown']
+            dataset_id = int(form.cleaned_data['dataset_dropdown'])
+            model_id = int(form.cleaned_data['models_dropdown'])
             image = form.cleaned_data['image_upload']
 
             # check if image is a temporary file, if it is i need to save image, otherwise image is loaded to memory, and i could use variable image directly
             url_image = None
+            image_name = None
             if image.size > config.SIZE_GREATER_TEMPORARY: # if file is greater than 2.5MB, i need to store is url
                 url_image = image.file.name
+            else: # if it's a temporary file, i need to save them, in order to convert image to numpy array using cv2
+                # ref: https://twigstechtips.blogspot.com/2012/04/django-how-to-save-inmemoryuploadedfile.html
+                image_name = default_storage.save(image.name, image)
+
+            # open image file
+            image_file = None
+            if image_name != None:
+                image_file = default_storage.open(image_name)
 
             # process predict considering dataset and model --> i need to create a queryset that by model_id get's model file
             selected_model = self.get_model_object(model_id)
 
             # get File instance
-            keras_file = default_storage.open(selected_model.model_path)
+            path_of_model = selected_model.model_path
 
-            # apply pre-process to image, using normalize_std and normalize_mean of selected model
+            # first i need to transform image into numpy array, and if image is larger than input dimensions of model, i need to resize
+            sample_data = None
+            if url_image != None:
+                sample_data = self.resize_and_transform_to_array(url_image, selected_model)
+            else:
+                sample_data = self.resize_and_transform_to_array(image_file.name, selected_model)
 
+            if np.any(sample_data) == None: # if return value of resize_and_transform_to_array is None, then i can't continue the sample prediction process
+                raise
 
-            # close File instance
-            keras_file.close()
+            # apply pre-process technique in sample array, considering normalize_std and normalize_mean of training data, using in data definition (pre-processing)
+            sample_data = self.normalize_data(sample_data, selected_model)
+
+            if np.any(sample_data) == None:
+                raise
+
+            # predict value of sample
+            load_file = load_model(path_of_model)
+
+            # reshape sample_data from 3D to 4D --> e.g (50, 50, 3) to (1, 50, 50, 3)
+            sample_data = sample_data.reshape(1, sample_data.shape[0], sample_data.shape[1], sample_data.shape[2])
+
+            # make prediction
+            prediction = load_file.predict(sample_data)
+
+            # convert output dict of model from string to dict
+            dict_with_model_classes =  ast.literal_eval(selected_model.output_dict)
+
+            # get predictions by class
+            preds_by_class = self.interpreting_results(prediction, dict_with_model_classes)
 
             # if file is temporary (saved in disk >2.5MB) --> i need to delete them, in order to avoid memory problems
             if url_image is not None:
+                image.close()
                 safe_delete = self.delete_image(url_image)
                 if safe_delete == False:
                     pass
+            else: # if it's a temporary file i need to remove them
+                image_file.close()
+                if os.path.exists(image_file.name):
+                    os.remove(image_file.name)
 
-            return
+            # render to response to same page, but send to template preds_by_class dictionary with results --> form is resetted
+            context = self.get_context_data()
+            context["preds_by_classes"] = preds_by_class
+
+            return self.render_to_response(context)
         except:
-            storage = messages.get_messages(self.request)
-            storage.used = True
-            messages.add_message(self.request, messages.ERROR, config.ERROR_ON_PREDICT)
+            pass # goes to form_invalid
 
     def form_invalid(self, form):
 
         storage = messages.get_messages(self.request)
         storage.used = True
-        messages.add_message(self.request, messages.ERROR, config.PLEASE_FILL_FORM_CORRECTLY)
+        errors_dict = dict(form.errors)
+        first_error = errors_dict.get('output_dict').data[0].message
+        messages.error(self.request, first_error)
         return super(PredictView, self).form_invalid(form)

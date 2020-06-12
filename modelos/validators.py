@@ -10,6 +10,7 @@ def validate_model_file_extension(value):
         print("Validation error")
         raise ValidationError('Unsupported file extension.')
 
+#https://stackoverflow.com/questions/13675942/converting-string-to-dict
 def check_output_dict(value):
 
     try:
