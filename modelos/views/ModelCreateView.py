@@ -52,8 +52,15 @@ class ModelCreateView(LoginRequiredMixin, CreateView):
 
     def form_invalid(self, form):
         errors_dict = dict(form.errors)
-        first_error = errors_dict.get('output_dict').data[0].message
-        messages.error(self.request, first_error)
+        if "input_shape" in errors_dict: # only appears one error at each time --> logic if elif
+            first_error = errors_dict.get('input_shape').data[0].message
+            messages.error(self.request, first_error)
+        elif "output_dict" in errors_dict:
+            first_error = errors_dict.get('output_dict').data[0].message
+            messages.error(self.request, first_error)
+        elif "file_upload" in errors_dict:
+            first_error = errors_dict.get('file_upload').data[0].message
+            messages.error(self.request, first_error)
         form = ModelCreateForm.ModelCreateForm()
         return super(ModelCreateView, self).form_invalid(form)
 

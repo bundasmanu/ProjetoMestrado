@@ -1,3 +1,18 @@
-{% for key, value in preds_by_classes.items %}
-    <label>{{ key }}</label> <label>{{ value }}</label>
-{% endfor %}
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+</head>
+
+<div class="modal" id="showResultsModal">
+    <div class="modal-dialog">
+        <div class="modal-content" data-backdrop="true">
+            <label id="resultsMessage"></label>
+            <div class="modal-footer">
+                {% for key, value in preds_by_classes.items %}
+                    <label>{{ key }}</label> <label>{{ value }}</label>
+                {% endfor %}
+                <button type="button" class="btn btn-primary" id="warningClose">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

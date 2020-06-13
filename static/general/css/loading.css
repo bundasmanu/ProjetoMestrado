@@ -1,0 +1,23 @@
+
+#loadingBox{
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: auto;
+}
+
+#loadingBox > .loadGif{
+    margin: 0 auto;
+    width: 30%;
+    min-width: 300px !important;
+    margin-top: 25vh; /*view height better than % */
+}
+
+#loadingBox > .aguardaResultadosLabel{
+    display: block;
+    margin-top: 2%;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    color: #417690;
+}

@@ -9,8 +9,6 @@ from tensorflow.keras.models import load_model
 from django.core.files.storage import default_storage
 import cv2
 import numpy as np
-from django.urls import reverse
-from django.http import HttpResponseRedirect
 from collections import OrderedDict
 import ast
 import os
@@ -21,6 +19,11 @@ class PredictView(LoginRequiredMixin, FormView):
     template_name = 'dataset/predict.html'
     login_url = settings.LOGOUT_REDIRECT_URL
     form_class = PredictForm.PredictForm
+
+    def get_context_data(self, **kwargs):
+        context = super(PredictView, self).get_context_data(**kwargs)
+        context["have_results"] = "false" # if user makes a predict this key is overrided
+        return context
 
     def delete_image(self, image_url):
 
@@ -118,15 +121,11 @@ class PredictView(LoginRequiredMixin, FormView):
                 counter = 0
                 for key, value in sorted_classes.items():
                     preds_by_class[key] = prediction[0][counter]
-                    counter =  counter + 1
+                    counter = counter + 1
 
                 return preds_by_class
         except:
             pass
-
-    def get_context_data(self, **kwargs):
-        context = super(PredictView, self).get_context_data(**kwargs)
-        return context
 
     def form_valid(self, form):
 
@@ -165,13 +164,15 @@ class PredictView(LoginRequiredMixin, FormView):
                 sample_data = self.resize_and_transform_to_array(image_file.name, selected_model)
 
             if np.any(sample_data) == None: # if return value of resize_and_transform_to_array is None, then i can't continue the sample prediction process
-                raise
+                messages.error(self.request, "Definiu incorretamente o input_shape do modelo, ou o modelo não é condizente com o input_shape, altere o modelo")
+                return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
 
             # apply pre-process technique in sample array, considering normalize_std and normalize_mean of training data, using in data definition (pre-processing)
             sample_data = self.normalize_data(sample_data, selected_model)
 
             if np.any(sample_data) == None:
-                raise
+                messages.error(self.request, "Definiu incorretamente o valor std e mean training do modelo, altere o modelo")
+                return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
 
             # predict value of sample
             load_file = load_model(path_of_model)
@@ -183,7 +184,7 @@ class PredictView(LoginRequiredMixin, FormView):
             prediction = load_file.predict(sample_data)
 
             # convert output dict of model from string to dict
-            dict_with_model_classes =  ast.literal_eval(selected_model.output_dict)
+            dict_with_model_classes = ast.literal_eval(selected_model.output_dict)
 
             # get predictions by class
             preds_by_class = self.interpreting_results(prediction, dict_with_model_classes)
@@ -200,12 +201,21 @@ class PredictView(LoginRequiredMixin, FormView):
                     os.remove(image_file.name)
 
             # render to response to same page, but send to template preds_by_class dictionary with results --> form is resetted
-            context = self.get_context_data()
+            form = PredictForm.PredictForm() # reset form
+            context = self.get_context_data(form=form)
             context["preds_by_classes"] = preds_by_class
+            context["haveResults"] = "true"
 
             return self.render_to_response(context)
+        except ValueError:
+            messages.error(self.request,"Definiu incorretamente o input_shape do modelo, ou as dimensões iniciais do modelo, não coincidem com o input_shape, altere o modelo")
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
+        except IOError:
+            messages.error(self.request, "Erro no loading do modelo, confirme o ficheiro submetido")
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
         except:
-            pass # goes to form_invalid
+            messages.error(self.request, "Erro na previsão do modelo")
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
 
     def form_invalid(self, form):
 

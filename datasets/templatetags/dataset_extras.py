@@ -2,6 +2,9 @@
 # ref: https://docs.djangoproject.com/en/dev/howto/custom-template-tags/
 
 from django import template
+from django.utils.safestring import mark_safe
+import json
+
 register = template.Library() # "To be a valid tag library, the module must contain a module-level variable named register that is a template.Library instance, in which all the tags and filters are registered."
 
 @register.simple_tag
@@ -38,3 +41,8 @@ def filter_range(start, end): # range filter to use in a for loop
 @register.simple_tag
 def define_int(x, y): # sum to variables
     return int(x+y)
+
+# passing values from django template to javascript in a safety way: https://stackoverflow.com/questions/298772/django-template-variables-and-javascript
+@register.filter(is_safe=True)
+def js(obj):
+    return mark_safe(json.dumps(obj))

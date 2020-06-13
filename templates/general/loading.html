@@ -1,2 +1,9 @@
 {% load static %}
-<img src="{% static 'general/img/loader.gif' %}" alt="Aguarde pelos resultados">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/general/css/loading.css">
+</head>
+<div id="loadingBox" style="display: none">
+    <img src="{% static 'general/img/loader.gif' %}" alt="Aguarde pelos resultados" class="loadGif">
+    <label class="aguardaResultadosLabel">A processar o diagnóstico, aguarde...</label>
+</div>

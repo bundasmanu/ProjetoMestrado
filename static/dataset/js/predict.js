@@ -1,4 +1,5 @@
 
+/*Onclick submit form button function, show loading and hide content of page*/
 function loading_bar() {
 
     /*get variables*/
@@ -10,3 +11,30 @@ function loading_bar() {
     loading_div.style.display = '';
 
 }
+
+/*This function represents the logic of refresh predict page, where detects with users predicts an image and show results or if it's a simple entry on predict page or a refresh without making a prediction*/
+document.addEventListener('DOMContentLoaded', function() {
+
+    var exist_results = showResults;
+
+    if (exist_results === "true"){ /*user makes a prediction, i need to show results*/
+
+        var resultsModal = $("#showResultsModal").modal().show();/*get Modal of Show Results page*/
+
+        $("#resultsMessage").empty().append("Diagnóstico obtido:");
+
+    }
+
+});
+
+/*Modal close button*/
+$("#warningClose").one().click(function () { /*action of cancel button*/
+    $("#showResultsModal").modal("hide");
+});
+
+/*this function allows users to hide the modal by clicking on the windows*/
+$(document).click(function (e) {
+    if ($(e.target).hasClass('modal-backdrop')) {
+        $("#showResultsModal").modal("hide");
+    }
+});

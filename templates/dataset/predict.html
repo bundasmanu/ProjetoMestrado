@@ -1,10 +1,13 @@
 {% extends 'users/InfoUser.html' %}
 {% load i18n %}
 {% load static %}
+{% load dataset_extras %}
 {% block extrastyle %}
     {{ block.super }}
     <script type='text/javascript' src='/static/dependencies/js/http_ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.js'></script>
     <script src="/static/dependencies/js/http_code.jquery.com_jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+    <script src="/static/bootstrap/css/bootstrap.css"></script>
 {% endblock %}
 {% block content %}
     <div id="ContainerPrincipal">
@@ -31,15 +34,21 @@
         </div>
     </div>
 
-    <div id="loadingBox" style="display: none">
-        {% include 'general/loading.html' %}
-    </div>
+    <!-- Flag to control show of results -->
+    <script type="text/javascript">
+        var showResults = {{ haveResults | js }};
+    </script>
 
+    <!-- Loading gif -->
+    {% include 'general/loading.html' %}
+
+    <!-- Show sample prediction results -->
     <div id="showResults">
         {% include 'dataset/showResults.html' %}
     </div>
 
     <script src="{% static "dataset/js/dependentDropDownPredictPage.js" %}"></script>
     <script src="{% static "dataset/js/predict.js" %}"></script>
+    <script src="{% static 'general/js/extendedMessageTimeout.js' %}"></script>
 
 {% endblock %}
