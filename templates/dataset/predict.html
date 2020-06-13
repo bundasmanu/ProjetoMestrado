@@ -4,10 +4,11 @@
 {% load dataset_extras %}
 {% block extrastyle %}
     {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="/static/dataset/css/predictDataset.css">
     <script type='text/javascript' src='/static/dependencies/js/http_ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.js'></script>
     <script src="/static/dependencies/js/http_code.jquery.com_jquery-3.3.1.js"></script>
-    <script src="/static/bootstrap/js/bootstrap.js"></script>
-    <script src="/static/bootstrap/css/bootstrap.css"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.css">
 {% endblock %}
 {% block content %}
     <div id="ContainerPrincipal">
@@ -43,9 +44,7 @@
     {% include 'general/loading.html' %}
 
     <!-- Show sample prediction results -->
-    <div id="showResults">
-        {% include 'dataset/showResults.html' %}
-    </div>
+    {% include 'dataset/showResults.html' %}
 
     <script src="{% static "dataset/js/dependentDropDownPredictPage.js" %}"></script>
     <script src="{% static "dataset/js/predict.js" %}"></script>

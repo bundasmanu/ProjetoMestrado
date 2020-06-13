@@ -1,17 +1,19 @@
-<head>
-    <title></title>
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
-</head>
 
 <div class="modal" id="showResultsModal">
     <div class="modal-dialog">
         <div class="modal-content" data-backdrop="true">
-            <label id="resultsMessage"></label>
+            <div class="modal-body" id="resBodyMessage">
+                <label id="resultsMessage"></label>
+            </div>
             <div class="modal-footer">
                 {% for key, value in preds_by_classes.items %}
-                    <label>{{ key }}</label> <label>{{ value }}</label>
+                    <div id="classResultBox">
+                        <label id="classPredictLabel">{{ key }}: </label> <label id="resultPredictValue">{{ value }}</label>
+                    </div>
                 {% endfor %}
-                <button type="button" class="btn btn-primary" id="warningClose">Ok</button>
+                <div id="warningClose">
+                    <button type="button" class="btn btn-primary">Ok</button>
+                </div>
             </div>
         </div>
     </div>

@@ -11,6 +11,7 @@ import cv2
 import numpy as np
 from collections import OrderedDict
 import ast
+import math
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
@@ -120,7 +121,7 @@ class PredictView(LoginRequiredMixin, FormView):
                 # i need to define new dictionary that for each key, put prediction value on them
                 counter = 0
                 for key, value in sorted_classes.items():
-                    preds_by_class[key] = prediction[0][counter]
+                    preds_by_class[key] = str(round(prediction[0][counter] * 100, 2))+"%" # round to "Hundredths" (centésimas)
                     counter = counter + 1
 
                 return preds_by_class

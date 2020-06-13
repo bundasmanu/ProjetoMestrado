@@ -1,0 +1,26 @@
+
+/*this part represents the styles of show results modal*/
+#classResultBox{
+    display: inline-block;
+    width: 80%;
+    height: auto;
+    text-align: center;
+    margin-top: 12px;
+}
+
+#classResultBox:nth-of-type(1){ /*different margin-top for first div*/
+    margin-top: 0;
+}
+
+#classResultBox > label{
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    border-bottom: 1px dashed #666666;
+}
+
+#warningClose{
+    display: block !important;
+    margin-top: 15px !important;
+    text-align: center;
+}
