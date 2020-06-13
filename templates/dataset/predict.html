@@ -12,24 +12,27 @@
 {% endblock %}
 {% block content %}
     <div id="ContainerPrincipal">
-        <h1>Criar Dataset</h1>
+        <h1>Efetuar Previsão</h1>
         <div id="predictBar">
-            <h2>Dataset Info</h2>
+            <h2>Informação para Diagnóstico</h2>
         </div>
         <div id="formDiv">
             <form id="predictOutputModelClass" method="post" enctype="multipart/form-data" data-models-url="{% url 'datasets:ajaxModelsLoad' %}" novalidate>
                 {% csrf_token %}
                 <div id="datasetsDropDown">
+                    <label>Seleccione o Dataset: </label>
                     {{ form.dataset_dropdown }}
                 </div>
                 <div id="modelsDropDown">
+                    <label>Seleccione o Modelo: </label>
                     {{ form.models_dropdown }}
                 </div>
-                <div>
+                <div id="modelsUploadImage">
+                    <label>Insira a amostra (imagem): </label>
                     {{ form.image_upload }}
                 </div>
-                <div id="divBtnCriaDataset">
-                    <input type="submit" class="btnCriaDataset" value="Efetuar Previsão" onclick="loading_bar();">
+                <div id="divBtnEfetuaPrevisao">
+                    <input type="submit" class="btnEfetuaPrevisao" value="Efetuar Previsão" onclick="loading_bar();">
                 </div>
             </form>
         </div>

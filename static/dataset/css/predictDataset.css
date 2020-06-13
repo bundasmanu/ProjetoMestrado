@@ -1,4 +1,75 @@
 
+#containerPrincipal{/*DIV PRINCIPAL --> THIS DIV AGGREGATES ALL CONTENT, INCLUDING FORM*/
+    display: block;
+    width:98%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#predictBar{
+    background-color: #79aec8;
+    margin: 0; /*SAME WIDTH OF PARENT*/
+}
+
+#predictBar > h2{
+    color: white;
+    font-size: 16px;
+    font-weight: lighter;
+    padding: 10px 10px;
+}
+
+#formDiv{
+    display: block;
+    width: 40%;
+    height: auto;
+}
+
+#predictOutputModelClass{
+    display: block;
+    width: 100%; /*ALL CONTENT OF PARENT*/
+    height: auto;
+}
+
+input{
+    font-weight: 500;
+    min-height: 34px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+#datasetsDropDown, #modelsDropDown, #modelsUploadImage{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    border-bottom: 0.5px solid #eeeeee;
+    padding: 30px 0px 20px 10px;
+    vertical-align: middle;
+}
+
+#datasetsDropDown{
+    padding-top: 20px;
+}
+
+#datasetsDropDown > label, #modelsDropDown > label, #modelsUploadImage > label{
+    color: #666;
+    display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
+    vertical-align: middle;
+    width: 28%;
+    padding-right: 20px;
+}
+
+#divBtnEfetuaPrevisao{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.btnEfetuaPrevisao{
+    display: block;
+    margin-top: 5%;
+    width: 25%;
+}
+
 /*this part represents the styles of show results modal*/
 #classResultBox{
     display: inline-block;
@@ -23,4 +94,41 @@
     display: block !important;
     margin-top: 15px !important;
     text-align: center;
+}
+
+/*media queries*/
+@media (max-width: 1480px) { /*RESPONSIVE DIV'S WHEN WIDTH IS LOW*/
+    #datasetsDropDown, #modelsDropDown, #modelsUploadImage{
+        min-width: 470px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .btnEfetuaPrevisao{
+        width:60%;
+    }
+}
+
+@media (max-width: 1080px) {
+    .btnEfetuaPrevisao{
+        width:80%;
+    }
+}
+
+@media (max-width: 780px) {
+    .btnEfetuaPrevisao{
+        width:100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .btnEfetuaPrevisao{
+        width:100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .btnEfetuaPrevisao{
+        width:100%;
+    }
 }
