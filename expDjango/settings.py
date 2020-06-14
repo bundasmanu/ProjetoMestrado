@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     #'expDjango',
     'users',
     'datasets',
-    'modelos'
+    'modelos',
+    'history'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

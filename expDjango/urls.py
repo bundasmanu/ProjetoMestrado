@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('users.urls', namespace='users')),
     path('dataset/', include('datasets.urls', namespace='datasets')),
     path('models/', include('modelos.urls', namespace='models')),
+    path('history/', include('history.urls', namespace='history')),
 ]
 
 '''

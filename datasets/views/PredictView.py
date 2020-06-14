@@ -5,13 +5,13 @@ from ..forms import PredictForm
 from django.contrib import messages
 from expDjango import config
 from modelos.models import CNNModel
+from history.models import History
 from tensorflow.keras.models import load_model
 from django.core.files.storage import default_storage
 import cv2
 import numpy as np
 from collections import OrderedDict
 import ast
-import math
 import os
 os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
@@ -200,6 +200,10 @@ class PredictView(LoginRequiredMixin, FormView):
                 image_file.close()
                 if os.path.exists(image_file.name):
                     os.remove(image_file.name)
+
+            # add user action (sample predict -> to history table)
+            History.History.objects.create(user_id=self.request.user, dataset_id_id=dataset_id,
+                                           model_id=selected_model) # i already have user and model object, i just don't have dataset, then i need to pass dataset id (and create gets respectively object)
 
             # render to response to same page, but send to template preds_by_class dictionary with results --> form is resetted
             form = PredictForm.PredictForm() # reset form

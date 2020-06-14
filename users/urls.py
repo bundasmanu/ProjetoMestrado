@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import DetailUserInfoView, ListAllUsers, CreateUserView, CustomLoginView, LogoutCustomView, ChangeUserPasswordView, AboutRedirectView
+from .views import DetailUserInfoView, ListAllUsers, CreateUserView, CustomLoginView, LogoutCustomView, ChangeUserPasswordView, AboutRedirectView, EntryPage
 from django.views.generic.base import TemplateView
 
 app_name = 'userUrls'
@@ -11,5 +11,6 @@ urlpatterns = [
     path('logout/', LogoutCustomView.as_view(), name='logout'),
     path('info/', DetailUserInfoView.as_view(), name='info'),
     path('create/', CreateUserView.as_view(), name='create'),
+    path('entry', EntryPage.EntryPage.as_view(), name='entry'),
     path('changePass/<int:pk>', ChangeUserPasswordView.ChangeUserPasswordView.as_view(), name="changePass")
 ]

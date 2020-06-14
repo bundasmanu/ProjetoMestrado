@@ -1,0 +1,33 @@
+{#{% extends 'users/InfoUser.html' %}#}
+{#{% load i18n %}#}
+{#{% load static %}#}
+{##}
+{#{% block extrastyle %}#}
+{#    {{ block.super }}#}
+{##}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+
+
+        {% for dataset in object_list%}
+            <div class="datasetsMostUsedPerUser">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <p>{{ dataset.dataset_id__name }}</p>
+            </div>
+        {% endfor %}
+
+    <div id="datasetsMostUsed">
+        {% for dataset in commom_datasets %}
+            <label>{{ dataset.dataset_id__name }}</label>
+        {% endfor %}
+    </div>
+
+    <div id="modelsMostUsed">
+        {% for model in commom_models %}
+            <label>{{ model.model_id__name }}</label>
+            <label>{{ model.dataset_id__name }}</label>
+        {% endfor %}
+    </div>
+
+{#{% endblock %}#}

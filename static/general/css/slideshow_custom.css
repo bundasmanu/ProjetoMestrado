@@ -1,0 +1,97 @@
+
+#containerPrincipal{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-right: 1%;
+    margin-top: 2%;
+}
+
+#welcomeBox{
+    width: 50%;
+    float: left;
+    height: auto;
+    display: inline;
+    text-align: center;
+}
+
+#welcomeBox > h1{
+    font-size: 60px;
+    font-weight: 600;
+    font-family: Vivaldi, sans-serif;
+    padding-right: 40px;
+    color: #79aec8;
+}
+
+#welcomeBox > h1:nth-of-type(1){
+   margin-top: 18vh;
+}
+
+#welcomeBox > h1:nth-of-type(2){
+   margin-top: -2vh;
+    color: #417690;
+}
+
+#carousels{
+    width: 50%;
+    float: right;
+    height: auto;
+    display: inline;
+}
+
+.slide{
+    width: 100%;
+    height: 100%;
+    min-height: 65vh;
+    background-color: white;
+}
+
+#awardImgBox{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.fa-bullhorn:before{
+    font-size: 60px !important;
+}
+
+#awardImgBox > h1{
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    color: #417690;
+}
+
+#textExploration{
+    display: block;
+    width: 80%;
+    height: 100%;
+    margin-top: 10vh;
+    margin-left: 7vw;
+}
+
+.datasetsMostUsedPerUser{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+}
+
+.datasetsMostUsedPerUser > .fa-star:before{
+    display: inline-block;
+    font-size: 30px !important;
+    float: left;
+    vertical-align: middle;
+}
+
+.datasetsMostUsedPerUser > p{
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    vertical-align: middle;
+    padding-left: 4vw;
+}
