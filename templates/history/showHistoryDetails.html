@@ -9,25 +9,28 @@
 {##}
 {#{% block content %}#}
 
-
-        {% for dataset in object_list%}
-            <div class="datasetsMostUsedPerUser">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <p>{{ dataset.dataset_id__name }}</p>
-            </div>
-        {% endfor %}
-
-    <div id="datasetsMostUsed">
-        {% for dataset in commom_datasets %}
-            <label>{{ dataset.dataset_id__name }}</label>
-        {% endfor %}
+<!-- Most used dataset by logged user -->
+{% for dataset in object_list%}
+    <div class="datasetsMostUsedPerUser"> <!-- need to be class not id, because id need to be unique, and if exist more than once object id is not unique -->
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <p>{{ dataset.dataset_id__name }}</p>
     </div>
+{% endfor %}
 
-    <div id="modelsMostUsed">
-        {% for model in commom_models %}
-            <label>{{ model.model_id__name }}</label>
-            <label>{{ model.dataset_id__name }}</label>
-        {% endfor %}
+<!-- Most used dataset's by all users -->
+{% for dataset in commom_datasets %}
+    <div class="datasetsMostUsed"> <!-- need to be class not id, because id need to be unique, and if exist more than once object id is not unique -->
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <p>{{ dataset.dataset_id__name }}</p>
     </div>
+{% endfor %}
+
+<!-- Most used model's by all users -->
+{% for model in commom_models %}
+    <div class="modelsMostUsed"> <!-- need to be class not id, because id need to be unique, and if exist more than once object id is not unique -->
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <p>{{ model.model_id__name }} - {{ model.dataset_id__name }}</p>
+    </div>
+{% endfor %}
 
 {#{% endblock %}#}

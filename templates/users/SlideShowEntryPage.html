@@ -20,30 +20,50 @@
         </div>
         <div id="carousels">
 
-            <div class="slide">
+            <div class="slide"> <!-- first slide shows most used dataset's by logged user -->
 
-                <div id="awardImgBox">
+                <div class="awardImgBox">
                     <i class="fa fa-bullhorn"></i>
-                    <h1>Dataset's mais utilizados</h1>
+                    <h1>Dataset's mais utilizados pelo {{ user_name }}</h1>
                 </div>
 
-                <div id="textExploration">
+                <div class="textExploration"> <!-- content of this div is dynamically placed -->
 
                 </div>
 
             </div>
 
-            <div class="slide">
+            <div class="slide"> <!-- second slide shows most used dataset's by all users -->
+
+                <div class="awardImgBox">
+                    <i class="fa fa-bullhorn"></i>
+                    <h1>Dataset's mais utilizados pela comunidade</h1>
+                </div>
+
+                <div class="textExploration"> <!-- content of this div is dynamically placed -->
+
+                </div>
 
             </div>
 
-            <div class="slide">dsfdsdsds
+            <div class="slide"> <!-- third slide shows most used model's by all users -->
+
+                <div class="awardImgBox">
+                    <i class="fa fa-bullhorn"></i>
+                    <h1>Modelos mais utilizados pela comunidade</h1>
+                </div>
+
+                <div class="textExploration"> <!-- content of this div is dynamically placed -->
+
+                </div>
 
             </div>
         </div>
-        <div id="exp" style="display: none">
+
+        <div id="exp" style="display: none"> <!-- after reload of page this div contains all content retrieve from AJAX Request, which is then placed on the respective slide -->
 
         </div>
+
     </div>
 
     <script type="text/javascript" src="/static/dependencies/js/__cdn.jsdelivr.net_npm_slick-carousel@1.8.1_slick_slick.js"></script>

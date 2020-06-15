@@ -6,8 +6,9 @@ $(document).ready(function(){
         autoplay: true,
         infinite: true,
         slidesToShow: 1,
-        arrows: true,
+        arrows: false,
         dots: true,
+        fade: true,
     });
 });
 
@@ -18,9 +19,25 @@ document.addEventListener('DOMContentLoaded', function() {
     $.ajax({
         url: '/history/details',
         success: function (data) {
+
+            /*put all content data on a hidden div on SlideShowEntryPage*/
             $("#exp").html(data);
-            var x = document.getElementsByClassName("datasetsMostUsedPerUser");
-            $("#textExploration").html(x);
+
+            /*retrieve correspondent data to each slide in use (next steps)*/
+            var all_text_exploration_classes = document.getElementsByClassName("textExploration");
+
+            /*most used dataset's by logged user*/
+            var most_used_datasets_by_logged_user = document.getElementsByClassName("datasetsMostUsedPerUser"); /*most used dataset's by logged user*/
+            $(all_text_exploration_classes).eq(0).html(most_used_datasets_by_logged_user);
+
+            /*most used dataset's by all users*/
+            var most_used_datasets_by_all_users = document.getElementsByClassName("datasetsMostUsed");
+            $(all_text_exploration_classes).eq(1).html(most_used_datasets_by_all_users);
+
+            /*most used model's by all users*/
+            var most_used_models_by_all_users = document.getElementsByClassName("modelsMostUsed");
+            $(all_text_exploration_classes).eq(2).html(most_used_models_by_all_users);
+
         }
     });
 
