@@ -17,7 +17,7 @@
     <div id="relativeContainer">
         <div id="containerPrincipal">
             <h1>Listagem dos Datasets</h1>
-            {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="sdgsdgsgd" %}
+            {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="create" %}
             <div id="datasetsBox">
                 <table id="tabelaDatasets">
                     <thead>
@@ -39,7 +39,8 @@
                             </td>
                             <td style="display: none">{{ dataset.id }}</td> <!--i need this to pass to permit to make other operations-->
                             <td>
-                                <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>
+{#                                <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>#}
+                                {{ dataset.name }}
                             </td>
                             <td>
                                 {{ dataset.n_classes }}

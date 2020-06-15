@@ -113,7 +113,7 @@ span > p{
 .tooltip .tooltiptext::after {
     content: " ";
     position: absolute;
-    bottom: 40%; /* At the bottom of the tooltip */
+    top: 4px; /* At the bottom of the tooltip */
     left: -2%;
     margin-left: -6px;
     border-width: 4px;

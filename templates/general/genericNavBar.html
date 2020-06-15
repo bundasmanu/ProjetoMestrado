@@ -2,18 +2,19 @@
 <!--REF: good styles to make nav bars http://jsfiddle.net/w9xnv/2/-->
 <div class="breadcrumbs">
     <nav id="navigationGenericBar">
-        <a href="{% url 'users:home' %}"><span class="transitionLink">Home</span></a>
-        <a href="#"><span class="transitionLink">Datasets</span></a>
-        <a href="#"><span class="transitionLink">Modelos</span></a>
-        <div class="dropdown">
-            <button class="dropbtn">Simulação
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
+        <a href="{% url 'users:entry' %}"><span class="transitionLink">Home</span></a>
+        <a href="{% url 'datasets:listaDatasets' %}"><span class="transitionLink">Datasets</span></a>
+        <a href="{% url 'models:listaModels' %}"><span class="transitionLink">Modelos</span></a>
+        <a href="{% url 'datasets:predict' %}"><span class="transitionLink">Diagnóstico</span></a>
+{#        <div class="dropdown">#}  <!-- is needed if i need to use a nav bar option with options inside -->
+{#            <button class="dropbtn">Simulação#}
+{#                <i class="fa fa-caret-down"></i>#}
+{#            </button>#}
+{#            <div class="dropdown-content">#}
+{#                <a href="#">Link 1</a>#}
+{#                <a href="#">Link 2</a>#}
+{#                <a href="#">Link 3</a>#}
+{#            </div>#}
+{#        </div>#}
     </nav>
 </div>

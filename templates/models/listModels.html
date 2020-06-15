@@ -17,7 +17,7 @@
     <div id="relativeContainer">
         <div id="listModelsBox">
             <h1>Listagem de Modelos</h1>
-            {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="sdgsdgsgd" %}
+            {% include 'general/filterToolBarWithCheckBoxes.html' with linkAdd="create" %}
             <div id="modelsBox">
                 <table id="modelsTable">
                     <thead>
@@ -39,7 +39,8 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <a href="#">{{ model.name }}</a>
+{#                                <a href="#">{{ model.name }}</a>#}
+                                {{ model.name }}
                             </td>
                             <td>
                                 {{ model.normalize_std }}

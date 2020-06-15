@@ -36,7 +36,7 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         try:
             self.clean_messages()
-            path = reverse('users:info')
+            path = reverse('users:entry')
             return path
         except:
             raise
