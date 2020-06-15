@@ -20,15 +20,15 @@
             <form id="predictOutputModelClass" method="post" enctype="multipart/form-data" data-models-url="{% url 'datasets:ajaxModelsLoad' %}" novalidate>
                 {% csrf_token %}
                 <div id="datasetsDropDown">
-                    <label>Seleccione o Dataset: </label>
+                    <label>Seleccione o Dataset*: </label>
                     {{ form.dataset_dropdown }}
                 </div>
                 <div id="modelsDropDown">
-                    <label>Seleccione o Modelo: </label>
+                    <label>Seleccione o Modelo*: </label>
                     {{ form.models_dropdown }}
                 </div>
                 <div id="modelsUploadImage">
-                    <label>Insira a amostra (imagem): </label>
+                    <label>Insira a amostra (imagem)*: </label>
                     {{ form.image_upload }}
                 </div>
                 <div id="divBtnEfetuaPrevisao">

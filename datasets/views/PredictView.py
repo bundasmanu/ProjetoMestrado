@@ -133,9 +133,11 @@ class PredictView(LoginRequiredMixin, FormView):
         try:
 
             # collect form data
+            if form.cleaned_data['dataset_dropdown'] == 'Selecciona um dataset' or form.cleaned_data['models_dropdown'] == 'Selecciona um modelo':
+                raise NotImplementedError
             dataset_id = int(form.cleaned_data['dataset_dropdown'])
             model_id = int(form.cleaned_data['models_dropdown'])
-            image = form.cleaned_data['image_upload']
+            image = form.cleaned_data['image_upload'] # raises automatically
 
             # check if image is a temporary file, if it is i need to save image, otherwise image is loaded to memory, and i could use variable image directly
             url_image = None
@@ -214,19 +216,30 @@ class PredictView(LoginRequiredMixin, FormView):
             return self.render_to_response(context)
         except ValueError:
             messages.error(self.request,"Definiu incorretamente o input_shape do modelo, ou as dimensões iniciais do modelo, não coincidem com o input_shape, altere o modelo")
-            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm()))
         except IOError:
             messages.error(self.request, "Erro no loading do modelo, confirme o ficheiro submetido")
-            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm()))
+        except NotImplementedError:
+            if form.cleaned_data['dataset_dropdown'] == 'Selecciona um dataset':
+                messages.error(self.request, "Seleccione um dataset")
+            else:
+                messages.error(self.request, "Seleccione um modelo")
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm()))
         except:
             messages.error(self.request, "Erro na previsão do modelo")
-            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
+            return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm()))
 
     def form_invalid(self, form):
 
         storage = messages.get_messages(self.request)
         storage.used = True
         errors_dict = dict(form.errors)
-        first_error = errors_dict.get('output_dict').data[0].message
-        messages.error(self.request, first_error)
+        if "image_upload" in errors_dict:
+            if errors_dict.get('image_upload').data[0].message == "Upload a valid image. The file you uploaded was either not an image or a corrupted image.":
+                first_error = errors_dict.get('image_upload').data[0].message
+                messages.error(self.request, first_error)
+            else: # required message error
+                messages.error(self.request, "Please choose an image")
+        form = PredictForm.PredictForm() # reset form
         return super(PredictView, self).form_invalid(form)
