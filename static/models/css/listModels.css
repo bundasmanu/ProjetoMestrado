@@ -23,7 +23,7 @@
 #modelsTable{
     border-spacing: 0 1px;
     border-collapse: collapse;
-    width: 100%;
+    width: auto;
 }
 
 #modelsBox > #modelsTable th{

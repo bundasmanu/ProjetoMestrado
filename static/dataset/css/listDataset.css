@@ -164,6 +164,17 @@ span > p{
     }
 }
 
+@media (max-width: 580px) {
+    #datasetsBox {
+        overflow: auto;
+        width: 100%;
+    }
+
+    #tabelaDatasets {
+        border-collapse: collapse;
+    }
+}
+
 @media (max-width: 480px) {
     #buttonOptions{
         width:50%;
