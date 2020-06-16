@@ -28,7 +28,7 @@ class DatasetCreateView(CreateView, LoginRequiredMixin):
 
         try:
 
-            return super(DatasetCreateView, self).form_valid(form)
+            return super(DatasetCreateView, self).form_valid(form) # saves dataset on database, and the return is declared to self.object, that contains dataset instance created, and i can use in get_success url, because it's called after save on database, if i want i could declare return of save to another object (e.g. dataset_saved) and redirect after on form valid to a link, and can use dataset_saved with dataset created object
         except:
             raise
 
@@ -50,8 +50,12 @@ class DatasetCreateView(CreateView, LoginRequiredMixin):
             messages.add_message(self.request, messages.INFO, config.SUCCESS_DATASET_CREATION) # add message
 
             #pass kwargs with pk to ListSpecificDataset --> important need to kwargs because, get queryset method gets pk via kwargs, but i also can send via args, passing a tuple
-            kwargs = {"pk" : self.object.id}
-            path = reverse("datasets:ListaDatasetByID", kwargs=kwargs)
+            # kwargs = {"pk" : self.object.id}
+            # path = reverse("datasets:ListaDatasetByID", kwargs=kwargs)
+
+            # for now, i only redirect again to list of Dataset's, but if necessary the link before redirects to detailview of the dataset created
+            path = reverse('datasets:listaDatasets')
+
             return path
         except:
             raise

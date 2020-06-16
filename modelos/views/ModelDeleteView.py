@@ -32,12 +32,12 @@ class ModelDeleteView(LoginRequiredMixin, DeleteView):
             shutil.rmtree(path_to_drop, ignore_errors=True)
 
             # add success message to listModels page
-            messages.success(request, "Dataset eliminado com sucesso")
+            messages.success(request, "Modelo eliminado com sucesso")
             delete_sucess = {'sucess': 'ok'}
 
             return HttpResponse(json.dumps(delete_sucess), content_type='application/json')
 
         except:
-            messages.success(request, "Erro ao eliminar o dataset")
+            messages.success(request, "Erro ao eliminar o modelo")
             delete_insucess = {'sucess': 'error'}
             return HttpResponse(json.dumps(delete_insucess), content_type='application/json')
