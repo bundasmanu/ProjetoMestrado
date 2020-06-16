@@ -15,14 +15,15 @@
 
 #modelsBox{
     display: block;
-    width: 60%;
+    width: 70%;
     height: auto;
+    overflow: auto;
 }
 
 #modelsTable{
     border-spacing: 0 1px;
-    border-collapse: separate;
-    width: auto;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 #modelsBox > #modelsTable th{
@@ -51,12 +52,42 @@
 }
 
 /*media queries*/
-@media (max-width: 1024px) {
+@media (max-width: 1620px) {
+    #modelsBox{
+        width: 80%;
+    }
+}
+
+@media (max-width: 1420px) {
+    #modelsBox{
+        width: 90%;
+    }
+}
+
+@media (max-width: 1280px) {
+    #modelsBox{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1150px) {
     #modelsBox > #modelsTable th{
         font-size: 11px;
-        padding: 0.6vw;
+        padding: 0.5vw;
     }
+
     #modelsTable > tr, td{
-        font-size: 12px !important;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1024px) {
+    #modelsBox > #modelsTable th{
+        font-size: 10px !important;
+        padding: 0.3vw !important;
+    }
+
+    #modelsTable > tr, td{
+        font-size: 11px !important;
     }
 }
