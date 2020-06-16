@@ -155,3 +155,13 @@
         padding-right: 4vw;
     }
 }
+
+@media (max-width: 500px) {
+    .inlineLinks .link{
+        display: inline;
+        font-size: 25px;
+        color: white;
+        padding-left: 2vw;
+        padding-right: 4vw;
+    }
+}

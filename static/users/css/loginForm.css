@@ -8,6 +8,7 @@
 
 #header h1 {
     font-size: 20px !important;
+    margin: 0 auto;
 }
 
 #header h1 a {
@@ -22,8 +23,7 @@
     left: 0 !important;
     color: #fff !important;
     content: 'Login'!important;
-    text-align: center !important;
-    margin-left: 65% !important;
+    margin-left: 120px !important;
     pointer-events: none !important;
 }
 
@@ -100,4 +100,13 @@ ul.messagelist li{
     padding-left: 55px;
     background-position: 30px 12px;
     display: none !important; <!--TEM PRECEDENCIA SOB TODAS AS RESTANTES ATRIBUICOES EXISTENTES PARA ESTE ATRIBUTOS E ESTA REGRA, POR EXEMPLO TAMBEM DEFINIDA NO ADMIN/BASE.CSS!-->
+}
+
+@media (max-width: 1024px) {
+    #branding h1{
+        margin-left: 0 !important;
+    }
+    #header h1 a:after{
+        margin-left: 70px !important;
+    }
 }
