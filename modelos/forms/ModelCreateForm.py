@@ -1,9 +1,11 @@
 from django.forms import ModelForm, FileField
 from ..models import CNNModel
-from ..validators import validate_model_file_extension
+from ..validators import validate_model_file_extension, check_output_dict
 from . import DatasetOptionsChoiceField
 from datasets.models import Dataset
 from expDjango import config
+from django.core.exceptions import ValidationError
+import ast
 
 class ModelCreateForm(ModelForm):
 
@@ -15,3 +17,17 @@ class ModelCreateForm(ModelForm):
         model = CNNModel.CNNModel
         fields = "__all__"
         exclude = ('id', 'creation_date', 'model_path', 'user_id', 'dataset_id')
+
+    def clean(self):
+        cleaned_data = super(ModelCreateForm, self).clean()
+
+        # first, call validator to check if user puts a correct dictionary
+        check_output_dict(cleaned_data.get("output_dict"))
+
+        # if it's a dictionary, check if the number of keys is equal to number of classes of selected dataset
+        output_dict = ast.literal_eval(cleaned_data.get("output_dict")) # already checked on validator
+        number_keys = len(output_dict.keys())
+        if cleaned_data.get("dataset_id_options").n_classes != number_keys:
+            raise ValidationError(
+                "Incorrect number of classes on dictionary, dataset have: {} classes, and you pass {} classes on dict".format(
+                    cleaned_data.get("dataset_id_options").n_classes, number_keys))

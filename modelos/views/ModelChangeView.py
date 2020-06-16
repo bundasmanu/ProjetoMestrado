@@ -128,6 +128,9 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
         elif "file_upload" in errors_dict:
             first_error = errors_dict.get('file_upload').data[0].message
             messages.error(self.request, first_error)
+        elif "__all__" in errors_dict: # error of classes problem, mismatch between output dict and selected dataset
+            first_error = errors_dict.get('__all__').data[0].message
+            messages.error(self.request, first_error)
         kwargs = self.get_form_kwargs()
         form = ModelChangeForm.ModelChangeForm(**kwargs) # reset form with initial values
         return super(ModelChangeView, self).form_invalid(form)

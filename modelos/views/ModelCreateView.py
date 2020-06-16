@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.core.files.storage import default_storage
+from datasets.models import Dataset
 import os
 import time
 
@@ -60,6 +61,9 @@ class ModelCreateView(LoginRequiredMixin, CreateView):
             messages.error(self.request, first_error)
         elif "file_upload" in errors_dict:
             first_error = errors_dict.get('file_upload').data[0].message
+            messages.error(self.request, first_error)
+        elif "__all__" in errors_dict: # error of classes problem, mismatch between output dict and selected dataset
+            first_error = errors_dict.get('__all__').data[0].message
             messages.error(self.request, first_error)
         form = ModelCreateForm.ModelCreateForm()
         return super(ModelCreateView, self).form_invalid(form)

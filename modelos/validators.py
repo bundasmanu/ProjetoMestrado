@@ -14,13 +14,18 @@ def validate_model_file_extension(value):
 def check_output_dict(value):
 
     try:
-        ast.literal_eval(value)
+        mydict = ast.literal_eval(value)
+        if not isinstance(mydict, dict):
+            raise
     except:
         raise ValidationError('Please give a dictionary')
 
 def check_output_tuple(value):
 
     try:
+        number_commas = value.count(',') # only accepts strings of format 50, 50, 3
+        if number_commas != 2:
+            raise
         res = tuple(map(int, value.split(', ')))
     except:
         raise ValidationError('Please give a tuple string format')
