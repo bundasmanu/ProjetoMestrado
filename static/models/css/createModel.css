@@ -45,8 +45,12 @@ input{
     height: auto;
     width:100%;
     border-bottom: 0.5px solid #eeeeee;
-    padding: 15px 0px 8px 10px;
+    padding: 10px 0px 8px 7px;
     vertical-align: middle;
+}
+
+#nameModel{
+    padding: 6px 0px 8px 8px;
 }
 
 #nameModel > label, #normalizedStdModel > label, #normalizedMeanModel > label, #outputDictModel > label, #inputShapeModel > label, #datasetIdOptions > label, #modelUploadFile > label{
@@ -64,7 +68,7 @@ input{
 
 .btnCriaModel{
     display: block;
-    margin-top: 0;
+    margin-top: 3%;
     width: 25%;
 }
 

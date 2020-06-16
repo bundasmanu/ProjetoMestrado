@@ -212,11 +212,27 @@
     }
 }
 
+@media (max-width: 940px) {
+    #inlineBoxHomeImage{
+        width: 25%;
+        height: 25%;
+        margin-top: 12%;
+        float: right;
+        margin-right: 17%;
+    }
+
+    #buttonSpaceHome{
+        width: 48%;
+        margin-top: 34%;
+        left: 10%;
+    }
+}
+
 @media (max-width: 840px) {
     #inlineBoxHomeImage{
         width: 25%;
         height: 25%;
-        margin-top: 8%;
+        margin-top: 17%;
         float: right;
         margin-right: 15%;
     }
@@ -226,7 +242,7 @@
         width: 38%;
         height: 38%;
         left: 14%;
-        top: 47%;
+        top: 50%;
         position: absolute;
     }
     #textContext .titleApp{
@@ -240,7 +256,7 @@
     #buttonSpaceHome{
         width: 48%;
         left: 10%;
-        margin-top: 26%;
+        margin-top: 36%;
     }
     #buttonSpaceHome > .loginButton {
         float: left;
@@ -255,13 +271,13 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
     #inlineBoxHomeImage{
-        width: 25%;
-        height: 25%;
-        margin-top: 14%;
+        width: 30%;
+        height: 30%;
+        margin-top: 25%;
         float: right;
-        margin-right: 18%;
+        margin-right: 12%;
     }
 
     #textContext{
@@ -269,7 +285,7 @@
         width: 30%;
         height: 30%;
         left: 14%;
-        top: 45%;
+        top: 54%;
         position: absolute;
     }
     #textContext .titleApp{
@@ -282,7 +298,7 @@
     }
     #buttonSpaceHome{
         width: 48%;
-        margin-top: 38%;
+        margin-top: 51%;
         left: 6%;
     }
     #buttonSpaceHome > .loginButton {
@@ -296,17 +312,25 @@
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 540px){
     #inlineBoxHomeImage{
-        width: 25%;
-        height: 25%;
-        margin-top: 19%;
+        width: 35%;
+        height: 35%;
+        margin-top: 32%;
         float: right;
-        margin-right: 18%;
+        margin-right: 10%;
+    }
+    #textContext{
+        display: inline-block;
+        width: 30%;
+        height: 30%;
+        left: 14%;
+        top: 52%;
+        position: absolute;
     }
     #buttonSpaceHome{
         width: 48%;
-        margin-top: 44%;
+        margin-top: 70%;
         left: 6%;
     }
 }

@@ -1,0 +1,6 @@
+a:focus, /*links*/
+a:active {
+    outline: none !important;
+}
+
+input::-moz-focus-inner {border:0; !important;} /*buttons*/

@@ -18,7 +18,11 @@
 }
 
 .link a:hover{
-    transition: all .3s ease-out; /*the transition effect is provided by the border_bottom that goes down when a href is activated in active a*/
+    /*the transition effect is provided by the border_bottom that goes down when a href is activated in active a*/
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
     color: #417690;
     cursor: pointer;
 }
@@ -51,7 +55,6 @@
     position: relative;
     width: 100%;
     height: auto;
-    overflow: hidden;
 }
 
 #aboutMe > h2, #aboutProject > h2, #aboutMethodology h2{
@@ -112,6 +115,7 @@
     font-size: 16px;
     font-weight: 700;
     font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    list-style-type:none;
 }
 
 #alexDimensions li, #vggDimensions li, #resnetDimensions li, #densenetDimensions li{
