@@ -20,7 +20,7 @@ DELETE_DATASET = "Can delete dataset"
 VIEW_DATASET = "Can view dataset"
 
 #URLS
-LOGOUT_REDIRECT_URL = '/home'
+LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/info'
 
 #USER ATTRIBUTES

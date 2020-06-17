@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 app_name = 'userUrls'
 
 urlpatterns = [
-    path('home/', TemplateView.as_view(template_name='users/Home.html'), name='home'),
+    path('', TemplateView.as_view(template_name='users/Home.html'), name='home'),
     path('about/', AboutRedirectView.AboutRedirectView.as_view(), name='about'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutCustomView.as_view(), name='logout'),

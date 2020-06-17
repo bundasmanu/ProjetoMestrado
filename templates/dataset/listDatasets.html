@@ -75,6 +75,13 @@
                                 <a href="{% url 'datasets:changeDatasetByID' pk=dataset.id %}"></a>
                             </td>
                         </tr>
+                        {% empty %}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Não existem ainda dataset's</td>
+                            <td></td>
+                            <td></td>
                     {% endfor %}
                 </table>
             </div>

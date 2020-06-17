@@ -64,6 +64,14 @@
                                 <a href="{% url 'models:atualizaModelo' pk=model.id %}"></a>
                             </td>
                         </tr>
+                        {% empty %}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Não existem ainda modelos</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                     {% endfor %}
                 </table>
             </div>

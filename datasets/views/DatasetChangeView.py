@@ -38,6 +38,7 @@ class DatasetChangeView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, 'Dataset alterado com sucesso')
-        kwargs = {'pk' : self.object.id}
-        path = reverse('datasets:changeDatasetByID', kwargs=kwargs)
+        #kwargs = {'pk' : self.object.id}
+        #path = reverse('datasets:changeDatasetByID', kwargs=kwargs)
+        path = reverse('datasets:listaDatasets')
         return path
