@@ -156,7 +156,7 @@ $('.inlineCheckBoxLabelFilter').one().click(function(){ /*extend and coolapse on
         }
         /*delete datasets/models that are not submitted by looged user*/
         for (var i=0; i<rows_delete_table.length; i++){
-            rows_delete_table[i].parentNode.removeChild(rows_delete_table[i]); /*remove child from parent*/
+            x = rows_delete_table[i].parentNode.removeChild(rows_delete_table[i]); /*remove child from parent*/
         }
     }
     else{

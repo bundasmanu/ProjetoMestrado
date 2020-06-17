@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import expDjango.config as config
+import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w@hb3%9dq8_sfzsx7cq@mrwr(^ai_fw7n9a77nnn0u_$o9_0*7'
+SECRET_KEY = secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -91,11 +92,11 @@ WSGI_APPLICATION = 'expDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'app',
-        'USER': 'gustavo',
-        'PASSWORD': 'gustavo',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': secrets.APP,
+        'USER': secrets.USER,
+        'PASSWORD': secrets.PASSWORD,
+        'HOST': secrets.HOST,
+        'PORT': secrets.PORT,
     }
 }
 
@@ -142,7 +143,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cdn") #content delivery network
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cdn") #content delivery network --> admin only
 
 # folder that aggregates upload users images for predict
 IMAGES_UPLOAD_ROOT = os.path.join(STATIC_ROOT, "predict/img")

@@ -1,0 +1,21 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+
+# Unit test / coverage reports
+
+# dataset path of models (aggregates all keras models)
+/static/dataset/models/
+
+# Django stuff:
+/secrets.py
+
+# Environments
+venv2
+
+
