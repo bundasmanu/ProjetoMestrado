@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import expDjango.config as config
 import secrets
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w@hb3%9dq8_sfzsx7cq@mrwr(^ai_fw7n9a77nnn0u_$o9_0*7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*'] # IF DEBUG == FALSE, I NEED TO PUT '*'
+ALLOWED_HOSTS = [] # IF DEBUG == FALSE, I NEED TO PUT '*'
 
 
 # Application definition
@@ -91,14 +93,9 @@ WSGI_APPLICATION = 'expDjango.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "gustavo",
-        'USER': "gustavo",
-        'PASSWORD': "gustavo",
-        'HOST': '',
-        'PORT': '',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
