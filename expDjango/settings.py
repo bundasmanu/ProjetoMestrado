@@ -56,6 +56,7 @@ LOGIN_REDIRECT_URL = config.LOGIN_REDIRECT_URL #REDIRECT DPS DE EFETUADO UM LOGI
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -149,3 +150,5 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cd
 IMAGES_UPLOAD_ROOT = os.path.join(STATIC_ROOT, "predict/img")
 
 DATASET_PATH = os.path.join(os.path.dirname(BASE_DIR), "Projeto_Mestrado/static/dataset/models")
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
