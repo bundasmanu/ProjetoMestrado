@@ -22,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = 'w@hb3%9dq8_sfzsx7cq@mrwr(^ai_fw7n9a77nnn0u_$o9_0*7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [] # IF DEBUG == FALSE, I NEED TO PUT '*'
+ALLOWED_HOSTS = ['*'] # IF DEBUG == FALSE, I NEED TO PUT '*'
 
 
 # Application definition
@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'expDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': secrets.APP,
-        'USER': secrets.USER,
-        'PASSWORD': secrets.PASSWORD,
-        'HOST': secrets.HOST,
-        'PORT': secrets.PORT,
+        'NAME': "gustavo",
+        'USER': "gustavo",
+        'PASSWORD': "gustavo",
+        'HOST': '',
+        'PORT': '',
     }
 }
 
