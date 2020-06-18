@@ -17,6 +17,12 @@ def check_output_dict(value):
         mydict = ast.literal_eval(value)
         if not isinstance(mydict, dict):
             raise
+        for value in mydict.values(): # all values need to be integer
+            if isinstance(value, int):
+                continue
+            else:
+                if not value.isdigit():
+                    raise
     except:
         raise ValidationError('Please give a dictionary')
 
