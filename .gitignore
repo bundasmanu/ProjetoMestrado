@@ -18,6 +18,4 @@ __pycache__/
 # Environments
 venv2
 
-
-
-
+/static_cdn

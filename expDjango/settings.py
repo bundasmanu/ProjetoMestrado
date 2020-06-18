@@ -22,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w@hb3%9dq8_sfzsx7cq@mrwr(^ai_fw7n9a77nnn0u_$o9_0*7'
+SECRET_KEY = secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*'] # IF DEBUG == FALSE, I NEED TO PUT '*'
+ALLOWED_HOSTS = [] # IF DEBUG == FALSE, I NEED TO PUT '*'
 
 
 # Application definition
@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'expDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'app',
-        'USER': 'gustavo',
-        'PASSWORD': 'gustavo',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': secrets.APP,
+        'USER': secrets.USER,
+        'PASSWORD': secrets.PASSWORD,
+        'HOST': secrets.HOST,
+        'PORT': secrets.PORT,
     }
 }
 
@@ -149,6 +149,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cd
 # folder that aggregates upload users images for predict
 IMAGES_UPLOAD_ROOT = os.path.join(STATIC_ROOT, "predict/img")
 
-DATASET_PATH = os.path.join(os.path.dirname(BASE_DIR), "ProjetoMestrado/static/dataset/models")
+DATASET_PATH = os.path.join(os.path.dirname(BASE_DIR), "Projeto_Mestrado/static/dataset/models")
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
