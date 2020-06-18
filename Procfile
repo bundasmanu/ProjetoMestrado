@@ -1,0 +1,1 @@
+web: gunicorn expDjango.wsgi --log-file -
