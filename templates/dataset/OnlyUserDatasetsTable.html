@@ -1,0 +1,66 @@
+{% load dataset_extras %}
+<table id="tabelaDatasetsOnlyUser" style="display: none;">
+    <thead>
+    <tr>
+        <th>Edit/Drop</th>
+        <th>Nome</th>
+        <th>Nº Classes</th>
+        <th>Nº Amostras</th>
+        <th>Data de Criação</th>
+        <th>Nº modelos</th>
+    </tr>
+    </thead>
+    {% for dataset in object_list %}
+        {% if user_id == dataset.user_id %}
+            <tr>
+                <td>
+                    {% include 'general/individualCheckBoxTable.html' %}
+                </td>
+                <td style="display: none">{{ dataset.id }}</td> <!--i need this to pass to permit to make other operations-->
+                <td>
+                {#                                <a href="{% url 'datasets:ListaDatasetByID' pk=dataset.id %}">{{ dataset.name }}</a>#}
+                    {{ dataset.name }}
+                </td>
+                <td>
+                    {{ dataset.n_classes }}
+                </td>
+                <td>
+                    {{ dataset.n_samples }}
+                </td>
+                <td>
+                    {{ dataset.creation_date }}
+                </td>
+                <td>
+                    <div class="tooltip">
+                        {{ dataset.numbermodels}}
+                        <span class="tooltiptext">
+                            {% define_single_var forloop.counter0 as counter %}
+                            {% define_int counter dataset.numbermodels as increment %}
+                            {% filter_range counter increment as n_models_by_dataset %}
+                            {% if dataset.numbermodels != 0 %}
+                                {% for i in n_models_by_dataset %}
+                                    <p>{{ models | index:i | getattrfilterDict:"cnnmodel__name"}}</p>
+                                {% endfor %}
+                            {% else %}
+                                <p>Nenhum</p>
+                            {% endif %}
+                        </span>
+                    </div>
+                </td>
+                <td class="deleteLinkDatasetById" style="display: none">
+                    <a href="{% url 'datasets:deleteDatasetByID' pk=dataset.id %}"></a>
+                </td>
+                <td class="changeLinkDatasetById" style="display: none">
+                    <a href="{% url 'datasets:changeDatasetByID' pk=dataset.id %}"></a>
+                </td>
+            </tr>
+        {% endif %}
+        {% empty %}
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Não existem ainda dataset's</td>
+            <td></td>
+            <td></td>
+    {% endfor %}
+</table>
