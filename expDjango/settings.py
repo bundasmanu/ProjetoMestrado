@@ -149,6 +149,6 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"Projeto_Mestrado/static_cd
 # folder that aggregates upload users images for predict
 IMAGES_UPLOAD_ROOT = os.path.join(STATIC_ROOT, "predict/img")
 
-DATASET_PATH = os.path.join(os.path.dirname(BASE_DIR), "Projeto_Mestrado/static/dataset/models")
+DATASET_PATH = os.path.join(os.path.dirname(BASE_DIR), "ProjetoMestrado/static/dataset/models")
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
