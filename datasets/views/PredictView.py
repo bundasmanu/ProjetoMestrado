@@ -94,8 +94,14 @@ class PredictView(LoginRequiredMixin, FormView):
 
         try:
 
+            # convert strings normalized tuples to numpy array with dtype float32
+            normalized_mean = np.array(model.normalize_mean.split(', '))
+            normalized_std = np.array(model.normalize_std.split(', '))
+            normalized_mean = np.asarray(normalized_mean, dtype=np.float64)
+            normalized_std = np.asarray(normalized_std, dtype=np.float64)
+
             # apply normalization to all pixels of sample array
-            sample_array = (sample_array - model.normalize_mean)/(model.normalize_std+1e-7)
+            sample_array = (sample_array - normalized_mean)/(normalized_std+1e-7)
 
             return sample_array
 
@@ -170,6 +176,9 @@ class PredictView(LoginRequiredMixin, FormView):
                 messages.error(self.request, "Definiu incorretamente o input_shape do modelo, ou o modelo não é condizente com o input_shape, altere o modelo")
                 return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm))
 
+            # reshape sample_data from 3D to 4D --> e.g (50, 50, 3) to (1, 50, 50, 3)
+            sample_data = sample_data.reshape(1, sample_data.shape[0], sample_data.shape[1], sample_data.shape[2])
+
             # apply pre-process technique in sample array, considering normalize_std and normalize_mean of training data, using in data definition (pre-processing)
             sample_data = self.normalize_data(sample_data, selected_model)
 
@@ -179,9 +188,6 @@ class PredictView(LoginRequiredMixin, FormView):
 
             # predict value of sample
             load_file = load_model(path_of_model)
-
-            # reshape sample_data from 3D to 4D --> e.g (50, 50, 3) to (1, 50, 50, 3)
-            sample_data = sample_data.reshape(1, sample_data.shape[0], sample_data.shape[1], sample_data.shape[2])
 
             # make prediction
             prediction = load_file.predict(sample_data)
