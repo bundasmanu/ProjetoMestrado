@@ -94,11 +94,9 @@ class PredictView(LoginRequiredMixin, FormView):
 
         try:
 
-            # convert strings normalized tuples to numpy array with dtype float32
-            normalized_mean = np.array(model.normalize_mean.split(', '))
-            normalized_std = np.array(model.normalize_std.split(', '))
-            normalized_mean = np.asarray(normalized_mean, dtype=np.float64)
-            normalized_std = np.asarray(normalized_std, dtype=np.float64)
+            # convert strings normalized tuples to numpy array with dtype float64
+            normalized_mean = np.asarray(model.normalize_mean.split(', '), np.float64)
+            normalized_std = np.asarray(model.normalize_std.split(', '), np.float64)
 
             # apply normalization to all pixels of sample array
             sample_array = (sample_array - normalized_mean)/(normalized_std+1e-7)
