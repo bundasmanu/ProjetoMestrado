@@ -42,13 +42,12 @@ class CreateUserView(CreateView):
             x.addUserToGroup(username=credentials.get('username'),
                              charGroup=groupName)  # GERA EXCECAO NAO E NECESSARIO VERIFICAR
             # AUTHENTICATE USER AND LOGIN WITH HIS CREDENTIALS, ACCESS DIRECTLY TO WEBSITE
-            credentials = {'username': self.model.username, 'password': self.model.password}
             user = authenticate(**credentials)
             login(self.request, user)
 
             return HttpResponseRedirect(self.get_success_url())
         except:
-            raise
+            return self.render_to_response(self.get_context_data())
 
     def get_content_form(self, form):
         try:

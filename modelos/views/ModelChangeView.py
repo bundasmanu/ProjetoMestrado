@@ -119,7 +119,10 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
     def form_invalid(self, form):
         # if form is invalid, i reset form with initial values
         errors_dict = dict(form.errors)
-        if "input_shape" in errors_dict: # only appears one error at each time --> logic if elif
+        if "__all__" in errors_dict:  # error of classes problem, mismatch between output dict and selected dataset
+            first_error = errors_dict.get('__all__').data[0].message
+            messages.error(self.request, first_error)
+        elif "input_shape" in errors_dict:  # only appears one error at each time --> logic if elif
             first_error = errors_dict.get('input_shape').data[0].message
             messages.error(self.request, first_error)
         elif "output_dict" in errors_dict:
@@ -128,8 +131,11 @@ class ModelChangeView(LoginRequiredMixin, UpdateView):
         elif "file_upload" in errors_dict:
             first_error = errors_dict.get('file_upload').data[0].message
             messages.error(self.request, first_error)
-        elif "__all__" in errors_dict: # error of classes problem, mismatch between output dict and selected dataset
-            first_error = errors_dict.get('__all__').data[0].message
+        elif "normalize_mean" in errors_dict:  # only appears one error at each time --> logic if elif
+            first_error = errors_dict.get('normalize_mean').data[0].message
+            messages.error(self.request, first_error)
+        elif "normalize_std" in errors_dict:  # only appears one error at each time --> logic if elif
+            first_error = errors_dict.get('normalize_std').data[0].message
             messages.error(self.request, first_error)
         kwargs = self.get_form_kwargs()
         form = ModelChangeForm.ModelChangeForm(**kwargs) # reset form with initial values

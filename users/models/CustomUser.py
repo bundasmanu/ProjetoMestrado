@@ -7,7 +7,6 @@ class CustomUser(AbstractUser):
 
     userType = models.CharField(max_length=50, choices=
                         (('D' , config.DATASCIENTIST),
-                         ('A', config.ADMIN),
                         ('H' , config.HEALTHCARE)))
     username = models.CharField(unique=True, max_length=50)
 

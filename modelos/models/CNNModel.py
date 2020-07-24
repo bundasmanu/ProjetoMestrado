@@ -7,8 +7,8 @@ dict_output_format = "{'class1' : 0, 'class2': 1}"
 
 class CNNModel(models.Model):
     name = models.CharField(max_length=100, default=None, null=False)
-    normalize_mean = models.FloatField(null=False, default=None)
-    normalize_std = models.FloatField(null=False, default=None)
+    normalize_mean = models.CharField(max_length=100, default="120.602, 147.384, 130.222", null=False, validators=[validators.check_output_tuple_normalized_values])
+    normalize_std = models.CharField(max_length=100, default="50.602, 47.384, 30.222", null=False, validators=[validators.check_output_tuple_normalized_values])
     creation_date = models.DateField(auto_now_add=True, blank=True, null=False)
     output_dict = models.CharField(max_length=2500, default=dict_output_format, null=False, validators=[validators.check_output_dict],
                                    error_messages={'required': 'Please pass a dictionary in this format: {"class1": 0, "class2" : 1}'})
