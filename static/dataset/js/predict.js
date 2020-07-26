@@ -21,6 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var resultsModal = $("#showResultsModal").modal().show();/*get Modal of Show Results page*/
 
+        if (Object.keys(pred_class_dicts).length > 4){ /*check number of classes to display in modal,
+                                                        if is greater than 4, i need to increase modal position in reference to top (put modal more in middle)*/
+            resultsModal.css({top: '40%'});
+        }
+
         $("#resultsMessage").empty().append("Diagnóstico obtido:");
 
     }

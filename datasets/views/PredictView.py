@@ -130,7 +130,7 @@ class PredictView(LoginRequiredMixin, FormView):
 
                 return preds_by_class
         except:
-            pass
+            raise
 
     def form_valid(self, form):
 

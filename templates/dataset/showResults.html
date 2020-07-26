@@ -5,7 +5,7 @@
             <div class="modal-body" id="resBodyMessage">
                 <label id="resultsMessage"></label>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" id="footerOfModal">
                 {% for key, value in preds_by_classes.items %}
                     <div id="classResultBox">
                         <label id="classPredictLabel">{{ key }}: </label> <label id="resultPredictValue">{{ value }}</label>
