@@ -44,13 +44,15 @@
     position: absolute;
 }
 
-#textContext .titleApp{
+#textContext > .titleApp{
     color: #79aec8;
     font-size: 50px;
     font-weight: 700;
     text-align: justify;
     margin-bottom: 12px;
     font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    right: 10%;
+    position: relative;
 }
 
 #textContext .contextApp{
@@ -147,9 +149,10 @@
         top: 42%;
         position: absolute;
     }
-    #textContext .titleApp{
+    #textContext > .titleApp{
         font-size: 40px;
         font-weight: 600;
+        right: 7%;
     }
 
     #textContext .contextApp{
@@ -186,9 +189,10 @@
         top: 48%;
         position: absolute;
     }
-    #textContext .titleApp{
+    #textContext > .titleApp{
         font-size: 34px;
         font-weight: 600;
+        right: -10%;
     }
     #textContext .contextApp{
         font-size: 13px;
@@ -226,6 +230,12 @@
         margin-top: 34%;
         left: 10%;
     }
+    #textContext > .titleApp{
+        font-size: 34px;
+        font-weight: 600;
+        position: relative;
+        right: -5%;
+    }
 }
 
 @media (max-width: 840px) {
@@ -245,9 +255,10 @@
         top: 50%;
         position: absolute;
     }
-    #textContext .titleApp{
+    #textContext > .titleApp{
         font-size: 28px;
         font-weight: 600;
+        right: -10%;
     }
     #textContext .contextApp{
         font-size: 13px;
@@ -288,9 +299,10 @@
         top: 54%;
         position: absolute;
     }
-    #textContext .titleApp{
+    #textContext > .titleApp{
         font-size: 22px;
         font-weight: 600;
+        right: -4%;
     }
     #textContext .contextApp{
         font-size: 10px;
@@ -332,5 +344,10 @@
         width: 48%;
         margin-top: 70%;
         left: 6%;
+    }
+    #textContext > .titleApp{
+        font-size: 22px;
+        font-weight: 600;
+        right: 4%;
     }
 }
