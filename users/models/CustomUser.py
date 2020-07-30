@@ -6,8 +6,8 @@ from .UserQueryset import UserQueryset
 class CustomUser(AbstractUser):
 
     userType = models.CharField(max_length=50, choices=
-                        (('D' , config.DATASCIENTIST),
-                        ('H' , config.HEALTHCARE)))
+                        ((config.DATASCIENTIST , config.DATASCIENTIST),
+                        (config.DATASCIENTIST , config.HEALTHCARE)))
     username = models.CharField(unique=True, max_length=50)
 
     #MANAGER COM DEPENDENCIA DIRETA PARA O QUERYSET, RESPEITANDO AS NORMAS DE PROGRAMACAO DRY --> https://stackoverflow.com/questions/45957142/django-model-manager-or-django-queryset
