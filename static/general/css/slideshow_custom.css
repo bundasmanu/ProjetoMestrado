@@ -67,7 +67,7 @@
 
 .textExploration{
     display: block;
-    width: 80%;
+    width: 100%;
     height: 100%;
     margin-top: 10vh;
     margin-left: 5vw;
@@ -101,7 +101,8 @@
 }
 
 .modelsMostUsed > p, .modelsMostUsed> .fa-star:before{
-    font-size: 1.7vw !important;
+    font-size: 1.4vw !important;
+    text-align: left;
 }
 
 /*solution to minor bug on loading slide content (delay on apply css)*/

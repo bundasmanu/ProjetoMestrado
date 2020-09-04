@@ -219,10 +219,10 @@ class PredictView(LoginRequiredMixin, FormView):
 
             return self.render_to_response(context)
         except ValueError:
-            messages.error(self.request,"Definiu incorretamente o input_shape do modelo, ou as dimensões iniciais do modelo, não coincidem com o input_shape, altere o modelo")
+            messages.error(self.request,"Definiu incorretamente o input_shape do modelo. As dimensões do modelo, não coincidem com o ficheiro .h5 submetido. Altere o modelo")
             return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm()))
         except IOError:
-            messages.error(self.request, "Erro no loading do modelo, confirme o ficheiro submetido")
+            messages.error(self.request, "Erro a carregar o modelo, confirme o ficheiro submetido")
             return self.render_to_response(self.get_context_data(form=PredictForm.PredictForm()))
         except NotImplementedError:
             if form.cleaned_data['dataset_dropdown'] == 'Selecciona um dataset':

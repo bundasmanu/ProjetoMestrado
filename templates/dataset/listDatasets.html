@@ -59,8 +59,10 @@
                                         {% define_int counter dataset.numbermodels as increment %}
                                         {% filter_range counter increment as n_models_by_dataset %}
                                         {% if dataset.numbermodels != 0 %}
-                                            {% for i in n_models_by_dataset %}
-                                                <p>{{ models | index:i | getattrfilterDict:"cnnmodel__name"}}</p>
+                                            {% for i in models %}
+                                                {% if i.id == dataset.id  %}
+                                                    <p>{{ i.cnnmodel__name }}</p>
+                                                {% endif %}
                                             {% endfor %}
                                         {% else %}
                                             <p>Nenhum</p>
