@@ -117,7 +117,7 @@ class PredictView(LoginRequiredMixin, FormView):
 
         try:
 
-            # if values are not integers, i need convert them, and sort by values
+            # the use of the ordereddict sorts the dictionary increasingly by its whole values (user can define a dict with values in arbitrary order). Example: {'A' : 2, 'B' : 1, 'C' : 3} to {'B' : 1, 'A': 2, 'C' : 3}
             sorted_classes = OrderedDict(sorted(dictionary_model.items(), key=lambda t: int(t[1])))
 
             preds_by_class = dict()
