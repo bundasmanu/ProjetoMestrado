@@ -168,3 +168,23 @@ There are also available links to download the models.
 | ResNet | 29,9 MB |  90.4% |  90.2% | 92.2% | [ResNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/resnet_oficial.h5?raw=true) |
 | DenseNet | 10,3 MB | 89.8% |  89.4% | 91.7% | [DenseNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/densenet_oficial.h5?raw=true) |
 | Ensemble Average All Models | 22,8 MB | 91.1% | 90.7%  | 92.9% | [Ensemble h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/ensemble_all.h5?raw=true) |
+
+### Results - Skin Mnist:
+| Model | Memory | Macro Average F1Score | Macro Average Recall | Accuracy | File | 
+|---|---|---|---|---|---|
+| AlexNet | 7,8 MB | 65.4% | 63.5% | 81.1% | [AlexNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Skin_MNIST/alexnet_gbest_oficial.h5?raw=true) |
+| VGGNet | 12,9 MB | 64.8% | 62.3% | 80.8% | [VGGNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Skin_MNIST/vggnet_gbest_oficial.h5?raw=true) |
+| ResNet | 39,8 MB |  66.5% |  64.2% | 81.3% | [ResNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Skin_MNIST/resnet_gbest_oficial.h5?raw=true) |
+| DenseNet | 4,4 MB | 67.6% |  65.4% | 81.6% | [DenseNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Skin_MNIST/densenet_gbest_oficial.h5?raw=true) |
+| Ensemble Average All Models | 21,8 MB | 68.5% | 65.2%  | 83.0% | [Ensemble All Models h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Skin_MNIST/ensemble_all.h5?raw=true) |
+| Ensemble Average Alex + VGG + Dense | 17,5 MB | 69.2% | 66.5%  | 83.1% | [Ensemble Best Combination h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Skin_MNIST/ensemble_best.h5?raw=true) |
+
+### Results - Colorectal Histopathology:
+| Model | Memory | Macro Average F1Score | Accuracy | File | 
+|---|---|---|---|---|
+| AlexNet | 19,0 MB | 94.2% | 94.3% | [AlexNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Colorectal_Histopathology/alexnet_gbest_oficial.h5?raw=true) |
+| VGGNet | 15,5 MB | 94.5% | 94.6% | [VGGNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Colorectal_Histopathology/vggnet_gbest_oficial.h5?raw=true) |
+| ResNet | 11,4 MB |  95.5% | 95.7% | [ResNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Colorectal_Histopathology/resnet_gbest_oficial.h5?raw=true) |
+| DenseNet | 17,9 MB | 96.0% | 96.1% | [DenseNet h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Colorectal_Histopathology/densenet_gbest_oficial.h5?raw=true) |
+| Ensemble Average All Models | 21,4 MB | 95.5% | 95.6% | [Ensemble All Models h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Colorectal_Histopathology/ensemble_all.h5?raw=true) |
+| Ensemble Average Res+ Dense | 9,9 MB | 96.6% | 96.6% | [Ensemble Best Combination h5 File](https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Colorectal_Histopathology/ensemble_best.h5?raw=true) |
