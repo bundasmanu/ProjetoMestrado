@@ -154,7 +154,21 @@ Breast Histopathology Images:
 
 ## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)
- 
+
+## Project Setup:
+
+The steps required for the correct configuration of the platform are listed below.
+
+1. You need to previously install the SGDB PostgreSQL in order to support database operations;
+2. Clone this repository (root folder of project need to be Projeto_Mestrado, if you want to change this name you need to change some flags in settings.py files: STATIC_ROOT and DATASET_PATH with your root folder name);
+3. Change settings.py file, in concordance with your PostgreSQL credentials (or you should create a secrets.py file with credentials and SECRET_KEY of project);
+4. Install requirements: pip install -r requirements.txt;
+5. Apply migrations to database (to create tables): python manage.py migrate;
+    * If you have problems in this step, one workaround can be:
+        1. Drop all migrations files;
+        2. Run makemigrations command, in order to create migration files of all app's of project: python manage.py makemigrations;
+        3. Now run again python manage.py migrate;
+
 ## Optimized models 
 
 The results obtained for each optimized architecture are described below, in accordance with the problems being solved.
