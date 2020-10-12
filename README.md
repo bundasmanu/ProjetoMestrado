@@ -157,11 +157,14 @@ Breast Histopathology Images:
  
 ## Optimized models 
 
+The results obtained for each optimized architecture are described below, in accordance with the problems being solved.
+There are also available links to download the models.
+
 ### Results - Breast Histopathology:
 | Model | Memory | Macro Average F1Score | Macro Average Recall | Accuracy | File |
 |---|---|---|---|---|---|
-| AlexNet | 14,6 MB | 90.2% | 89.7% | 92.1% | https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/alex_net_oficial.h5?raw=true (AlexNet h5 File)|
-| VGGNet | 13,1 MB | 90.5% | 89.6% | 92.4% | https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/vggnet_oficial.h5?raw=true (VGGNet h5 File) |
-| ResNet | 29,9 MB |  90.4% |  90.2% | 92.2% | https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/resnet_oficial.h5?raw=true (ResNet h5 File) |
-| DenseNet | 10,3 MB | 89.8% |  89.4% | 91.7% | https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/densenet_oficial.h5?raw=true (DenseNet h5 File) |
-| Ensemble Average All Models | 22,8 MB | 91.1% | 90.7%  | 92.9% | https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/ensemble_all.h5?raw=true (Ensemble h5 File) |
+| AlexNet | 14,6 MB | 90.2% | 89.7% | 92.1% | [AlexNet h5 File] (https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/alex_net_oficial.h5?raw=true) |
+| VGGNet | 13,1 MB | 90.5% | 89.6% | 92.4% | [https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/vggnet_oficial.h5?raw=true] (VGGNet h5 File) |
+| ResNet | 29,9 MB |  90.4% |  90.2% | 92.2% | [https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/resnet_oficial.h5?raw=true] (ResNet h5 File) |
+| DenseNet | 10,3 MB | 89.8% |  89.4% | 91.7% | [https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/densenet_oficial.h5?raw=true] (DenseNet h5 File) |
+| Ensemble Average All Models | 22,8 MB | 91.1% | 90.7%  | 92.9% | [https://github.com/bundasmanu/ProjetoMestrado/blob/master/arquiteturas_otimizadas/Breast_Histopathology/ensemble_all.h5?raw=true] (Ensemble h5 File) |
