@@ -154,6 +154,18 @@
   - Definição dos layout's de CRUD definidos (à espera de confirmação);
   - Realização de apresentação do trabalho desenvolvido e a realizar;-->
 
+## What is DiagnosisViewer and what is it for?
+
+DiagnosisViewer is a web application designed using the Django framework, which aims to promote an intuitive and simple approach to sharing knowledge among the community of data scientists.
+
+The platform promotes the submission and the use of convolutional models, created in response to multiple benchmarks, in the diagnosis of biomedical samples.
+
+The user has total freedom to insert datasets (nominal definition only) and convolutional models in the platform, for consequent use in diagnosis.
+
+The app is robust and fast, with diagnostic results being presented in a time interval of less than 10s. Unlike other applications, the models are not trained on the platform, i.e., they are compiled according to the base settings defined by the users, thus providing freedom for the submission of models with different development approaches, such as: splitting techniques, sampling, regularization, etc. This approach removes the hardware dependencies that are normally required in browser-based training of CNN networks.
+
+The biggest advantage of the app, compared to the other apps, is that it allows the diagnostic functionality to be used in a high number of benchmarks, since the higher the number of models and benchmarks submitted the greater the offer available. The remaining app's focus exclusively on the study of 1-3 benchmarks. 
+
 ## Project Setup:
 
 The steps required for the correct configuration of the platform are listed below.
