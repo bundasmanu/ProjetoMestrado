@@ -56,6 +56,10 @@ input{
     width:28%;
 }
 
+#changeModelUploadedFileBox > #id_file_upload { /*input button of model file upload*/
+    padding-left: 7.5%;
+}
+
 #changeModelUploadedFileBox > label{
     width: 20%;
     font-size: 14px;

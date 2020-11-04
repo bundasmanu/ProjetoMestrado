@@ -49,10 +49,6 @@ input{
     vertical-align: middle;
 }
 
-#nameModel{
-    padding: 6px 0px 8px 8px;
-}
-
 #nameModel > label, #normalizedStdModel > label, #normalizedMeanModel > label, #outputDictModel > label, #inputShapeModel > label, #datasetIdOptions > label, #modelUploadFile > label{
     color: #666;
     display: inline-block; /*I NEED TO DEFINE THIS, IN ORDER TO WIDTH VALUE CHANGE --> BECAUSE BY DEFAULT THE DISPLAY IS BLOCK*/
