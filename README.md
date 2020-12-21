@@ -164,7 +164,9 @@ The user has total freedom to insert datasets (nominal definition only) and conv
 
 The app is robust and fast, with diagnostic results being presented in a time interval of less than 10s. Unlike other applications, the models are not trained on the platform, i.e., they are compiled according to the base settings defined by the users, thus providing freedom for the submission of models with different development approaches, such as: splitting techniques, sampling, regularization, etc. This approach removes the hardware dependencies that are normally required in browser-based training of CNN networks.
 
-The biggest advantage of the app, compared to the other apps, is that it allows the diagnostic functionality to be used in a high number of benchmarks, since the higher the number of models and benchmarks submitted the greater the offer available. The remaining app's focus exclusively on the study of 1-3 benchmarks. 
+The biggest advantage of the app, compared to the other apps, is that it allows the diagnostic functionality to be used in a high number of benchmarks, since the higher the number of models and benchmarks submitted the greater the offer available. The remaining app's focus exclusively on the study of 1-3 benchmarks.
+
+The application also provides a diagnosis history, for this purpose provides interactively information about the most commonly used datasets and models by the community, and the most used by the logged-in user.
 
 ## Project Setup:
 
