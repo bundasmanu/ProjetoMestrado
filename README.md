@@ -162,11 +162,15 @@ The platform promotes the submission and the use of convolutional models, create
 
 The user has total freedom to insert datasets (nominal definition only) and convolutional models in the platform, for consequent use in diagnosis.
 
-The app is robust and fast, with diagnostic results being presented in a time interval of less than 10s. Unlike other applications, the models are not trained on the platform, i.e., they are compiled according to the base settings defined by the users, thus providing freedom for the submission of models with different development approaches, such as: splitting techniques, sampling, regularization, etc. This approach removes the hardware dependencies that are normally required in browser-based training of CNN networks.
+The user-friendly interface of DiagnosisViewer facilitates the process of managing models and datasets, allowing them to be easily removed, changed or filtered. Users can only remove or change the datasets and models that they have submitted.
+
+The app is robust and fast, with diagnostic results being presented in a time interval of less than 10s. Unlike other applications, the models are not trained on the platform, i.e., they are compiled according to the base settings defined by the users, thus providing freedom for the submission of models with different development approaches, such as: adopted to different training techniques, different sample dimensions, different class category mapping results (to integer values), etc. This approach removes the hardware dependencies that are normally required in browser-based training of CNN networks.
 
 The biggest advantage of the app, compared to the other apps, is that it allows the diagnostic functionality to be used in a high number of benchmarks, since the higher the number of models and benchmarks submitted the greater the offer available. The remaining app's focus exclusively on the study of 1-3 benchmarks.
 
 The application also provides a diagnosis history, for this purpose provides interactively information about the most commonly used datasets and models by the community, and the most used by the logged-in user.
+
+**Important: The wider level of content made available on the platform by users, the more information is available for access (and diagnosis) and for the dissemination of new knowledge.**
 
 ## Project Setup:
 
@@ -218,6 +222,11 @@ There are also available links to download the models.
 
 <!--## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)-->
+
+### Limitations of Project
+* Plataform now only supports cnn models (HDF5 files) created using Keras with tensorflow backend;
+* It is planned to increase the number of features available, such as: discussion forum, message sharing between users, etc;
+* No hosting service available (I plan to quickly support this limitation);
 
 ### Licence
 
