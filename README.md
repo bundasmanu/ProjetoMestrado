@@ -216,3 +216,8 @@ There are also available links to download the models.
 
 <!--## Link Diagrama de Classes Arquitetura Base para análises dos Dataset's:
  [Architecture Image](breast_Class_Diagram.png)-->
+
+### Licence
+
+GPL-3.0 License  
+I am open to new ideas and improvements to the current repository. However, until the defense of my Project report, I will not accept pull request's.
